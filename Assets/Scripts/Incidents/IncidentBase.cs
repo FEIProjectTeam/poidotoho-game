@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class IncidentBase : MonoBehaviour
+{
+    [SerializeField] public List<QuestionAndAnswers> qnaList;
+    int randomIntInRange;
+
+
+    private void Start()
+    {
+        randomIntInRange = Random.Range(0, qnaList.Count);
+    }
+
+    public void addQuestionAndAnswer(List<QuestionAndAnswers> qnaList )
+    {
+        this.qnaList = qnaList;        
+    }
+
+    public void OnMouseDown()
+    {
+        GameManager.Instance.openQNAPopup.Invoke(this);
+    }
+
+    public string getQuestion()
+    {      
+        return qnaList[randomIntInRange].question.ToString();
+    }
+
+    public List<string> getAnswers()
+    {
+        return qnaList[randomIntInRange].answers;
+    }
+
+    public List<int> getCorrectAnswers()
+    {
+        return qnaList[randomIntInRange].correctAnswers;
+    }
+}

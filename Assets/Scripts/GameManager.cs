@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public UnityEvent<IncidentBase> openQNAPopup = new UnityEvent<IncidentBase>();
 
     private void Awake()
     {
