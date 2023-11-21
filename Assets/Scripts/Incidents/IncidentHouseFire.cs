@@ -1,6 +1,6 @@
 namespace Incidents
 {
-    public class HouseFireIncident : BaseIncident
+    public class IncidentHouseFire : IncidentBase
     {
         
     }
