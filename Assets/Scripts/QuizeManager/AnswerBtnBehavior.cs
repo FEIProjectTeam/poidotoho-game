@@ -21,6 +21,8 @@ public class AnswerBtnBehavior : MonoBehaviour
         buttonImage = this.GetComponent<Image>();
     }
 
+
+
     public void OnMouseDown()
     {
         if (buttonImage == null)
@@ -54,7 +56,7 @@ public class AnswerBtnBehavior : MonoBehaviour
     {
         if (isCorrect)
         {
-            buttonImage.color = correctColor;
+            buttonImage.color = correctColor;            
         }   
         else
         {

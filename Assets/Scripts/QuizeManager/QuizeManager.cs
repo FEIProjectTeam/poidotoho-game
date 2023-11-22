@@ -101,7 +101,7 @@ public class QuizeManager : MonoBehaviour
                 }
            }
         }
-
+        ScoreManager.instance.addPoint();
         Debug.Log(string.Format("Correct answers: {0}\nIncorrect answers: {1}.", correctAnswersCount, inCorrectAnswersCount));
     }
 
