@@ -21,7 +21,9 @@ public class QuizeManager : MonoBehaviour
 
     private List<GameObject> answersButtons = new List<GameObject>();
 
-    public float buttonSpacing = 10f;
+    private const float BUTTON_SPACING = 10f;
+
+    private IncidentBase incidentBase;
 
     void Start()
     {
@@ -45,7 +47,8 @@ public class QuizeManager : MonoBehaviour
             }
         }
 
-        float currentY = 0f;
+        float currentY = 100f;
+        
         int i = 0;
         foreach (string buttonText in buttonsTexts)
         {
@@ -55,13 +58,14 @@ public class QuizeManager : MonoBehaviour
             TextMeshProUGUI buttonTextMeshPro = button.GetComponentInChildren<TextMeshProUGUI>();
             buttonTextMeshPro.text = buttonText;
             button.transform.localPosition = new Vector3(0f, currentY, 0f);
-            currentY += buttonSpacing + button.GetComponent<RectTransform>().sizeDelta.y;
+            currentY -= button.GetComponent<RectTransform>().sizeDelta.y + BUTTON_SPACING;
             answersButtons.Add(button);
         }
     }
 
     private void openPopup(IncidentBase incident)
     {
+        this.incidentBase = incident;
         Debug.Log("Open Pop up handler.");
         questionTMP.text = incident.getQuestion();
         buttonsTexts = incident.getAnswers();
@@ -74,7 +78,7 @@ public class QuizeManager : MonoBehaviour
     private void checkSelectedbuttons()
     {
         int correctAnswersCount = 0;
-        int inCorrectAnswersCount = 0;
+        int incorrectAnswersCount = 0;
         AnswerBtnBehavior[] buttonScripts = buttonsContainer.GetComponentsInChildren<AnswerBtnBehavior>();
 
         foreach (var buttonScript in buttonScripts)
@@ -89,7 +93,7 @@ public class QuizeManager : MonoBehaviour
                 }
                 else
                 {
-                    inCorrectAnswersCount++;
+                    incorrectAnswersCount++;
                 }
            }
            else
@@ -97,19 +101,20 @@ public class QuizeManager : MonoBehaviour
                 if (correctAnswers.Contains(buttonScript.id))
                 {
                     buttonScript.markCorrectNotSelected();
-                    inCorrectAnswersCount++;
+                    incorrectAnswersCount++;
                 }
            }
         }
         ScoreManager.instance.addPoint();
-        Debug.Log(string.Format("Correct answers: {0}\nIncorrect answers: {1}.", correctAnswersCount, inCorrectAnswersCount));
+        Debug.Log(string.Format("Correct answers: {0}\nIncorrect answers: {1}.", correctAnswersCount, incorrectAnswersCount));
     }
 
     private void onSubmit()
     {
         checkSelectedbuttons();
         submitButton.interactable = false;
-        answersButtons.ForEach(gameObject => gameObject.GetComponent<Button>().interactable = false);            
+        answersButtons.ForEach(gameObject => gameObject.GetComponent<AnswerBtnBehavior>().setSelectMode(false));
+        incidentBase.setAnswered();
         Debug.Log("Submit button clicked");
     }
 }

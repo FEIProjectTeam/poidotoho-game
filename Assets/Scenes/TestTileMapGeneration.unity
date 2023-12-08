@@ -1606,7 +1606,6 @@ MonoBehaviour:
   buttonContainer: {fileID: 1696339812}
   submitButton: {fileID: 666951586}
   buttonsContainer: {fileID: 1696339811}
-  buttonSpacing: 10
 --- !u!1001 &549766980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1952,8 +1951,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -290.01385, y: 101.24115}
-  m_SizeDelta: {x: -580.0278, y: -430.2751}
+  m_AnchoredPosition: {x: -263.48, y: 102.75739}
+  m_SizeDelta: {x: -526.9602, y: -433.3075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &643014484
 MonoBehaviour:
@@ -4676,10 +4675,10 @@ RectTransform:
   - {fileID: 679497725}
   m_Father: {fileID: 1007420347}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -422.6234, y: 267.4}
-  m_SizeDelta: {x: -858.8911, y: -534.8}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 114, y: -43}
+  m_SizeDelta: {x: 181.10889, y: 49.200012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1734656045
 MonoBehaviour:
