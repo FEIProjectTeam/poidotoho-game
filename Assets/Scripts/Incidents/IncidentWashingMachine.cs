@@ -10,7 +10,13 @@ public class IncidentWashingMachine : IncidentBase
         this.addQuestionAndAnswer(
         new List<QuestionAndAnswers> {
             new QuestionAndAnswers("Washing question",
-            new string[] { "Washing answer 1", "Washing answer 2", "Washing answer 3" },
+            new string[] { 
+                "Washing answer 1", 
+                "Washing answer 2", 
+                "Washing answer 3",
+                "Washing answer 4",
+                "Washing answer 5"
+            },
             new int[] { 1 }),
         });
     }

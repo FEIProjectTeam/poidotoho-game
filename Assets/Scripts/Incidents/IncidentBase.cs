@@ -10,6 +10,7 @@ namespace Incidents
         [SerializeField] private GameObject[] incidentReplacements;
         [SerializeField] public List<QuestionAndAnswers> qnaList;
         int randomIntInRange;
+        bool isAnswered = false;
 
         private void Awake()
         {
@@ -39,7 +40,10 @@ namespace Incidents
 
         public void OnMouseDown()
         {
-            GameManager.Instance.openQNAPopup.Invoke(this);
+            if ( !isAnswered )
+            {
+                GameManager.Instance.openQNAPopup.Invoke(this);
+            }
         }
 
         public string getQuestion()
@@ -55,6 +59,11 @@ namespace Incidents
         public List<int> getCorrectAnswers()
         {
             return qnaList[randomIntInRange].correctAnswers;
+        }
+        
+        public void setAnswered()
+        {
+            isAnswered = true;
         }
     }
 }
