@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,10 +8,18 @@ namespace Incidents
     {
         [SerializeField] private GameObject[] incidentInstigators;
         [SerializeField] private GameObject[] incidentReplacements;
+        [SerializeField] public List<QuestionAndAnswers> qnaList;
+        int randomIntInRange;
+        bool isAnswered = false;
 
         private void Awake()
         {
             GetComponent<MeshRenderer>().enabled = false;
+        }
+        
+        private void Start()
+        {
+            randomIntInRange = Random.Range(0, qnaList.Count);
         }
 
         public void SpawnIncident()
@@ -23,6 +31,39 @@ namespace Incidents
         {
             if (incidentReplacements != null && incidentReplacements.Length > 0)
                 Instantiate(incidentReplacements[Random.Range(0, incidentReplacements.Length)], transform.position, transform.rotation);
+        }
+        
+        public void addQuestionAndAnswer(List<QuestionAndAnswers> qnaList )
+        {
+            this.qnaList = qnaList;        
+        }
+
+        public void OnMouseDown()
+        {
+            if ( !isAnswered )
+            {
+                GameManager.Instance.openQNAPopup.Invoke(this);
+            }
+        }
+
+        public string getQuestion()
+        {      
+            return qnaList[randomIntInRange].question.ToString();
+        }
+
+        public List<string> getAnswers()
+        {
+            return qnaList[randomIntInRange].answers;
+        }
+
+        public List<int> getCorrectAnswers()
+        {
+            return qnaList[randomIntInRange].correctAnswers;
+        }
+        
+        public void setAnswered()
+        {
+            isAnswered = true;
         }
     }
 }
