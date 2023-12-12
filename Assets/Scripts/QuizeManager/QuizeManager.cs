@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Incidents;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,11 +25,6 @@ public class QuizeManager : MonoBehaviour
     private const float BUTTON_SPACING = 10f;
 
     private IncidentBase incidentBase;
-
-    void Start()
-    {
-        
-    }
 
     private void Awake()
     {
