@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 9217268003841472275}
   - component: {fileID: 3994410577256129103}
   - component: {fileID: 1562287449203704417}
+  - component: {fileID: 7333658869185630291}
+  - component: {fileID: 1890170618431894144}
   m_Layer: 0
   m_Name: pracka
   m_TagString: Untagged
@@ -83,3 +85,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7333658869185630291
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3981762664170703027}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2.8324728}
+  m_Center: {x: 0, y: 0, z: -0.41623646}
+--- !u!114 &1890170618431894144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3981762664170703027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9320a1fac65f0d479ad948fe9b5d7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incidentInstigators: []
+  incidentReplacements: []
+  qnaList: []
