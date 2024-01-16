@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7982733338457207723}
-  - component: {fileID: 2469363214695816675}
   - component: {fileID: 2113696001786648314}
   - component: {fileID: 1220236274759094998}
+  - component: {fileID: -5192719101922543802}
   m_Layer: 0
   m_Name: Washing Machine Spawner
   m_TagString: Untagged
@@ -34,22 +34,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2469363214695816675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3484575892751870683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9320a1fac65f0d479ad948fe9b5d7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  incidentOrigins:
-  - {fileID: 3981762664170703027, guid: 1f40ea66951637244a46d3a4f7dc97c1, type: 3}
-  incidentReplacements: []
-  qnaList: []
 --- !u!23 &2113696001786648314
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -100,3 +84,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3484575892751870683}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &-5192719101922543802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484575892751870683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9893f21039f846a48af6d3de8bed6025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incidentInstigators:
+  - {fileID: 3981762664170703027, guid: 1f40ea66951637244a46d3a4f7dc97c1, type: 3}
+  incidentReplacements: []
