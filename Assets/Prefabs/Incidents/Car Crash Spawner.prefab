@@ -43,12 +43,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1633113725953468390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df6e4d08d4234fb3a6bb2ef09a74e384, type: 3}
+  m_Script: {fileID: 11500000, guid: 0acc8516f9e148647a344d4184d5b481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   incidentInstigators:
   - {fileID: 3523345102258385620, guid: 83e329bacac4dc5429bcf4941721794e, type: 3}
   incidentReplacements: []
+  qnaList: []
 --- !u!23 &-1972478628280216212
 MeshRenderer:
   m_ObjectHideFlags: 0
