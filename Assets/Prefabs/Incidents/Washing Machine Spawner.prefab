@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6638778765143371493
+--- !u!1 &3484575892751870683
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,55 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6038951286306469561}
-  - component: {fileID: 3255951272248808680}
-  - component: {fileID: 5397208374653456688}
+  - component: {fileID: 7982733338457207723}
+  - component: {fileID: 2469363214695816675}
+  - component: {fileID: 2113696001786648314}
+  - component: {fileID: 1220236274759094998}
   m_Layer: 0
-  m_Name: auto s rozbitym sklem
+  m_Name: Washing Machine Spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6038951286306469561
+--- !u!4 &7982733338457207723
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638778765143371493}
+  m_GameObject: {fileID: 3484575892751870683}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 102.145676, y: 0, z: -36.604908}
-  m_LocalScale: {x: 1, y: 0.91234493, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!33 &3255951272248808680
-MeshFilter:
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2469363214695816675
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638778765143371493}
-  m_Mesh: {fileID: 7923933442970868534, guid: cd36e94b32fcebc469cc1d73951d93c6, type: 3}
---- !u!23 &5397208374653456688
+  m_GameObject: {fileID: 3484575892751870683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9320a1fac65f0d479ad948fe9b5d7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incidentOrigins:
+  - {fileID: 3981762664170703027, guid: 1f40ea66951637244a46d3a4f7dc97c1, type: 3}
+  incidentReplacements: []
+  qnaList: []
+--- !u!23 &2113696001786648314
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638778765143371493}
+  m_GameObject: {fileID: 3484575892751870683}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4382361680719626920, guid: cd36e94b32fcebc469cc1d73951d93c6, type: 3}
+  - {fileID: 2100000, guid: bc06c38bc372add4ea5bd004f79d11f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +92,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1220236274759094998
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484575892751870683}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
