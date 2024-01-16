@@ -8,9 +8,13 @@ namespace Incidents
         {
             this.addQuestionAndAnswer(
                 new List<QuestionAndAnswers> {
-                    new QuestionAndAnswers("Lamp crash question",
-                        new string[] { "Lamp Car crash answer 1", "Lamp Car crash answer 2", "Lamp Car crash 3" },
-                        new int[] { 2 }),
+                    new QuestionAndAnswers("Nabúrali ste autom do lampy. Z čoho zaplatíte opravu?",
+                        new string[] { 
+                            "z môjho poistenia", 
+                            "utečiem rýchlo preč a nezaplatím", 
+                            "vypýtam si peniaze od rodičov" 
+                        },
+                        new int[] { 0 }),
                 });
         }
     }

@@ -12,16 +12,14 @@ namespace Incidents
             this.addQuestionAndAnswer(
                 new List<QuestionAndAnswers>
                 {
-                    new QuestionAndAnswers("Washing question",
+                    new QuestionAndAnswers("Ak sa v·m pokazÌ pr·Ëka a vytopÌte susedov, Ëo spravÌte?",
                         new string[]
                         {
-                            "Washing answer 1",
-                            "Washing answer 2",
-                            "Washing answer 3",
-                            "Washing answer 4",
-                            "Washing answer 5"
+                            "nahl·sim to mojej poisùovni nech daju peniaze susedom",
+                            "presvedËÌm susedov, ûe to nie je moja chyba",
+                            "vyberiem vöetky svoje ˙spory a d·m ich susedom"
                         },
-                        new int[] { 1 }),
+                        new int[] {0 }),
                 });
         }
     }
