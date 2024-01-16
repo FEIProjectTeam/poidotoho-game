@@ -29,4 +29,9 @@ public class ScoreManager : MonoBehaviour
         score++;
         scoreText.text = SCORE_TEXT + score.ToString();
     }
+    public void addPoints(int score)
+    {
+        this.score += score;
+        scoreText.text = SCORE_TEXT + score.ToString();
+    }
 }
