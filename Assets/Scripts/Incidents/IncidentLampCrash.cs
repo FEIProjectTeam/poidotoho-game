@@ -6,13 +6,13 @@ namespace Incidents
     {
         private void Start()
         {
-            this.addQuestionAndAnswer(
+            addQuestionAndAnswer(
                 new List<QuestionAndAnswers> {
-                    new QuestionAndAnswers("Nabúrali ste autom do lampy. Z čoho zaplatíte opravu?",
+                    new QuestionAndAnswers("Nabúral si autom do lampy. Z čoho zaplatíš opravu?",
                         new string[] { 
-                            "z môjho poistenia", 
-                            "utečiem rýchlo preč a nezaplatím", 
-                            "vypýtam si peniaze od rodičov" 
+                            "Z môjho poistenia", 
+                            "Utečiem rýchlo preč a nezaplatím", 
+                            "Vypýtam si peniaze od rodičov" 
                         },
                         new int[] { 0 }),
                 });

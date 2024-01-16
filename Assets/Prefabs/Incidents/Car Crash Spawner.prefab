@@ -93,9 +93,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1633113725953468390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9893f21039f846a48af6d3de8bed6025, type: 3}
+  m_Script: {fileID: 11500000, guid: 0acc8516f9e148647a344d4184d5b481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incidentInstigators:
+  incidents:
   - {fileID: 3523345102258385620, guid: 83e329bacac4dc5429bcf4941721794e, type: 3}
   incidentReplacements: []
+  isSpawner: 1

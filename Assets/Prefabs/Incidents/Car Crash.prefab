@@ -9,9 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1896618561391410756}
-  - component: {fileID: 850570162835856650}
-  - component: {fileID: 9210169060992658627}
-  - component: {fileID: 1522879966222949289}
+  - component: {fileID: 7622407292001964387}
   m_Layer: 0
   m_Name: Car Crash
   m_TagString: Untagged
@@ -36,84 +34,27 @@ Transform:
   - {fileID: 8358245528025157496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1839735485 &850570162835856650
-Tilemap:
+--- !u!65 &7622407292001964387
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3523345102258385620}
-  m_Enabled: 1
-  m_Tiles: {}
-  m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
-  m_TileObjectToInstantiateArray: []
-  m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
-  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
-  m_TileOrientation: 0
-  m_TileOrientationMatrix:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
---- !u!54 &9210169060992658627
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3523345102258385620}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 0
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1522879966222949289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3523345102258385620}
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0acc8516f9e148647a344d4184d5b481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qnaList: []
+  serializedVersion: 3
+  m_Size: {x: 10, y: 1, z: 10}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &4790072816597669085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,7 +65,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2050821961311837373, guid: 665c762ebb58ff74f9d01ece1d8e9f64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3
+      value: -3.62
       objectReference: {fileID: 0}
     - target: {fileID: 2050821961311837373, guid: 665c762ebb58ff74f9d01ece1d8e9f64, type: 3}
       propertyPath: m_LocalPosition.y
@@ -216,7 +157,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 288074548855269395, guid: fc26a2b872b51494a9251c604993a2a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3
+      value: 3.17
       objectReference: {fileID: 0}
     - target: {fileID: 288074548855269395, guid: fc26a2b872b51494a9251c604993a2a4, type: 3}
       propertyPath: m_LocalPosition.y

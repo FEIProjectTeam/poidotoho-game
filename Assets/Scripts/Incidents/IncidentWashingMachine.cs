@@ -9,15 +9,15 @@ namespace Incidents
     {
         private void Start()
         {
-            this.addQuestionAndAnswer(
+            addQuestionAndAnswer(
                 new List<QuestionAndAnswers>
                 {
-                    new QuestionAndAnswers("Ak sa v·m pokazÌ pr·Ëka a vytopÌte susedov, Ëo spravÌte?",
+                    new QuestionAndAnswers("Ak sa ti doma pokaz√≠ praƒçka a vytop√≠te susedov, ƒço sprav√≠≈°?",
                         new string[]
                         {
-                            "nahl·sim to mojej poisùovni nech daju peniaze susedom",
-                            "presvedËÌm susedov, ûe to nie je moja chyba",
-                            "vyberiem vöetky svoje ˙spory a d·m ich susedom"
+                            "Nahl√°sim to mojej pois≈•ovni nech daj√∫ peniaze susedom",
+                            "Presvedƒç√≠m susedov, ≈æe to nie je moja chyba",
+                            "Vyberiem v≈°etky svoje √∫spory a d√°m ich susedom"
                         },
                         new int[] {0 }),
                 });

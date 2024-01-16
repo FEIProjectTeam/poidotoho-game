@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f4df42f085bac4dab811f97e51238b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incidentInstigators:
-  - {fileID: 3523345102258385620, guid: ebb6d48be9b934c4fa2d022163f676c0, type: 3}
+  incidents: []
   incidentReplacements:
   - {fileID: 6172255567073049538, guid: 804ecb5ef6d5e104d9759fc35e88a16a, type: 3}
   - {fileID: 4629718244889656398, guid: 4e308227661f1284ebd854c08781f61c, type: 3}
+  isSpawner: 1
 --- !u!33 &-7710455693815638958
 MeshFilter:
   m_ObjectHideFlags: 0

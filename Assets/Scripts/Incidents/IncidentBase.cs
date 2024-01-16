@@ -6,10 +6,21 @@ namespace Incidents
 {
     public abstract class IncidentBase : MonoBehaviour
     {
-        [SerializeField] public List<QuestionAndAnswers> qnaList;
+        [SerializeField] private GameObject[] incidents;
+        [SerializeField] private GameObject[] incidentReplacements;
+        [SerializeField] private bool isSpawner = false;
+        private List<QuestionAndAnswers> qnaList;
         int randomIntInRange;
         bool isAnswered = false;      
-
+        
+        private void Awake()
+        {
+            if (isSpawner)
+            {
+                GetComponent<MeshRenderer>().enabled = false;   
+            }
+        }
+        
         private void Start()
         {
             if (qnaList != null)
@@ -18,7 +29,21 @@ namespace Incidents
             }
         }
 
-        public void addQuestionAndAnswer(List<QuestionAndAnswers> qnaList )
+        public void SpawnIncident()
+        {
+            GameObject incident = Instantiate(incidents[Random.Range(0, incidents.Length)], transform.position, transform.rotation);
+            incident.AddComponent(GetType());
+        }
+
+        public void SpawnReplacement()
+        {
+            if (incidentReplacements != null && incidentReplacements.Length > 0)
+                Instantiate(incidentReplacements[Random.Range(0, incidentReplacements.Length)], transform.position,
+                    transform.rotation);
+            this.enabled = false;
+        }
+
+        public void addQuestionAndAnswer(List<QuestionAndAnswers> qnaList)
         {
             this.qnaList = qnaList;        
         }

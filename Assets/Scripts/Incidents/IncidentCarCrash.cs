@@ -9,13 +9,13 @@ namespace Incidents
     {
         private void Start()
         {
-            this.addQuestionAndAnswer(
+            addQuestionAndAnswer(
                 new List<QuestionAndAnswers> {
-                    new QuestionAndAnswers("AkÈ poistenie V·m pomÙûe ak nab˙rate svoje auto?",
+                    new QuestionAndAnswers("Ak√© poistenie ti pom√¥≈æe ak nab√∫ra≈° svoje auto?",
                         new string[] { 
-                            "ûiadne poistenie nem·m",
-                            "poistenie automobilu", 
-                            "soci·lne poistenie" },
+                            "≈Ωiadne poistenie nem√°m",
+                            "Poistenie automobilu", 
+                            "Soci√°lne poistenie" },
                         new int[] { 1 }),
                 });
         }
