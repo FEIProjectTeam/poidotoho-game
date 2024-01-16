@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4147741958290366657}
   - component: {fileID: 3895185331147867639}
   - component: {fileID: 666792347060105882}
-  m_Layer: 0
+  - component: {fileID: 139268039091184233}
+  m_Layer: 6
   m_Name: Sidewalk 3 Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +84,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &139268039091184233
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3231380379746827680}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 3.8181815, z: 2}
+  m_Center: {x: 0, y: 1.9090905, z: 0}
 --- !u!1 &5780389262032460436
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2401990659226193651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sidewalk 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
