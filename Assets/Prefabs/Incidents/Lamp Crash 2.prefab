@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1896618561391410756}
+  - component: {fileID: 2991751069433498993}
+  - component: {fileID: 4701655103014791909}
   m_Layer: 0
   m_Name: Lamp Crash 2
   m_TagString: Untagged
@@ -33,6 +35,46 @@ Transform:
   - {fileID: 6704728065854296799}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2991751069433498993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3523345102258385620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f086d94b994422aa534affc6f87054b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qnaList: []
+--- !u!54 &4701655103014791909
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3523345102258385620}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &3913011240616922389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,8 +192,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3991679727971031532, guid: fc26a2b872b51494a9251c604993a2a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 653787262610078315}
   m_SourcePrefab: {fileID: 100100000, guid: fc26a2b872b51494a9251c604993a2a4, type: 3}
+--- !u!1 &629214364071332914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3991679727971031532, guid: fc26a2b872b51494a9251c604993a2a4, type: 3}
+  m_PrefabInstance: {fileID: 4602151814620304862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &653787262610078315
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629214364071332914}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5265205315050602288, guid: 5e5f2f8dfeffd9d4baf7ec4d1d51b212, type: 3}
 --- !u!4 &4332835539758988749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 288074548855269395, guid: fc26a2b872b51494a9251c604993a2a4, type: 3}

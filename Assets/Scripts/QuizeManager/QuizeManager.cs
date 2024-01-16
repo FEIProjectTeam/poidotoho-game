@@ -100,7 +100,14 @@ public class QuizeManager : MonoBehaviour
                 }
            }
         }
-        ScoreManager.instance.addPoint();
+
+        int body = 1 + (correctAnswersCount - incorrectAnswersCount);
+        if (body < 0)
+        {
+            body = 0;
+        }
+        ScoreManager.instance.addPoints(body);
+        
         Debug.Log(string.Format("Correct answers: {0}\nIncorrect answers: {1}.", correctAnswersCount, incorrectAnswersCount));
     }
 
