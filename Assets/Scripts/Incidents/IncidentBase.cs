@@ -50,10 +50,10 @@ namespace Incidents
 
         public void OnMouseDown()
         {
-            if ( !isAnswered )
-            {
+            // if ( !isAnswered )
+            // {
                 GameManager.Instance.openQNAPopup.Invoke(this);
-            }
+            // }
         }
 
         public string getQuestion()

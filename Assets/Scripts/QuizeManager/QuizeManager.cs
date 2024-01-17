@@ -68,6 +68,7 @@ public class QuizeManager : MonoBehaviour
 
         generateAnswers();
         gameObject.SetActive(true);
+        GameManager.Instance.isPopUpOpen = true;
     }
 
     private void checkSelectedbuttons()
@@ -106,7 +107,7 @@ public class QuizeManager : MonoBehaviour
         {
             body = 0;
         }
-        ScoreManager.instance.addPoints(body);
+        ScoreManager.Instance.addPoints(body);
         
         Debug.Log(string.Format("Correct answers: {0}\nIncorrect answers: {1}.", correctAnswersCount, incorrectAnswersCount));
     }
@@ -114,10 +115,16 @@ public class QuizeManager : MonoBehaviour
     private void onSubmit()
     {
         checkSelectedbuttons();
-        submitButton.interactable = false;
-        answersButtons.ForEach(gameObject => gameObject.GetComponent<AnswerBtnBehavior>().setSelectMode(false));
-        incidentBase.setAnswered();
+        // submitButton.interactable = false;
+        // answersButtons.ForEach(gameObject => gameObject.GetComponent<AnswerBtnBehavior>().setSelectMode(false));
+        // incidentBase.setAnswered();
         Debug.Log("Submit button clicked");
+    }
+
+    public void closePopUp()
+    {
+        gameObject.SetActive(false);
+        GameManager.Instance.isPopUpOpen = false;
     }
 }
  

@@ -9,14 +9,22 @@ public class ScoreManager : MonoBehaviour
 {
 
     private const string SCORE_TEXT = "Body: ";
-    public static ScoreManager instance;
+    public static ScoreManager Instance;
 
     public TextMeshProUGUI scoreText;
     int score = 0;
 
     private void Awake()
     {
-        instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Start is called before the first frame update
@@ -32,6 +40,6 @@ public class ScoreManager : MonoBehaviour
     public void addPoints(int score)
     {
         this.score += score;
-        scoreText.text = SCORE_TEXT + score.ToString();
+        scoreText.text = SCORE_TEXT + this.score;
     }
 }

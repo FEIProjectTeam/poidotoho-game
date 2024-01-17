@@ -16,7 +16,7 @@ public class MovementCharacter : MonoBehaviour
     void Update()
     {
         // Detect left mouse button click
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !GameManager.Instance.isPopUpOpen)
         {
             // Create a ray from the camera, passing through the mouse position
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);

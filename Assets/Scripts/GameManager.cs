@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public UnityEvent<IncidentBase> openQNAPopup = new UnityEvent<IncidentBase>();
+    public bool isPopUpOpen = false;
 
     private void Awake()
     {
