@@ -60,8 +60,18 @@ public class QuizeManager : MonoBehaviour
 
     private void openPopup(IncidentBase incident)
     {
+        if (incident.getIsAnswered())
+        {
+            submitButton.interactable = false;
+            questionTMP.text = "Už zodpovedaná otázka.";
+            gameObject.SetActive(true);
+            GameManager.Instance.isPopUpOpen = true;
+            return;
+        }
+
         this.incidentBase = incident;
-        Debug.Log("Open Pop up handler.");
+
+        submitButton.interactable = true;
         questionTMP.text = incident.getQuestion();
         buttonsTexts = incident.getAnswers();
         correctAnswers = incident.getCorrectAnswers();
@@ -115,9 +125,8 @@ public class QuizeManager : MonoBehaviour
     private void onSubmit()
     {
         checkSelectedbuttons();
-        // submitButton.interactable = false;
-        // answersButtons.ForEach(gameObject => gameObject.GetComponent<AnswerBtnBehavior>().setSelectMode(false));
-        // incidentBase.setAnswered();
+        submitButton.interactable = false;
+        incidentBase.setAnswered();
         Debug.Log("Submit button clicked");
     }
 
