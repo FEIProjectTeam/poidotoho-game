@@ -1,25 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Incidents;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameManager : MonoBehaviour
+public class GameManager
 {
-    public static GameManager Instance;
+    private static GameManager instance;
     public UnityEvent<IncidentBase> openQNAPopup = new UnityEvent<IncidentBase>();
     public bool isPopUpOpen = false;
 
-    private void Awake()
+    public static GameManager Instance
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+        get {
+            if (instance == null)
+            {
+                instance = new GameManager();
+            }
+            return instance;
         }
     }      
 }
