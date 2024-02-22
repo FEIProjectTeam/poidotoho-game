@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6638778765143371493
+--- !u!1 &8577812532067678297
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,64 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6038951286306469561}
-  - component: {fileID: 3255951272248808680}
-  - component: {fileID: 5397208374653456688}
+  - component: {fileID: 2999821288366138042}
+  - component: {fileID: 2708308600249937726}
+  - component: {fileID: -7710455693815638958}
+  - component: {fileID: 6937967763131454858}
   m_Layer: 0
-  m_Name: auto s rozbitym sklem
+  m_Name: House Fire Spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6038951286306469561
+--- !u!4 &2999821288366138042
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638778765143371493}
+  m_GameObject: {fileID: 8577812532067678297}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 102.145676, y: 0, z: -36.604908}
-  m_LocalScale: {x: 1, y: 0.91234493, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!33 &3255951272248808680
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2708308600249937726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8577812532067678297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f4df42f085bac4dab811f97e51238b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incidents: []
+  incidentReplacements:
+  - {fileID: 6172255567073049538, guid: 804ecb5ef6d5e104d9759fc35e88a16a, type: 3}
+  - {fileID: 4629718244889656398, guid: 4e308227661f1284ebd854c08781f61c, type: 3}
+  isSpawner: 1
+--- !u!33 &-7710455693815638958
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638778765143371493}
-  m_Mesh: {fileID: 7923933442970868534, guid: cd36e94b32fcebc469cc1d73951d93c6, type: 3}
---- !u!23 &5397208374653456688
+  m_GameObject: {fileID: 8577812532067678297}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6937967763131454858
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638778765143371493}
+  m_GameObject: {fileID: 8577812532067678297}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +79,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4382361680719626920, guid: cd36e94b32fcebc469cc1d73951d93c6, type: 3}
+  - {fileID: 2100000, guid: aada4b83a1b8e0a4d8cbdda4bdacaf1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 2999821288366138042}
   - component: {fileID: -7710455693815638958}
   - component: {fileID: 6937967763131454858}
-  - component: {fileID: -3689260317905005366}
+  - component: {fileID: 6038169942293080905}
   m_Layer: 0
-  m_Name: Lamp Crash Spawner
+  m_Name: Car Broken Window Spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 23d8626beb4ecbd4d8a02bd1a479b072, type: 2}
+  - {fileID: 2100000, guid: 42c12a6b0f489964699868ea9edd2014, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-3689260317905005366
+--- !u!114 &6038169942293080905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,12 +93,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8577812532067678297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f086d94b994422aa534affc6f87054b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ae17574cc6ea2d41b6e1925192ee353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   incidents:
-  - {fileID: 3523345102258385620, guid: dab5c02cdfe7d7a4298e4994567b2426, type: 3}
-  - {fileID: 3523345102258385620, guid: cfaa0e1132f31be45b6350b54b89db6c, type: 3}
-  incidentReplacements:
-  - {fileID: 5182456745956613823, guid: e5d8691e8c25d4d43bd3b2ab5babba14, type: 3}
+  - {fileID: 7927177248815956547, guid: f62cd636eaee1d540b970ce975de7d72, type: 3}
+  incidentReplacements: []
   isSpawner: 1

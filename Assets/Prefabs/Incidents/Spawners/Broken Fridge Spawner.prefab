@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1633113725953468390
+--- !u!1 &8577812532067678297
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2244365628043059125}
-  - component: {fileID: -1972478628280216212}
-  - component: {fileID: -5988451830798414340}
-  - component: {fileID: -5798225353224187968}
+  - component: {fileID: 2999821288366138042}
+  - component: {fileID: -7710455693815638958}
+  - component: {fileID: 6937967763131454858}
+  - component: {fileID: 4897289060671077171}
   m_Layer: 0
-  m_Name: Car Crash Spawner
+  m_Name: Broken Fridge Spawner
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2244365628043059125
+--- !u!4 &2999821288366138042
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633113725953468390}
+  m_GameObject: {fileID: 8577812532067678297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -34,13 +34,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &-1972478628280216212
+--- !u!33 &-7710455693815638958
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8577812532067678297}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6937967763131454858
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633113725953468390}
+  m_GameObject: {fileID: 8577812532067678297}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -54,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7cbe025e5e4109440974edc2f24af11f, type: 2}
+  - {fileID: 2100000, guid: 40b03954baaae17499db8b43ff2d3f5e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,27 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &-5988451830798414340
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633113725953468390}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &-5798225353224187968
+--- !u!114 &4897289060671077171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633113725953468390}
+  m_GameObject: {fileID: 8577812532067678297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0acc8516f9e148647a344d4184d5b481, type: 3}
+  m_Script: {fileID: 11500000, guid: 54f923f4226d5834797a1e52fa61dd2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   incidents:
-  - {fileID: 3523345102258385620, guid: 83e329bacac4dc5429bcf4941721794e, type: 3}
+  - {fileID: 3685316994892096577, guid: 4b248d7248a945c4285a9aa0f7fd146d, type: 3}
   incidentReplacements: []
   isSpawner: 1
