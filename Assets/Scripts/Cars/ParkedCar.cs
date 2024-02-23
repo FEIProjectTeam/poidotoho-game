@@ -23,7 +23,10 @@ public class ParkedCar : MonoBehaviour
             var car = Instantiate(SelectACarPrefab(), transform);
             randomIndex = Random.Range(0, 2);
             if (randomIndex > 0)
-                car.transform.GetChild(0).Rotate(0, 180, 0);
+            {
+                Vector3 currentRotation = car.transform.GetChild(0).localRotation.eulerAngles;
+                car.transform.GetChild(0).localRotation = Quaternion.Euler(currentRotation.x, currentRotation.y + 180f, currentRotation.z);
+            }
         }
     }
 }
