@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 180.11">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #013f58;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        stroke: #013f58;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="UI">
+    <g id="vykricniky">
+      <g>
+        <path class="cls-2" d="M149,75C149,33.17,114.29-.55,72.11,1.06,35.03,2.47,2.42,35.12,1.05,72.19-.24,107.07,22.63,136.8,54.24,146.03l17.94,31.07c1.56,2.69,4.1,2.69,5.65,0l17.94-31.07c30.76-8.98,53.24-37.37,53.24-71.03Z"/>
+        <g>
+          <rect class="cls-1" x="65.81" y="28.09" width="18.38" height="69.16" rx="5.63" ry="5.63"/>
+          <rect class="cls-1" x="65.81" y="106.44" width="18.38" height="18.38" rx="5.63" ry="5.63"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
