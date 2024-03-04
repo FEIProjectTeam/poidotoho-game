@@ -1,0 +1,58 @@
+﻿{
+  "incidents": [
+    {
+      "name": "IncidentBrokenFridge",
+      "qnas": [
+        {
+          "question": "",
+          "correctAnswers": [
+            "",
+            ""
+          ],
+          "wrongAnswers": [
+            "",
+            ""
+          ]
+        },
+        {
+          "question": "",
+          "correctAnswers": [
+            "",
+            ""
+          ],
+          "wrongAnswers": [
+            "",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IncidentBrokenPC",
+      "qnas": [
+        {
+          "question": "",
+          "correctAnswers": [
+            "",
+            ""
+          ],
+          "wrongAnswers": [
+            "",
+            ""
+          ]
+        },
+        {
+          "question": "",
+          "correctAnswers": [
+            "",
+            ""
+          ],
+          "wrongAnswers": [
+            "",
+            ""
+          ]
+        }
+      ]
+    }
+  ]
+}

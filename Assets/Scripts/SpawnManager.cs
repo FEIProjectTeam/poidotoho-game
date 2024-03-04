@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         IncidentBase[] allIncidents = FindObjectsByType<IncidentBase>(FindObjectsSortMode.None);
         var groupedIncidents = allIncidents.GroupBy(incident => incident.GetType());

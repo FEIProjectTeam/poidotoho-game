@@ -9,15 +9,15 @@ namespace Incidents
     {
         private void Start()
         {
-            addQuestionAndAnswer(
-                new List<QuestionAndAnswers> {
-                    new QuestionAndAnswers("Aké poistenie ti pomôže ak nabúraš svoje auto?",
-                        new string[] { 
-                            "Žiadne poistenie nemám",
-                            "Poistenie automobilu", 
-                            "Sociálne poistenie" },
-                        new int[] { 1 }),
-                });
+            // addQuestionAndAnswer(
+            //     new List<QuestionAndAnswers> {
+            //         new QuestionAndAnswers("Aké poistenie ti pomôže ak nabúraš svoje auto?",
+            //             new string[] { 
+            //                 "Žiadne poistenie nemám",
+            //                 "Poistenie automobilu", 
+            //                 "Sociálne poistenie" },
+            //             new int[] { 1 }),
+            //     });
         }
         
     }

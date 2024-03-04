@@ -28,7 +28,6 @@ public class QuizeManager : MonoBehaviour
     private void Awake()
     {
         gameObject.SetActive(false);
-        GameManager.Instance.openQNAPopup.AddListener(openPopup);
         submitButton.onClick.AddListener(onSubmit);
     }
 
@@ -60,25 +59,24 @@ public class QuizeManager : MonoBehaviour
 
     private void openPopup(IncidentBase incident)
     {
-        if (incident.getIsAnswered())
-        {
-            submitButton.interactable = false;
-            questionTMP.text = "Už zodpovedaná otázka.";
-            gameObject.SetActive(true);
-            GameManager.Instance.isPopUpOpen = true;
-            return;
-        }
+        // if (incident.getIsAnswered())
+        // {
+        //     submitButton.interactable = false;
+        //     questionTMP.text = "Už zodpovedaná otázka.";
+        //     gameObject.SetActive(true);
+        //     GameManager.Instance.isPopUpOpen = true;
+        //     return;
+        // }
 
         this.incidentBase = incident;
 
         submitButton.interactable = true;
-        questionTMP.text = incident.getQuestion();
-        buttonsTexts = incident.getAnswers();
-        correctAnswers = incident.getCorrectAnswers();
+        // questionTMP.text = incident.getQuestion();
+        // buttonsTexts = incident.getAnswers();
+        // correctAnswers = incident.getCorrectAnswers();
 
         generateAnswers();
         gameObject.SetActive(true);
-        GameManager.Instance.isPopUpOpen = true;
     }
 
     private void checkSelectedbuttons()
@@ -126,14 +124,13 @@ public class QuizeManager : MonoBehaviour
     {
         checkSelectedbuttons();
         submitButton.interactable = false;
-        incidentBase.setAnswered();
+        // incidentBase.setAnswered();
         Debug.Log("Submit button clicked");
     }
 
     public void closePopUp()
     {
         gameObject.SetActive(false);
-        GameManager.Instance.isPopUpOpen = false;
     }
 }
  
