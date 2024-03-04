@@ -117,7 +117,7 @@ public class QuizeManager : MonoBehaviour
         {
             body = 0;
         }
-        ScoreManager.Instance.addPoints(body);
+        GameManager.Instance.addPoints(body);
         
         Debug.Log(string.Format("Correct answers: {0}\nIncorrect answers: {1}.", correctAnswersCount, incorrectAnswersCount));
     }
