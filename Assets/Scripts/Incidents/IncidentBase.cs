@@ -7,31 +7,34 @@ namespace Incidents
 {
     public abstract class IncidentBase : MonoBehaviour
     {
-        
+
         [SerializeField] private GameObject[] incidents;
         [SerializeField] private GameObject[] incidentReplacements;
         [SerializeField] private bool isSpawner;
-        private List<QuestionAndAnswers> qnaList;
         private bool _isQuizAnswered;
         int randomIntInRange;
 
         public QNAData qna;
         public static event Action<IncidentBase> IncidentFound;
-        
+
         private void Awake()
         {
             if (isSpawner)
             {
-                GetComponent<MeshRenderer>().enabled = false;   
+                GetComponent<MeshRenderer>().enabled = false;
             }
+            qna = new QNAData();
+            qna.question = "Ak· je pravdepodobnosù, ûe poistenie kryje n·klady na ökodu spÙsoben˙ zr·ûkou s lampou?";
+            qna.correctAnswers = new List<string>() { "100%, poistenie vûdy kryje ökodu spÙsoben˙ zr·ûkou s lampou." };
+            qna.wrongAnswers = new List<string>() {
+                "100%, poistenie vûdy kryje ökodu spÙsoben˙ zr·ûkou s lampou.",
+                "100%, poistenie vûdy kryje ökodu spÙsoben˙ zr·ûkou s lampou. Dlha odpoveÔ, moûno aj na viac riadkov.",
+                "100%, poistenie vûdy kryje ökodu spÙsoben˙ zr·ûkou s lampou." };
         }
-        
+
         private void Start()
         {
-            if (qnaList != null)
-            {
-                randomIntInRange = Random.Range(0, qnaList.Count);
-            }
+
         }
 
         public void SpawnIncident()
@@ -49,18 +52,13 @@ namespace Incidents
             Destroy(gameObject);
         }
 
-        // public void addQuestionAndAnswer(List<QuestionAndAnswers> qnaList)
-        // {
-        //     this.qnaList = qnaList;        
-        // }
-
         private void OnMouseDown()
         {
             if (_isQuizAnswered || GameManager.Instance.isQuizOpened)
                 return;
             IncidentFound?.Invoke(this);
         }
-        
+
         public void SetQuizAnswered()
         {
             _isQuizAnswered = true;

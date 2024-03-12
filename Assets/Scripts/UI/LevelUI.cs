@@ -45,16 +45,30 @@ namespace UI
             _selectedAnswers = new List<string>();
 
             var container = Create("container");
-            
-            var quizQuestionBox = Create("quiz-question-box");
-            container.Add(quizQuestionBox);
 
+            // Close button
+            var closeBtn = Create<Button>("close-btn");
+            var closeBtnLabel = new Label();
+            closeBtnLabel.text = "X";
+            closeBtn.Add(closeBtnLabel);
+            closeBtn.clicked += () =>
+            {
+                root.Clear();
+                GameManager.Instance.isQuizOpened = false;
+            };
+            
+
+            // Question field
+            var quizQuestionBox = Create("quiz-question-box");           
             var quizQuestionLabel = Create<Label>();
             quizQuestionLabel.text = incident.qna.question;
             quizQuestionBox.Add(quizQuestionLabel);
-            
+
+            // Answers field
             var quizAnswerBox = Create("quiz-answer-box");
             container.Add(quizAnswerBox);
+            quizAnswerBox.Add(closeBtn);
+            quizAnswerBox.Add(quizQuestionBox);
 
             var quizAnswerBtnBox = Create("quiz-answer-btn-box");
             quizAnswerBox.Add(quizAnswerBtnBox);
@@ -66,9 +80,14 @@ namespace UI
                 quizAnswerBtn.clicked += () =>
                 {
                     if (_selectedAnswers.Contains(answer))
+                    {
                         _selectedAnswers.Remove(answer);
-                    else
+                        quizAnswerBtn.RemoveFromClassList("quiz-answer-selected");
+                    }
+                    else{
                         _selectedAnswers.Add(answer);
+                        quizAnswerBtn.AddToClassList("quiz-answer-selected");
+                    }
                 };
                 quizAnswerBtnBox.Add(quizAnswerBtn);
             }
