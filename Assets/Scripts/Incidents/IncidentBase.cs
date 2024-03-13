@@ -7,10 +7,14 @@ namespace Incidents
 {
     public abstract class IncidentBase : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject[] incidents;
 
-        [SerializeField] private GameObject[] incidents;
-        [SerializeField] private GameObject[] incidentReplacements;
-        [SerializeField] private bool isSpawner;
+        [SerializeField]
+        private GameObject[] incidentReplacements;
+
+        [SerializeField]
+        private bool isSpawner;
         private bool _isQuizAnswered;
         int randomIntInRange;
 
@@ -23,23 +27,32 @@ namespace Incidents
             {
                 GetComponent<MeshRenderer>().enabled = false;
             }
-            qna = new QNAData();
-            qna.question = "Ak· je pravdepodobnosù, ûe poistenie kryje n·klady na ökodu spÙsoben˙ zr·ûkou s lampou?";
-            qna.correctAnswers = new List<string>() { "100%, poistenie vûdy kryje ökodu spÙsoben˙ zr·ûkou s lampou." };
-            qna.wrongAnswers = new List<string>() {
-                "100%, poistenie vûdy kryje ökodu spÙsoben˙ zr·ûkou s lampou.",
-                "100%, poistenie vûdy kryje ökodu spÙsoben˙ zr·ûkou s lampou. Dlha odpoveÔ, moûno aj na viac riadkov.",
-                "100%, poistenie vûdy kryje ökodu spÙsoben˙ zr·ûkou s lampou." };
-        }
-
-        private void Start()
-        {
-
+            // tmp for testing
+            qna = new QNAData
+            {
+                question =
+                    "Ak√° je pravdepodobnos≈•, ≈æe poistenie kryje n√°klady na ≈°kodu sp√¥soben√© zr√°≈ækou s lampou?",
+                correctAnswers = new List<string>()
+                {
+                    "100%, poistenie vody kryje ≈°kodu sp√¥soben√∫ zr√°≈ækou s lampou.1"
+                },
+                wrongAnswers = new List<string>()
+                {
+                    "100%, poistenie vÔøΩdy kryje ÔøΩkodu spÔøΩsobenÔøΩ zrÔøΩkou s lampou.2",
+                    "100%, poistenie vÔøΩdy kryje ÔøΩkodu spÔøΩsobenÔøΩ zrÔøΩkou s lampou. Dlha odpoveÔøΩ, moÔøΩno aj na viac riadkov.3",
+                    "100%, poistenie vÔøΩdy kryje ÔøΩkodu spÔøΩsobenÔøΩ zrÔøΩkou s lampou.4"
+                }
+            };
         }
 
         public void SpawnIncident()
         {
-            GameObject incident = Instantiate(incidents[Random.Range(0, incidents.Length)], transform.position, transform.rotation, transform.parent);
+            GameObject incident = Instantiate(
+                incidents[Random.Range(0, incidents.Length)],
+                transform.position,
+                transform.rotation,
+                transform.parent
+            );
             incident.AddComponent(GetType());
             Destroy(gameObject);
         }
@@ -47,12 +60,15 @@ namespace Incidents
         public void SpawnReplacement()
         {
             if (incidentReplacements != null && incidentReplacements.Length > 0)
-                Instantiate(incidentReplacements[Random.Range(0, incidentReplacements.Length)], transform.position,
-                    transform.rotation);
+                Instantiate(
+                    incidentReplacements[Random.Range(0, incidentReplacements.Length)],
+                    transform.position,
+                    transform.rotation
+                );
             Destroy(gameObject);
         }
 
-        private void OnMouseDown()
+        private void OnMouseUpAsButton()
         {
             if (_isQuizAnswered || GameManager.Instance.isQuizOpened)
                 return;

@@ -7,119 +7,136 @@ namespace UI
 {
     public class LevelUI : MonoBehaviour
     {
-        [SerializeField] private UIDocument _document;
-        [SerializeField] private StyleSheet _styleSheet;
-        private List<string> _selectedAnswers;
-        
+        [SerializeField]
+        private UIDocument _document;
+
+        [SerializeField]
+        private StyleSheet _styleSheet;
+        private List<Button> _answerBtns;
+        private List<Button> _selectedAnswerBtns;
+        private Button _submitBtn;
+
         private void Start()
         {
-            // StartCoroutine(Generate());
+            var root = _document.rootVisualElement;
+            root.Clear();
+            root.styleSheets.Add(_styleSheet);
+
+            var quizContainer = Create(addTo: root, "quiz-container");
+            quizContainer.name = "quiz-container";
         }
 
         private void OnEnable()
         {
             IncidentBase.IncidentFound += OpenQuiz;
         }
-        
+
         private void OnDisable()
         {
             IncidentBase.IncidentFound -= OpenQuiz;
         }
 
-        private void OnValidate()
-        {
-            // if (Application.isPlaying) return;
-            // StartCoroutine(Generate());
-        }
-
         private void OpenQuiz(IncidentBase incident)
-        // private IEnumerator Generate()
         {
             if (GameManager.Instance.isQuizOpened)
                 return;
             GameManager.Instance.isQuizOpened = true;
-            // yield return null;
-            var root = _document.rootVisualElement;
-            root.Clear();
-            root.styleSheets.Add(_styleSheet);
-            _selectedAnswers = new List<string>();
 
-            var container = Create("container");
+            var container = _document.rootVisualElement.Q("quiz-container");
+            container.Clear();
+
+            var containerBox = Create(addTo: container, "quiz-container-box");
 
             // Close button
-            var closeBtn = Create<Button>("close-btn");
-            var closeBtnLabel = new Label();
-            closeBtnLabel.text = "X";
-            closeBtn.Add(closeBtnLabel);
+            var closeBtn = Create<Button>(addTo: containerBox, "quiz-close-btn");
+            closeBtn.text = "X";
             closeBtn.clicked += () =>
             {
-                root.Clear();
+                container.Clear();
                 GameManager.Instance.isQuizOpened = false;
             };
-            
 
-            // Question field
-            var quizQuestionBox = Create("quiz-question-box");           
-            var quizQuestionLabel = Create<Label>();
-            quizQuestionLabel.text = incident.qna.question;
-            quizQuestionBox.Add(quizQuestionLabel);
+            // Question
+            var questionBox = Create(addTo: containerBox, "quiz-question-box");
+            var questionLabel = Create<Label>(addTo: questionBox);
+            questionLabel.text = incident.qna.question;
 
-            // Answers field
-            var quizAnswerBox = Create("quiz-answer-box");
-            container.Add(quizAnswerBox);
-            quizAnswerBox.Add(closeBtn);
-            quizAnswerBox.Add(quizQuestionBox);
-
-            var quizAnswerBtnBox = Create("quiz-answer-btn-box");
-            quizAnswerBox.Add(quizAnswerBtnBox);
-
-            foreach (string answer in incident.qna.GetRandomizedAnswers())
+            // Answers
+            var answerBox = Create(addTo: containerBox, "quiz-answer-box");
+            _answerBtns = new List<Button>();
+            _selectedAnswerBtns = new List<Button>();
+            foreach (string answerText in incident.qna.GetShuffledAnswers())
             {
-                var quizAnswerBtn = Create<Button>("quiz-answer-btn");
-                quizAnswerBtn.text = answer;
-                quizAnswerBtn.clicked += () =>
+                var answerBtn = Create<Button>(addTo: answerBox, "quiz-answer-btn", "active");
+                answerBtn.text = answerText;
+                answerBtn.clicked += () =>
                 {
-                    if (_selectedAnswers.Contains(answer))
+                    if (_selectedAnswerBtns.Contains(answerBtn))
                     {
-                        _selectedAnswers.Remove(answer);
-                        quizAnswerBtn.RemoveFromClassList("quiz-answer-selected");
+                        _selectedAnswerBtns.Remove(answerBtn);
+                        answerBtn.RemoveFromClassList("quiz-answer-selected");
                     }
-                    else{
-                        _selectedAnswers.Add(answer);
-                        quizAnswerBtn.AddToClassList("quiz-answer-selected");
+                    else
+                    {
+                        _selectedAnswerBtns.Add(answerBtn);
+                        answerBtn.AddToClassList("quiz-answer-selected");
                     }
+
+                    _submitBtn.SetEnabled(_selectedAnswerBtns.Count > 0);
                 };
-                quizAnswerBtnBox.Add(quizAnswerBtn);
+                _answerBtns.Add(answerBtn);
             }
 
-            var quizSubmitBtn = Create<Button>("quiz-submit-btn");
-            quizSubmitBtn.text = "Potvrdiť odpovede";
-            quizSubmitBtn.clicked += () =>
+            // Submit button
+            _submitBtn = Create<Button>(addTo: containerBox, "quiz-submit-btn");
+            _submitBtn.text = "Potvrdiť";
+            _submitBtn.SetEnabled(false);
+            _submitBtn.clicked += () =>
             {
-                if (incident.qna.AreAnswersCorrect(_selectedAnswers)) 
+                _submitBtn.SetEnabled(false);
+                int correctCount = 0;
+                foreach (var answerBtn in _answerBtns)
+                {
+                    answerBtn.clickable = null;
+                    answerBtn.RemoveFromClassList("active");
+                    bool isCorrect = incident.qna.correctAnswers.Contains(answerBtn.text);
+                    bool isSelected = _selectedAnswerBtns.Contains(answerBtn);
+
+                    if (isCorrect && isSelected)
+                    {
+                        answerBtn.AddToClassList("quiz-answer-correct");
+                        correctCount++;
+                    }
+                    else if (isCorrect)
+                    {
+                        answerBtn.AddToClassList("quiz-answer-missed");
+                    }
+                    else if (isSelected)
+                    {
+                        answerBtn.AddToClassList("quiz-answer-wrong");
+                        correctCount--;
+                    }
+                }
+                if (correctCount == incident.qna.correctAnswers.Count)
                     Debug.Log("All answers are correct");
-                else 
+                else
                     Debug.Log("Answers are not correct");
+
                 incident.SetQuizAnswered();
-                GameManager.Instance.isQuizOpened = false;
-                root.Clear();
             };
-            quizAnswerBox.Add(quizSubmitBtn);
-            
-
-
-            root.Add(container);
         }
 
-        VisualElement Create(params string[] classNames)
+        VisualElement Create(VisualElement addTo = null, params string[] classes)
         {
-            return Create<VisualElement>(classNames);
+            return Create<VisualElement>(addTo, classes);
         }
 
-        T Create<T>(params string[] classNames) where T : VisualElement, new()
+        T Create<T>(VisualElement addTo = null, params string[] classes)
+            where T : VisualElement, new()
         {
             var ele = new T();
-            foreach (var className in classNames)
+            addTo?.Add(ele);
+            foreach (var className in classes)
             {
                 ele.AddToClassList(className);
             }

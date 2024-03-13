@@ -9,7 +9,7 @@ public class QNAData
     public List<string> correctAnswers;
     public List<string> wrongAnswers;
 
-    public List<string> GetRandomizedAnswers()
+    public List<string> GetShuffledAnswers()
     {
         List<string> answers = correctAnswers.Concat(wrongAnswers).ToList();
         var rnd = new Random();
