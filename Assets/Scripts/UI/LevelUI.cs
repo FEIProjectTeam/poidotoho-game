@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Incidents;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace UI
 {
     public class LevelUI : MonoBehaviour
     {
+        public static event Action QuizAnsweredCorrectly;
+
         [SerializeField]
         private UIDocument _document;
 
@@ -15,12 +18,18 @@ namespace UI
         private List<Button> _answerBtns;
         private List<Button> _selectedAnswerBtns;
         private Button _submitBtn;
+        private Label _scorePointsLabel;
 
-        private void Start()
+        private void Awake()
         {
             var root = _document.rootVisualElement;
             root.Clear();
             root.styleSheets.Add(_styleSheet);
+
+            var scoreContainer = Create(addTo: root, "score-container");
+            Create<Label>(addTo: scoreContainer, "score-text").text = "body:";
+            _scorePointsLabel = Create<Label>(addTo: scoreContainer, "score-points");
+            _scorePointsLabel.text = "0";
 
             var quizContainer = Create(addTo: root, "quiz-container");
             quizContainer.name = "quiz-container";
@@ -29,11 +38,13 @@ namespace UI
         private void OnEnable()
         {
             IncidentBase.IncidentFound += OpenQuiz;
+            ScoreManager.ScoreUpdated += UpdateScore;
         }
 
         private void OnDisable()
         {
             IncidentBase.IncidentFound -= OpenQuiz;
+            ScoreManager.ScoreUpdated -= UpdateScore;
         }
 
         private void OpenQuiz(IncidentBase incident)
@@ -118,12 +129,15 @@ namespace UI
                     }
                 }
                 if (correctCount == incident.qna.correctAnswers.Count)
-                    Debug.Log("All answers are correct");
-                else
-                    Debug.Log("Answers are not correct");
+                    QuizAnsweredCorrectly?.Invoke();
 
                 incident.SetQuizAnswered();
             };
+        }
+
+        private void UpdateScore(int newScore)
+        {
+            _scorePointsLabel.text = newScore.ToString();
         }
 
         VisualElement Create(VisualElement addTo = null, params string[] classes)

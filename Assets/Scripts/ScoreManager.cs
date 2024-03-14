@@ -1,45 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
-using TMPro;
+using System;
+using UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-
-    private const string SCORE_TEXT = "Body: ";
-    public static ScoreManager Instance;
-
-    public TextMeshProUGUI scoreText;
-    int score = 0;
+    public static ScoreManager Instance { get; private set; }
+    public static event Action<int> ScoreUpdated;
+    private int _score;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
+        else
+        {
+            Instance = this;
+        }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        scoreText.text = SCORE_TEXT + score.ToString();
+        LevelUI.QuizAnsweredCorrectly += addPoint;
     }
 
-    public void addPoint() { 
-        score++;
-        scoreText.text = SCORE_TEXT + score.ToString();
-    }
-    public void addPoints(int score)
+    private void OnDisable()
     {
-        this.score += score;
-        scoreText.text = SCORE_TEXT + this.score;
+        LevelUI.QuizAnsweredCorrectly -= addPoint;
+    }
+
+    private void Start()
+    {
+        ScoreUpdated?.Invoke(_score);
+    }
+
+    private void addPoint()
+    {
+        _score++;
+        ScoreUpdated?.Invoke(_score);
     }
 }

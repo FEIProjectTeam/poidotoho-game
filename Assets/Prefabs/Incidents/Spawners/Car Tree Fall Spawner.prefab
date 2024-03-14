@@ -99,4 +99,8 @@ MonoBehaviour:
   incidents:
   - {fileID: 9058921627092458467, guid: 5432db434fda01f4d97a56a986ec650d, type: 3}
   incidentReplacements: []
-  isSpawner: 0
+  isSpawner: 1
+  qna:
+    question: 
+    correctAnswers: []
+    wrongAnswers: []
