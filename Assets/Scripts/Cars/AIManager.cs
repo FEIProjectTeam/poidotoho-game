@@ -491,6 +491,7 @@ public class AIManager : MonoBehaviour
 
     public void despawnCar()
     {
+        cars--;
         spawnCar();
     }
 
