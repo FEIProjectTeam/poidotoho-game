@@ -764,9 +764,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8079,9 +8087,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14616,9 +14632,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21654,9 +21678,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23619,9 +23651,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24898,9 +24938,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30394,7 +30442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 4326233682810984502, guid: 4e0168c949c945d44861154cb29f0634, type: 3}
   roadsTilemap: {fileID: 786417097}
-  maxCars: 50
+  maxCars: 20
   spawnPeriod: 1
 --- !u!4 &747247788
 Transform:
@@ -39329,9 +39377,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42522,9 +42578,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44882,9 +44946,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -49951,9 +50023,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53260,10 +53340,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: character
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2ceb63fd4650d534e8525a04f3d808ea, type: 3}
+      propertyPath: m_TagString
+      value: Character
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ceb63fd4650d534e8525a04f3d808ea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1251838384}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ceb63fd4650d534e8525a04f3d808ea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1251838383}
@@ -53355,6 +53442,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &1251838384
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251838378}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.9935687, y: 1.5946296, z: 3.3815734}
+  m_Center: {x: -0.012979149, y: 0.2973147, z: 0.6348654}
 --- !u!1001 &1252081525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53925,9 +54033,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58929,9 +59045,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66899,9 +67023,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -72840,9 +72972,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -77415,9 +77555,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -81379,9 +81527,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -86903,9 +87059,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -87513,9 +87677,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786417095}
     m_Modifications:
+    - target: {fileID: 1405223409858740995, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_Name
       value: Crosswalk 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734716328792759846, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
+      propertyPath: m_TagString
+      value: Crosswalk
       objectReference: {fileID: 0}
     - target: {fileID: 3366575615939921052, guid: 2f89faa2f8148324881e7b44ccf0bae8, type: 3}
       propertyPath: m_LocalPosition.x
