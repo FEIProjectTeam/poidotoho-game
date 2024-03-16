@@ -47,7 +47,8 @@ public class AIManager : MonoBehaviour
 
     void Start()
     {
-        spawnCar();
+        if (maxCars > 0)
+            spawnCar();
     }
 
     void Update()
