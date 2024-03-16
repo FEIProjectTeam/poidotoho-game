@@ -21,6 +21,11 @@ public class Car : MonoBehaviour
 
     [SerializeField]
     private Collider triggerCollider;
+
+    private bool rotate = true;
+    private bool carInFront = false;
+    private bool stopCrossroad = false;
+    private bool stopCrosswalk = false;
     void setWay(List<Vector3> waypoints)
     {
         this.waypoints = waypoints;
@@ -49,79 +54,126 @@ public class Car : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider triggerCollider)
+    public void stopCarInFront()
     {
-        //Debug.Log("aaa");
+        this.carInFront = true;
+    }
+    public void resumeCarInFront()
+    {
+        this.carInFront = false;
+    }
+    public void stopAtCrossroad()
+    {
+        this.stopCrossroad = true;
+    }
+    public void resumeAtCrossroad()
+    {
+        this.stopCrossroad = false;
+    }
+    public void stopAtCrosswalk()
+    {
+        this.stopCrosswalk = true;
+    }
+    public void resumeAtCrosswalk()
+    {
+        this.stopCrosswalk = false;
     }
 
     private void MoveToWaypoint()
     {
-        Vector3 targetWaypoint = waypoints[currentWaypointIndex];
-        Vector3 moveDirection = (targetWaypoint - transform.position).normalized;
-        Debug.DrawRay(transform.position, moveDirection * 5, Color.red);
-
-        transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, Time.deltaTime * speed);
-
-        Quaternion endYRotation = Quaternion.Euler(0, endRotation.eulerAngles.y, 0);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, endYRotation, Time.deltaTime * ((speed / 2f) * 110f));
-
-        if (Vector3.Distance(transform.position, targetWaypoint) == 0)
+        if (!this.carInFront && !this.stopCrossroad && !this.stopCrosswalk)
         {
-            currentWaypointIndex++;
-            if (currentWaypointIndex >= waypoints.Count)
-            {
-                Destroy(this.gameObject);
-                AIManager.Instance.despawnCar();
-            }
-            else
-            {
-                /*if ((waypoints[currentWaypointIndex].x - targetWaypoint.x < 0.01f || waypoints[currentWaypointIndex].x - targetWaypoint.x > -0.01f)
-                    && (waypoints[currentWaypointIndex].z - targetWaypoint.z < 0.01f || waypoints[currentWaypointIndex].z - targetWaypoint.z > -0.01f)) {
+            Vector3 targetWaypoint = waypoints[currentWaypointIndex];
+            Vector3 moveDirection = (targetWaypoint - transform.position).normalized;
+            Debug.DrawRay(transform.position, moveDirection * 5, Color.red);
 
-                    Debug.Log("Totok");
-                }*/
+            transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, Time.deltaTime * speed);
 
-                if ((waypoints[currentWaypointIndex].x - targetWaypoint.x > 0.01f || waypoints[currentWaypointIndex].x - targetWaypoint.x < -0.01f)     // unity to pocita nepresne, musi to byt takto
-                && (waypoints[currentWaypointIndex].z - targetWaypoint.z > 0.01f || waypoints[currentWaypointIndex].z - targetWaypoint.z < -0.01f))
+            Quaternion endYRotation = Quaternion.Euler(0, endRotation.eulerAngles.y, 0);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, endYRotation, Time.deltaTime * ((speed / 2f) * 110f));
+
+            if (Vector3.Distance(transform.position, targetWaypoint) == 0)
+            {
+                currentWaypointIndex++;
+                if (currentWaypointIndex >= waypoints.Count)
                 {
-                    //Debug.Log("Zatacame");
+                    Destroy(this.gameObject);
+                    AIManager.Instance.despawnCar();
+                }
+                else
+                {
 
-                    if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex]) > 5)
+                    if ((waypoints[currentWaypointIndex].x - targetWaypoint.x > 0.01f || waypoints[currentWaypointIndex].x - targetWaypoint.x < -0.01f)     // unity to pocita nepresne, musi to byt takto
+                    && (waypoints[currentWaypointIndex].z - targetWaypoint.z > 0.01f || waypoints[currentWaypointIndex].z - targetWaypoint.z < -0.01f))
                     {
-                        Vector3 start = waypoints[currentWaypointIndex - 1];
-                        Vector3 end = waypoints[currentWaypointIndex];
-                        Vector3 center = (start + (moveDirection * 3.825f));
-                        Vector3 newDirection = (end - center).normalized;
+                        //Debug.Log("Zatacame");
 
-                        List<Vector3> curve = new List<Vector3>();
+                        if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex]) > 5)
+                        {
+                            Vector3 start = waypoints[currentWaypointIndex - 1];
+                            Vector3 end = waypoints[currentWaypointIndex];
+                            Vector3 center = (start + (moveDirection * 3.825f));
+                            Vector3 newDirection = (end - center).normalized;
 
-                        curve.Add(center - (moveDirection * 1.175f));
-                        curve.Add(center + (newDirection * 1.175f));
+                            List<Vector3> curve = new List<Vector3>();
 
-                        this.waypoints.InsertRange(currentWaypointIndex, curve);
+                            curve.Add(center - (moveDirection * 1.175f));
+                            curve.Add(center + (newDirection * 1.175f));
+
+                            this.waypoints.InsertRange(currentWaypointIndex, curve);
+                            //rotate += 2;
+                        }
+                        else
+                        {
+                            //Debug.Log("else");
+
+                            Vector3 start = waypoints[currentWaypointIndex - 1];
+                            Vector3 end = waypoints[currentWaypointIndex];
+                            Vector3 center = (start + (moveDirection * 1.175f));
+                            Vector3 newDirection = (end - center).normalized;
+
+                            endRotation = Quaternion.LookRotation(-1 * newDirection);
+                            rotate = false;
+
+                            /*Debug.Log(start);
+                            Debug.Log(end);
+                            Debug.Log(center);
+                            Debug.Log(newDirection);
+                            Debug.Log(startRotation.eulerAngles);
+                            Debug.Log(endRotation.eulerAngles);*/
+
+                        }
                     }
-                    else
+
+                    if (rotate)
                     {
-                        //Debug.Log("else");
+                        if ((waypoints[currentWaypointIndex].x - targetWaypoint.x < 0.01f || waypoints[currentWaypointIndex].x - targetWaypoint.x > -0.01f)
+                            && (waypoints[currentWaypointIndex].z - targetWaypoint.z < 0.01f || waypoints[currentWaypointIndex].z - targetWaypoint.z > -0.01f))
+                        {
 
-                        Vector3 start = waypoints[currentWaypointIndex - 1];
-                        Vector3 end = waypoints[currentWaypointIndex];
-                        Vector3 center = (start + (moveDirection * 1.175f));
-                        Vector3 newDirection = (end - center).normalized;
+                            Vector3 start = waypoints[currentWaypointIndex - 1];
+                            Vector3 end = waypoints[currentWaypointIndex];
+                            Vector3 newDirection = (end - start).normalized;
 
-                        endRotation = Quaternion.LookRotation(-1 * newDirection);
-
-                        /*Debug.Log(start);
-                        Debug.Log(end);
-                        Debug.Log(center);
-                        Debug.Log(newDirection);
-                        Debug.Log(startRotation.eulerAngles);
-                        Debug.Log(endRotation.eulerAngles);*/
-
+                            endRotation = Quaternion.LookRotation(-1 * newDirection);
+                            //Debug.Log("Totok");
+                        }
                     }
+
+                    if (!rotate)
+                        rotate = true;
                 }
             }
         }
+    }
+
+    public Vector3 getSecondNextWaypoint()
+    {
+        return waypoints[currentWaypointIndex + 1];
+    }
+    public Vector3 getThirdNextWaypoint()
+    {
+        return waypoints[currentWaypointIndex + 2];
     }
 
     // odpad
