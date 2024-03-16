@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,8 +35,7 @@ public class Crossroad : MonoBehaviour
             outPointCollider[j] = colliders[j].getOutPoint();
         }
     }
-    /*if(GameObject.ReferenceEquals(firstGameObject, secondGameObject))
-      Debug.Log("first and second are the same");*/
+
     public void onCarEnter(CrossroadCollider collider, Car car)
     {
         if (!colliders.Contains(collider))
@@ -51,7 +49,7 @@ public class Crossroad : MonoBehaviour
             Vector3 outPoint = car.getSecondNextWaypoint();
             for (int i = 0; i < this.outPointCollider.Length; i++)
             {
-                if (this.outPointCollider[i] == outPoint)
+                if (Vector3.Distance(this.outPointCollider[i], outPoint) < .01f)
                 {
                     outCollider = i;
                     break;
@@ -62,7 +60,7 @@ public class Crossroad : MonoBehaviour
                 outPoint = car.getThirdNextWaypoint();
                 for (int i = 0; i < this.outPointCollider.Length; i++)
                 {
-                    if (this.outPointCollider[i] == outPoint)
+                    if (Vector3.Distance(this.outPointCollider[i], outPoint) < .01f)
                     {
                         outCollider = i;
                         break;
@@ -70,7 +68,7 @@ public class Crossroad : MonoBehaviour
                 }
                 if (outCollider < 0)
                 {
-                    Debug.LogError("Collider with out point not found at crossroad.");
+                    cars.Remove(car);
                     return;
                 }
             }
@@ -92,20 +90,23 @@ public class Crossroad : MonoBehaviour
     {
         if (!colliders.Contains(collider))
             return;
-        int colNum = collider.getNumber();
-        int i = this.cars.IndexOf(car);
-        if (this.carColliders[i][0] == colNum && this.carColliders[i][1] == colNum)
+        if (cars.Contains(car))
         {
-            this.carColliders.RemoveAt(i);
-            this.cars.RemoveAt(i);
-            isColliderFree[colNum] = true;
-            freeNextCar();
-        }
-        else
-        {
-            this.carColliders[i][0] = this.carColliders[i][1];
-            isColliderFree[colNum] = true;
-            freeNextCar();
+            int colNum = collider.getNumber();
+            int i = this.cars.IndexOf(car);
+            if (this.carColliders[i][0] == colNum && this.carColliders[i][1] == colNum)
+            {
+                this.carColliders.RemoveAt(i);
+                this.cars.RemoveAt(i);
+                isColliderFree[colNum] = true;
+                freeNextCar();
+            }
+            else
+            {
+                this.carColliders[i][0] = this.carColliders[i][1];
+                isColliderFree[colNum] = true;
+                freeNextCar();
+            }
         }
     }
 
@@ -126,7 +127,6 @@ public class Crossroad : MonoBehaviour
                 }
             }
         }
-        
     }
 }
 
