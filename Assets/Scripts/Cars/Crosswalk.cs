@@ -75,10 +75,6 @@ public class Crosswalk : MonoBehaviour
         if (car != null)
         {
             cars.Remove(car);
-            if (player != null)
-            {
-                //player.resume();
-            }
         }
     }
     public void playerEnter(GameObject go)
@@ -87,10 +83,6 @@ public class Crosswalk : MonoBehaviour
         if (character != null)
         {
             player = character;
-            if (cars.Count > 0)
-            {
-                //player.pause();
-            }
         }
     }
     public void playerExit(GameObject go)

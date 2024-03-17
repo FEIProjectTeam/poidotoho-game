@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 8861377182712132050}
   - component: {fileID: 1759482313158141807}
   - component: {fileID: 4326233682810984502}
+  - component: {fileID: 8006134323990206065}
   m_Layer: 0
   m_Name: AICar
   m_TagString: Car
@@ -214,3 +215,19 @@ MonoBehaviour:
   - {fileID: 1111358517322254938, guid: b8f0289be5dccf647b35a06d10df90df, type: 3}
   waypoints: []
   triggerCollider: {fileID: 1759482313158141807}
+--- !u!208 &8006134323990206065
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576559008251540407}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 1, z: 2.3}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5

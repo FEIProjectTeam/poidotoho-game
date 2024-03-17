@@ -30,13 +30,4 @@ public class MovementCharacter : MonoBehaviour
             }
         }
     }
-
-    public void pause()
-    {
-        agent.isStopped = true;
-    }
-    public void resume()
-    {
-        agent.isStopped = false;
-    }
 }
