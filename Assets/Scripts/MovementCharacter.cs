@@ -6,6 +6,7 @@ public class MovementCharacter : MonoBehaviour
 {
     private NavMeshAgent _agent;
     public Camera cam;
+    public LayerMask navmeshLayer; // Add a LayerMask for the sidewalk
 
     private void Start()
     {
@@ -21,8 +22,8 @@ public class MovementCharacter : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            // If the ray hits something (should ideally be the ground/sidewalk with NavMesh)
-            if (Physics.Raycast(ray, out hit))
+            // If the ray hits something on the Sidewalk layer
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, navmeshLayer))
             {
                 // Set the agent's destination to the point where the ray hit
                 _agent.destination = hit.point;
