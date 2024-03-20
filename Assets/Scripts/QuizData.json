@@ -1,7 +1,67 @@
 ﻿{
   "incidents": [
     {
-      "name": "Strom na aute",
+      "name": "IncidentCarBrokenWindow",
+      "qnas": [
+        {
+          "question": "Kameň ti rozbil čelné sklo na aute, kto ti zaplatí opravu?",
+          "correctAnswers": [
+            "Poisťovňa mi preplatí výmenu skla."
+          ],
+          "wrongAnswers": [
+            "Autoservis, však je auto v záruke.",
+            "Rodičia mi dajú peniaze."
+          ]
+        },
+        {
+          "question": "Srnka mi vbehla do cesty a rozbilo sa mi okno na aute, kto mi zaplatí opravu?",
+          "correctAnswers": [
+            "Mám poistenie automobilu, peniaze mi dá poisťovňa."
+          ],
+          "wrongAnswers": [
+            "Mám cestovné poistenie, peniaze mi dá poisťovňa.",
+            "Mám životné poistenie, peniaze mi dá poisťovňa."
+          ]
+        },
+        {
+          "question": "Krúpy mi rozbili čelné sklo, kto mi zaplatí opravu?",
+          "correctAnswers": [
+            "Opravu mi preplatí poisťovňa."
+          ],
+          "wrongAnswers": [
+            "Opravu mi nikto nezaplatí.",
+            "Opravu mi preplatí servis."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IncidentKidBicycleFall",
+      "qnas": [
+        {
+          "question": "Pokazilo sa ti koleso na bicykli čo urobíš?",
+          "correctAnswers": [
+            "Zavolám asistenčnú službu, veď mám poistenie."
+          ],
+          "wrongAnswers": [
+            "Zavolám do servisu nech mi ho opravia.",
+            "Nič sa nedá robiť, rozplačem sa."
+          ]
+        },
+        {
+          "question": "Stal sa ti úraz na bicykli, dá ti niekto peniaze ako bolestné?",
+          "correctAnswers": [
+            "Áno, poisťovňa mi vyplatí peniaze."
+          ],
+          "wrongAnswers": [
+            "Nikto mi nič nedá.",
+            "Mám poistenie domácnosti, nič nedostanem."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IncidentCarTreeFall",
       "qnas": [
         {
           "question": "Z akého poistenia dostaneš peniaze ak ti padne strom na auto?",
@@ -52,31 +112,6 @@
       ]
     },
     {
-      "name": "Pokazený bicykel",
-      "qnas": [
-        {
-          "question": "Pokazilo sa ti koleso na bicykli čo urobíš?",
-          "correctAnswers": [
-            "Zavolám asistenčnú službu, veď mám poistenie"
-          ],
-          "wrongAnswers": [
-            "Zavolám do servisu nech mi ho opravia",
-            "Rozplačem sa"
-          ]
-        },
-        {
-          "question": "Stal sa ti úraz na bicykli, dá ti niekto peniaze ako bolestné?",
-          "correctAnswers": [
-            "Áno poisťovňa mi dá peniaze"
-          ],
-          "wrongAnswers": [
-            "Nikto mi nič nedá.",
-            "Mám poistenie domácnosti, nič nedostanem"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Odfúknutá strecha",
       "qnas": [
         {
@@ -97,41 +132,6 @@
           "wrongAnswers": [
             "Nemám poistenie, zaplatím si opravu sám.",
             "Mám poistenie auta, dostanem peniaze."
-          ]
-        }
-      ]
-    },
-    {
-      "name": "IncidentCarBrokenWindow",
-      "qnas": [
-        {
-          "question": "Kameň ti rozbil čelné sklo na aute, kto ti zaplatí opravu?",
-          "correctAnswers": [
-            "Poisťovňa mi preplatí výmenu skla."
-          ],
-          "wrongAnswers": [
-            "Autoservis, však je auto v záruke.",
-            "Rodičia mi dajú peniaze."
-          ]
-        },
-        {
-          "question": "Srnka mi vbehla do cesty a rozbilo sa mi okno na aute, kto mi zaplatí opravu?",
-          "correctAnswers": [
-            "Mám poistenie automobilu, peniaze mi dá poisťovňa."
-          ],
-          "wrongAnswers": [
-            "Mám cestovné poistenie, peniaze mi dá poisťovňa.",
-            "Mám životné poistenie, peniaze mi dá poisťovňa."
-          ]
-        },
-        {
-          "question": "Krúpy mi rozbili čelné sklo, kto mi zaplatí opravu?",
-          "correctAnswers": [
-            "Opravu mi preplatí poisťovňa"
-          ],
-          "wrongAnswers": [
-            "Opravu mi nikto nezaplatí.",
-            "Opravu mi preplatí servis."
           ]
         }
       ]

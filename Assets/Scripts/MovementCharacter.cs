@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,7 +15,7 @@ public class MovementCharacter : MonoBehaviour
     private void Update()
     {
         // Detect left mouse button click
-        if (Input.GetMouseButtonDown(0) && !GameManager.Instance.isQuizOpened)
+        if (Input.GetMouseButtonDown(0) && GameManager.Instance.State == GameManager.GameState.RoamingMap)
         {
             // Create a ray from the camera, passing through the mouse position
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);

@@ -1,29 +1,31 @@
 using System;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Incidents
 {
     public abstract class IncidentBase : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject[] incidents;
-
-        [SerializeField]
-        private GameObject[] incidentReplacements;
-
-        [SerializeField]
-        private bool isSpawner;
-        private bool _isQuizAnswered;
-        int randomIntInRange;
-
+        public static event Action<IncidentBase> OnIncidentFound;
         public QNAData qna;
-        public static event Action<IncidentBase> IncidentFound;
+
+        [SerializeField]
+        private GameObject[] _incidents;
+
+        [SerializeField]
+        private GameObject[] _incidentReplacements;
+
+        [SerializeField]
+        private bool _isSpawner;
+
+        private bool _isQuizAnswered;
 
         private void Awake()
         {
-            if (isSpawner)
+            if (_isSpawner)
             {
                 GetComponent<MeshRenderer>().enabled = false;
             }
@@ -48,7 +50,7 @@ namespace Incidents
         public void SpawnIncident()
         {
             GameObject incident = Instantiate(
-                incidents[Random.Range(0, incidents.Length)],
+                _incidents[Random.Range(0, _incidents.Length)],
                 transform.position,
                 transform.rotation,
                 transform.parent
@@ -59,9 +61,9 @@ namespace Incidents
 
         public void SpawnReplacement()
         {
-            if (incidentReplacements != null && incidentReplacements.Length > 0)
+            if (_incidentReplacements != null && _incidentReplacements.Length > 0)
                 Instantiate(
-                    incidentReplacements[Random.Range(0, incidentReplacements.Length)],
+                    _incidentReplacements[Random.Range(0, _incidentReplacements.Length)],
                     transform.position,
                     transform.rotation
                 );
@@ -70,9 +72,9 @@ namespace Incidents
 
         private void OnMouseUpAsButton()
         {
-            if (_isQuizAnswered || GameManager.Instance.isQuizOpened)
+            if (_isQuizAnswered || GameManager.Instance.State != GameManager.GameState.RoamingMap)
                 return;
-            IncidentFound?.Invoke(this);
+            OnIncidentFound?.Invoke(this);
         }
 
         public void SetQuizAnswered()

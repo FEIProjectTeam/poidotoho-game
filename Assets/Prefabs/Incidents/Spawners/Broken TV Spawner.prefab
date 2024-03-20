@@ -96,7 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4374381b3d6b3964ba684674288050e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incidents:
+  qna:
+    question: 
+    correctAnswers: []
+    wrongAnswers: []
+  _incidents:
   - {fileID: 3401211383467807300, guid: a5d325a4270d3ee4dbfd0fc83f57227a, type: 3}
-  incidentReplacements: []
-  isSpawner: 1
+  _incidentReplacements: []
+  _isSpawner: 1
