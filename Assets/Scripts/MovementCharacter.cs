@@ -7,6 +7,7 @@ public class MovementCharacter : MonoBehaviour
     private NavMeshAgent _agent;
     public Camera cam;
     public LayerMask navmeshLayer; // Add a LayerMask for the sidewalk
+    public ParticleSystem rippleEffectPrefab;
 
     private void Start()
     {
@@ -27,6 +28,16 @@ public class MovementCharacter : MonoBehaviour
             {
                 // Set the agent's destination to the point where the ray hit
                 _agent.destination = hit.point;
+
+                // Instantiate the ripple effect at the point where the ray hit the ground
+                ParticleSystem rippleEffectInstance = Instantiate(rippleEffectPrefab, hit.point, Quaternion.identity);
+                rippleEffectInstance.transform.forward = hit.normal; // Align with the surface normal
+
+                // Play the particle system
+                rippleEffectInstance.Play();
+
+                // Optionally, destroy the particle system after it has finished
+                Destroy(rippleEffectInstance.gameObject, rippleEffectInstance.main.duration);
             }
         }
     }
