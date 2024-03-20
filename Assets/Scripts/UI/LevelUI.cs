@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using Incidents;
+using Managers;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,40 +9,61 @@ namespace UI
 {
     public class LevelUI : MonoBehaviour
     {
+        public static event Action OnQuizAnsweredCorrectly;
+
         [SerializeField]
         private UIDocument _document;
 
         [SerializeField]
         private StyleSheet _styleSheet;
+
         private List<Button> _answerBtns;
         private List<Button> _selectedAnswerBtns;
+        private List<Image> _incidentSymbols;
         private Button _submitBtn;
 
-        private void Start()
+        private void Awake()
         {
             var root = _document.rootVisualElement;
             root.Clear();
             root.styleSheets.Add(_styleSheet);
 
-            var quizContainer = Create(addTo: root, "quiz-container");
-            quizContainer.name = "quiz-container";
+            var scoreContainer = Create(addTo: root, "score-container");
+            Create<Label>(addTo: scoreContainer, "score-text").text = "body:";
+            var scorePointsLabel = Create<Label>(addTo: scoreContainer, "score-points");
+            scorePointsLabel.name = "score-points";
+            scorePointsLabel.text = "0";
+
+            Create(addTo: root, "incidents-container").name = "incidents-container";
+
+            var timerContainer = Create(addTo: root, "timer-container");
+            Create<Label>(addTo: timerContainer, "timer-text").text = "čas:";
+            var timerValueLabel = Create<Label>(addTo: timerContainer, "timer-value");
+            timerValueLabel.name = "timer-value";
+            timerValueLabel.text = "∞";
+
+            Create(addTo: root, "quiz-container").name = "quiz-container";
         }
 
         private void OnEnable()
         {
-            IncidentBase.IncidentFound += OpenQuiz;
+            IncidentBase.OnIncidentFound += OpenQuiz;
+            ScoreTimeManager.OnScoreUpdated += UpdateScore;
+            SpawnManager.OnIncidentsSpawned += CreateIncidentSymbols;
         }
 
         private void OnDisable()
         {
-            IncidentBase.IncidentFound -= OpenQuiz;
+            IncidentBase.OnIncidentFound -= OpenQuiz;
+            ScoreTimeManager.OnScoreUpdated -= UpdateScore;
+            SpawnManager.OnIncidentsSpawned -= CreateIncidentSymbols;
         }
 
         private void OpenQuiz(IncidentBase incident)
         {
-            if (GameManager.Instance.isQuizOpened)
+            if (GameManager.Instance.State == GameManager.GameState.DoingQuiz)
                 return;
-            GameManager.Instance.isQuizOpened = true;
+            GameManager.Instance.UpdateGameState(GameManager.GameState.DoingQuiz);
 
             var container = _document.rootVisualElement.Q("quiz-container");
             container.Clear();
@@ -53,7 +76,7 @@ namespace UI
             closeBtn.clicked += () =>
             {
                 container.Clear();
-                GameManager.Instance.isQuizOpened = false;
+                GameManager.Instance.UpdateGameState(GameManager.GameState.RoamingMap);
             };
 
             // Question
@@ -118,12 +141,39 @@ namespace UI
                     }
                 }
                 if (correctCount == incident.qna.correctAnswers.Count)
-                    Debug.Log("All answers are correct");
-                else
-                    Debug.Log("Answers are not correct");
+                    OnQuizAnsweredCorrectly?.Invoke();
 
                 incident.SetQuizAnswered();
+                UpdateIncidentSymbols();
             };
+        }
+
+        private void CreateIncidentSymbols(int incidentCount)
+        {
+            var container = _document.rootVisualElement.Q("incidents-container");
+            container.Clear();
+            _incidentSymbols = new List<Image>();
+            for (int i = 0; i < incidentCount; i++)
+            {
+                _incidentSymbols.Add(Create<Image>(addTo: container, "incident-symbol"));
+            }
+        }
+
+        private void UpdateIncidentSymbols()
+        {
+            int incidentsCount = _incidentSymbols.Count;
+            if (incidentsCount > 0)
+            {
+                Image incidentSymbol = _incidentSymbols[incidentsCount - 1];
+                _incidentSymbols.RemoveAt(incidentsCount - 1);
+                incidentSymbol.SetEnabled(false);
+            }
+        }
+
+        private void UpdateScore(int newScore)
+        {
+            var scorePointsLabel = (Label)_document.rootVisualElement.Q("score-points");
+            scorePointsLabel.text = newScore.ToString();
         }
 
         VisualElement Create(VisualElement addTo = null, params string[] classes)

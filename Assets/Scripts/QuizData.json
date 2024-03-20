@@ -1,55 +1,237 @@
 ﻿{
   "incidents": [
     {
-      "name": "IncidentBrokenFridge",
+      "name": "IncidentCarBrokenWindow",
       "qnas": [
         {
-          "question": "",
+          "question": "Kameň ti rozbil čelné sklo na aute, kto ti zaplatí opravu?",
           "correctAnswers": [
-            "",
-            ""
+            "Poisťovňa mi preplatí výmenu skla."
           ],
           "wrongAnswers": [
-            "",
-            ""
+            "Autoservis, však je auto v záruke.",
+            "Rodičia mi dajú peniaze."
           ]
         },
         {
-          "question": "",
+          "question": "Srnka mi vbehla do cesty a rozbilo sa mi okno na aute, kto mi zaplatí opravu?",
           "correctAnswers": [
-            "",
-            ""
+            "Mám poistenie automobilu, peniaze mi dá poisťovňa."
           ],
           "wrongAnswers": [
-            "",
-            ""
+            "Mám cestovné poistenie, peniaze mi dá poisťovňa.",
+            "Mám životné poistenie, peniaze mi dá poisťovňa."
+          ]
+        },
+        {
+          "question": "Krúpy mi rozbili čelné sklo, kto mi zaplatí opravu?",
+          "correctAnswers": [
+            "Opravu mi preplatí poisťovňa."
+          ],
+          "wrongAnswers": [
+            "Opravu mi nikto nezaplatí.",
+            "Opravu mi preplatí servis."
           ]
         }
       ]
     },
     {
-      "name": "IncidentBrokenPC",
+      "name": "IncidentKidBicycleFall",
       "qnas": [
         {
-          "question": "",
+          "question": "Pokazilo sa ti koleso na bicykli čo urobíš?",
           "correctAnswers": [
-            "",
-            ""
+            "Zavolám asistenčnú službu, veď mám poistenie."
           ],
           "wrongAnswers": [
-            "",
-            ""
+            "Zavolám do servisu nech mi ho opravia.",
+            "Nič sa nedá robiť, rozplačem sa."
           ]
         },
         {
-          "question": "",
+          "question": "Stal sa ti úraz na bicykli, dá ti niekto peniaze ako bolestné?",
           "correctAnswers": [
-            "",
-            ""
+            "Áno, poisťovňa mi vyplatí peniaze."
           ],
           "wrongAnswers": [
-            "",
-            ""
+            "Nikto mi nič nedá.",
+            "Mám poistenie domácnosti, nič nedostanem."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IncidentCarTreeFall",
+      "qnas": [
+        {
+          "question": "Z akého poistenia dostaneš peniaze ak ti padne strom na auto?",
+          "correctAnswers": [
+            "Z Povinného zmluvného poistenia.",
+            "Z Havarijného poistenia."
+          ],
+          "wrongAnswers": [
+            "Zo žiadneho poistenia, auto nemám poistené.",
+            "Z cestovného poistenia."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vytopený dom",
+      "qnas": [
+        {
+          "question": "Na dome praskne potrubie a všade je voda. Z akého poistenia dostaneš peniaze?",
+          "correctAnswers": [
+            "Z poistenia domácnosti"
+          ],
+          "wrongAnswers": [
+            "Z cestovného poistenia",
+            "Poistenie domu nepotrebujem"
+          ]
+        },
+        {
+          "question": "Ak vytopíš susedov, kto ti dá pre nich peniaze?",
+          "correctAnswers": [
+            "Poisťovňa mi dá peniaze na ich opravy."
+          ],
+          "wrongAnswers": [
+            "Nedám im žiadne nemám ich rád.",
+            "Poisťovňa mi nedá peniaze lebo nepoisťuje mojich susedov."
+          ]
+        },
+        {
+          "question": "Ak sa ti pokazí televízor, dostaneš peniaze od poisťovne?",
+          "correctAnswers": [
+            "Áno, mám poistenie domácnosti."
+          ],
+          "wrongAnswers": [
+            "Áno, mám poistenie na hory.",
+            "Nie, rodičia mi kúpia nový."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Odfúknutá strecha",
+      "qnas": [
+        {
+          "question": "Víchrica vám z domu odtrhala strechu. Z čoho si zaplatíte opravu?",
+          "correctAnswers": [
+            "Z poistenia nehnuteľnosti, nebudem míňať svoje peniaze."
+          ],
+          "wrongAnswers": [
+            "Zo svojich peňazí, nebudem otravovať poisťovňu.",
+            "Nič neopravíme, máme aspoň pekný výhľad."
+          ]
+        },
+        {
+          "question": "Krúpy vám rozbili strechu na dome. Z čoho si zaplatíte opravu?",
+          "correctAnswers": [
+            "Mám poistenie nehnuteľnosti, dostanem peniaze."
+          ],
+          "wrongAnswers": [
+            "Nemám poistenie, zaplatím si opravu sám.",
+            "Mám poistenie auta, dostanem peniaze."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Zlodej",
+      "qnas": [
+        {
+          "question": "U susedov vidíš zlodeja čo spravíš?",
+          "correctAnswers": [
+            "Zavolám na políciu."
+          ],
+          "wrongAnswers": [
+            "Zavolám do poisťovne.",
+            "Zavolám do parlamentu."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dievča so zlomenou nohou",
+      "qnas": [
+        {
+          "question": "Kamarátka má zlomenú nohu. Z akého poistenia dostane peniaze na liečbu?",
+          "correctAnswers": [
+            "Zo životného poistenia."
+          ],
+          "wrongAnswers": [
+            "Zo zdravotného poistenia.",
+            "Zo sociálneho poistenia."
+          ]
+        },
+        {
+          "question": "Mama je v nemocnici so sestrou, lebo má zlomenú nohu. Dostaneme navyše peniaze od štátu?",
+          "correctAnswers": [
+            "Dostanete peniaze od komerčnej poisťovne nie od štátu."
+          ],
+          "wrongAnswers": [
+            "Nedostanete nič navyše, práve naopak.",
+            "Jasné, štát vám dá veľa peňazí."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dôchodca",
+      "qnas": [
+        {
+          "question": "Z akého poistenia dostávajú dôchodky dôchodci?",
+          "correctAnswers": [
+            "Zo sociálneho poistenia."
+          ],
+          "wrongAnswers": [
+            "Zo zdravotného poistenia.",
+            "Zo životného poistenia."
+          ]
+        },
+        {
+          "question": "Aké typy sociálnych dávok poznáte?",
+          "correctAnswers": [
+            "Nemocenská dávka, ošetrovné, vdovské."
+          ],
+          "wrongAnswers": [
+            "Sociálna dávka, životná dávka, materská dávka.",
+            "Dávka v nezamestnanosti, komerčná dávka, zdravotná dávka."
+          ]
+        },
+        {
+          "question": "Pre koho je určený invalidný dôchodok?",
+          "correctAnswers": [
+            "Pre človeka v prípade poklesu schopnosti vykonávať zárobkovú činnosť z dôvodu dlhodobého nepriaznivého zdravotného stavu."
+          ],
+          "wrongAnswers": [
+            "Len pre tých ktorí sú na vozíčku.",
+            "Pre invalidov, dôchodcov, siroty a vdovy"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nemocnica",
+      "qnas": [
+        {
+          "question": "Aké tri zdravotné poisťovne máme na Slovensku?",
+          "correctAnswers": [
+            "Union, Všeobecná zdravotná poisťovňa, Dôvera."
+          ],
+          "wrongAnswers": [
+            "Dôvera, Sociálna poisťovňa, Komerčná poisťovňa",
+            "Životná poisťovňa, Domáca poisťovňa, Union."
+          ]
+        },
+        {
+          "question": "Ktoré tvrdenie o komerčných poisťovniach je správne?",
+          "correctAnswers": [
+            "Komerčné poistenie je dobrovoľné a ponúkajú ho súkromné poisťovne."
+          ],
+          "wrongAnswers": [
+            "Komerčné poistenie je povinné a musíme ho mať všetci.",
+            "Komerčné poistenie je vymyslené, žiadne také neexistuje."
           ]
         }
       ]

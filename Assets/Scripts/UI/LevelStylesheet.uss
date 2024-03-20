@@ -1,3 +1,83 @@
+.score-container {
+    flex-direction: row;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 400px;
+    height: 100px;
+    border-radius: 50px;
+    border-width: 5px;
+    border-color: rgb(0, 171, 219);
+    background-color: white;
+    color: rgb(0, 171, 219);
+    font-size: 60px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.score-text {
+    width: 60%;
+    margin: auto;
+    padding-left: 20px;
+}
+
+.score-points {
+    width: 40%;
+    margin: auto;
+    color: rgb(1, 63, 88);
+}
+
+.incidents-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 150px;
+    left: 40px;
+    width: 400px;
+    height: 100px;
+    padding: 2px;
+}
+
+.incident-symbol {
+    --unity-image: resource("Images/incident-ui-symbol");
+    width: 60px;
+    height: 60px;
+    margin: 3px;
+}
+
+.incident-found {
+    
+}
+
+.timer-container {
+    flex-direction: row;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 400px;
+    height: 100px;
+    border-radius: 50px;
+    border-width: 5px;
+    border-color: rgb(0, 171, 219);
+    background-color: white;
+    color: rgb(0, 171, 219);
+    font-size: 60px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.timer-text {
+    width: 50%;
+    margin: auto;
+    padding-left: 20px;
+}
+
+.timer-value {
+    width: 50%;
+    margin: auto;
+    color: rgb(1, 63, 88);
+}
+
 .quiz-container {
     width: 50%;
     height: 90%;
