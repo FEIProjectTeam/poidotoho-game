@@ -1,22 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class MovementCharacter : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    private NavMeshAgent _agent;
     public Camera cam;
 
-    void Start()
+    private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        _agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    private void Update()
     {
         // Detect left mouse button click
-        if (Input.GetMouseButtonDown(0) && !GameManager.Instance.isPopUpOpen)
+        if (Input.GetMouseButtonDown(0) && GameManager.Instance.State == GameManager.GameState.RoamingMap)
         {
             // Create a ray from the camera, passing through the mouse position
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -26,7 +25,7 @@ public class MovementCharacter : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 // Set the agent's destination to the point where the ray hit
-                agent.destination = hit.point;
+                _agent.destination = hit.point;
             }
         }
     }

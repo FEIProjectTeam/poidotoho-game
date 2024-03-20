@@ -9,18 +9,18 @@ namespace Incidents
     {
         private void Start()
         {
-            addQuestionAndAnswer(
-                new List<QuestionAndAnswers>
-                {
-                    new QuestionAndAnswers("Ak sa ti doma pokazí pračka a vytopíte susedov, čo spravíš?",
-                        new string[]
-                        {
-                            "Nahlásim to mojej poisťovni nech dajú peniaze susedom",
-                            "Presvedčím susedov, že to nie je moja chyba",
-                            "Vyberiem všetky svoje úspory a dám ich susedom"
-                        },
-                        new int[] {0 }),
-                });
+            // addQuestionAndAnswer(
+            //     new List<QuestionAndAnswers>
+            //     {
+            //         new QuestionAndAnswers("Ak sa ti doma pokazí pračka a vytopíte susedov, čo spravíš?",
+            //             new string[]
+            //             {
+            //                 "Nahlásim to mojej poisťovni nech dajú peniaze susedom",
+            //                 "Presvedčím susedov, že to nie je moja chyba",
+            //                 "Vyberiem všetky svoje úspory a dám ich susedom"
+            //             },
+            //             new int[] {0 }),
+            //     });
         }
     }
 }

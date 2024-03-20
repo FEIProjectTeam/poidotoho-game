@@ -1,81 +1,85 @@
+using System;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Incidents
 {
     public abstract class IncidentBase : MonoBehaviour
     {
-        [SerializeField] private GameObject[] incidents;
-        [SerializeField] private GameObject[] incidentReplacements;
-        [SerializeField] private bool isSpawner = false;
-        private List<QuestionAndAnswers> qnaList;
-        int randomIntInRange;
-        bool isAnswered = false;
-        
+        public static event Action<IncidentBase> OnIncidentFound;
+        public QNAData qna;
+
+        [SerializeField]
+        private GameObject[] _incidents;
+
+        [SerializeField]
+        private GameObject[] _incidentReplacements;
+
+        [SerializeField]
+        private bool _isSpawner;
+
+        private bool _isQuizAnswered;
+
         private void Awake()
         {
-            if (isSpawner)
+            if (_isSpawner)
             {
-                GetComponent<MeshRenderer>().enabled = false;   
+                GetComponent<MeshRenderer>().enabled = false;
             }
-        }
-        
-        private void Start()
-        {
-            if (qnaList != null)
+            // tmp for testing
+            qna = new QNAData
             {
-                randomIntInRange = Random.Range(0, qnaList.Count);
-            }
+                question =
+                    "Aká je pravdepodobnosť, že poistenie kryje náklady na škodu spôsobené zrážkou s lampou?",
+                correctAnswers = new List<string>()
+                {
+                    "100%, poistenie vody kryje škodu spôsobenú zrážkou s lampou.1"
+                },
+                wrongAnswers = new List<string>()
+                {
+                    "100%, poistenie v�dy kryje �kodu sp�soben� zr�kou s lampou.2",
+                    "100%, poistenie v�dy kryje �kodu sp�soben� zr�kou s lampou. Dlha odpove�, mo�no aj na viac riadkov.3",
+                    "100%, poistenie v�dy kryje �kodu sp�soben� zr�kou s lampou.4"
+                }
+            };
         }
 
         public void SpawnIncident()
         {
-            GameObject incident = Instantiate(incidents[Random.Range(0, incidents.Length)], transform.position, transform.rotation);
+            GameObject incident = Instantiate(
+                _incidents[Random.Range(0, _incidents.Length)],
+                transform.position,
+                transform.rotation,
+                transform.parent
+            );
             incident.AddComponent(GetType());
+            Destroy(gameObject);
         }
 
         public void SpawnReplacement()
         {
-            if (incidentReplacements != null && incidentReplacements.Length > 0)
-                Instantiate(incidentReplacements[Random.Range(0, incidentReplacements.Length)], transform.position,
-                    transform.rotation);
-            this.enabled = false;
+            if (_incidentReplacements != null && _incidentReplacements.Length > 0)
+                Instantiate(
+                    _incidentReplacements[Random.Range(0, _incidentReplacements.Length)],
+                    transform.position,
+                    transform.rotation
+                );
+            Destroy(gameObject);
         }
 
-        public void addQuestionAndAnswer(List<QuestionAndAnswers> qnaList)
+        private void OnMouseUpAsButton()
         {
-            this.qnaList = qnaList;        
+            if (_isQuizAnswered || GameManager.Instance.State != GameManager.GameState.RoamingMap)
+                return;
+            OnIncidentFound?.Invoke(this);
         }
 
-        public void OnMouseDown()
+        public void SetQuizAnswered()
         {
-            GameManager.Instance.openQNAPopup.Invoke(this);
-        }
-
-        public string getQuestion()
-        {      
-            return qnaList[randomIntInRange].question.ToString();
-        }
-
-        public List<string> getAnswers()
-        {
-            return qnaList[randomIntInRange].answers;
-        }
-
-        public List<int> getCorrectAnswers()
-        {
-            return qnaList[randomIntInRange].correctAnswers;
-        }
-
-        public bool getIsAnswered()
-        {
-            return this.isAnswered;
-        }
-        
-        public void setAnswered()
-        {
-            isAnswered = true;
+            _isQuizAnswered = true;
         }
     }
 }
