@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _document: {fileID: 868915477}
   _styleSheet: {fileID: 7433441132597879392, guid: c6745d7ea13b84bf7bf6aa7dc7ce690b, type: 3}
-  backgroundImage: {fileID: 2800000, guid: d18f2a0439c2d4b52af90d8c86aa7bc1, type: 3}
+  _backgroundImage: {fileID: 2800000, guid: d18f2a0439c2d4b52af90d8c86aa7bc1, type: 3}
 --- !u!114 &868915477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +341,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
