@@ -19,32 +19,24 @@ namespace Managers
         private Label _timerValueLabel;
         private int _score;
 
-        private void Awake()
-        {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                Instance = this;
-            }
-        }
-
         private void OnEnable()
         {
-            LevelUI.OnQuizAnsweredCorrectly += addPoint;
+            LevelUI.OnQuizAnsweredCorrectly += AddPoint;
         }
 
         private void OnDisable()
         {
-            LevelUI.OnQuizAnsweredCorrectly -= addPoint;
+            LevelUI.OnQuizAnsweredCorrectly -= AddPoint;
         }
 
         private void Start()
         {
+            _score = GameManager.Instance.TotalScore;
             OnScoreUpdated?.Invoke(_score);
+
             _timerValueLabel = (Label)_levelUIDocument.rootVisualElement.Q("timer-value");
+
+            GameManager.Instance.UpdateGameState(GameManager.GameState.RoamingMap);
         }
 
         private void Update()
@@ -59,7 +51,7 @@ namespace Managers
             _timerValueLabel.text = $"{minutes:0}:{seconds:00}";
         }
 
-        private void addPoint()
+        private void AddPoint()
         {
             _score++;
             OnScoreUpdated?.Invoke(_score);

@@ -9,6 +9,7 @@ namespace Managers
         public static GameManager Instance { get; private set; }
         public static event Action<GameState> OnGameStateChanged;
         public GameState State { get; private set; }
+        public int TotalScore { get; set; }
 
         private void Awake()
         {
@@ -31,7 +32,7 @@ namespace Managers
         public enum GameState
         {
             MainMenu,
-            StartGameplay,
+            StartPlaying,
             RoamingMap,
             DoingQuiz,
         }
@@ -43,7 +44,8 @@ namespace Managers
             {
                 case GameState.MainMenu:
                     break;
-                case GameState.StartGameplay:
+                case GameState.StartPlaying:
+                    LoadFirstLevel();
                     break;
                 case GameState.RoamingMap:
                     break;
@@ -54,6 +56,13 @@ namespace Managers
             }
 
             OnGameStateChanged?.Invoke(newState);
+        }
+
+        private void LoadFirstLevel()
+        {
+            var scene = SceneManager.LoadSceneAsync("DemoScene");
+            scene.allowSceneActivation = true;
+            TotalScore = 0;
         }
     }
 }
