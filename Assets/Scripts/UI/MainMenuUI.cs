@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -22,7 +23,7 @@ namespace UI
             startButton.text = "ZAČAŤ HRU";
             startButton.clicked += () =>
             {
-                LevelManager.LoadScene("DemoScene");
+                GameManager.Instance.UpdateGameState(GameManager.GameState.StartPlaying);
             };
         }
     }
