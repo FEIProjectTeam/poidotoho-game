@@ -7,7 +7,6 @@ namespace Managers
 {
     public class ScoreTimeManager : MonoBehaviour
     {
-        public static ScoreTimeManager Instance { get; private set; }
         public static event Action<int> OnScoreUpdated;
 
         [SerializeField]

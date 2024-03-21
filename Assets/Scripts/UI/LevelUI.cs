@@ -28,21 +28,21 @@ namespace UI
             root.Clear();
             root.styleSheets.Add(_styleSheet);
 
-            var scoreContainer = Create(addTo: root, "score-container");
-            Create<Label>(addTo: scoreContainer, "score-text").text = "body:";
-            var scorePointsLabel = Create<Label>(addTo: scoreContainer, "score-points");
+            var scoreContainer = Utils.Create(addTo: root, "score-container");
+            Utils.Create<Label>(addTo: scoreContainer, "score-text").text = "body:";
+            var scorePointsLabel = Utils.Create<Label>(addTo: scoreContainer, "score-points");
             scorePointsLabel.name = "score-points";
             scorePointsLabel.text = "0";
 
-            Create(addTo: root, "incidents-container").name = "incidents-container";
+            Utils.Create(addTo: root, "incidents-container").name = "incidents-container";
 
-            var timerContainer = Create(addTo: root, "timer-container");
-            Create<Label>(addTo: timerContainer, "timer-text").text = "čas:";
-            var timerValueLabel = Create<Label>(addTo: timerContainer, "timer-value");
+            var timerContainer = Utils.Create(addTo: root, "timer-container");
+            Utils.Create<Label>(addTo: timerContainer, "timer-text").text = "čas:";
+            var timerValueLabel = Utils.Create<Label>(addTo: timerContainer, "timer-value");
             timerValueLabel.name = "timer-value";
             timerValueLabel.text = "∞";
 
-            Create(addTo: root, "quiz-container").name = "quiz-container";
+            Utils.Create(addTo: root, "quiz-container").name = "quiz-container";
         }
 
         private void OnEnable()
@@ -68,10 +68,10 @@ namespace UI
             var container = _document.rootVisualElement.Q("quiz-container");
             container.Clear();
 
-            var containerBox = Create(addTo: container, "quiz-container-box");
+            var containerBox = Utils.Create(addTo: container, "quiz-container-box");
 
             // Close button
-            var closeBtn = Create<Button>(addTo: containerBox, "quiz-close-btn");
+            var closeBtn = Utils.Create<Button>(addTo: containerBox, "quiz-close-btn");
             closeBtn.text = "X";
             closeBtn.clicked += () =>
             {
@@ -80,17 +80,17 @@ namespace UI
             };
 
             // Question
-            var questionBox = Create(addTo: containerBox, "quiz-question-box");
-            var questionLabel = Create<Label>(addTo: questionBox);
+            var questionBox = Utils.Create(addTo: containerBox, "quiz-question-box");
+            var questionLabel = Utils.Create<Label>(addTo: questionBox);
             questionLabel.text = incident.qna.question;
 
             // Answers
-            var answerBox = Create(addTo: containerBox, "quiz-answer-box");
+            var answerBox = Utils.Create(addTo: containerBox, "quiz-answer-box");
             _answerBtns = new List<Button>();
             _selectedAnswerBtns = new List<Button>();
             foreach (string answerText in incident.qna.GetShuffledAnswers())
             {
-                var answerBtn = Create<Button>(addTo: answerBox, "quiz-answer-btn", "active");
+                var answerBtn = Utils.Create<Button>(addTo: answerBox, "quiz-answer-btn", "active");
                 answerBtn.text = answerText;
                 answerBtn.clicked += () =>
                 {
@@ -111,7 +111,7 @@ namespace UI
             }
 
             // Submit button
-            _submitBtn = Create<Button>(addTo: containerBox, "quiz-submit-btn");
+            _submitBtn = Utils.Create<Button>(addTo: containerBox, "quiz-submit-btn");
             _submitBtn.text = "Potvrdiť";
             _submitBtn.SetEnabled(false);
             _submitBtn.clicked += () =>
@@ -155,7 +155,7 @@ namespace UI
             _incidentSymbols = new List<Image>();
             for (int i = 0; i < incidentCount; i++)
             {
-                _incidentSymbols.Add(Create<Image>(addTo: container, "incident-symbol"));
+                _incidentSymbols.Add(Utils.Create<Image>(addTo: container, "incident-symbol"));
             }
         }
 
@@ -174,23 +174,6 @@ namespace UI
         {
             var scorePointsLabel = (Label)_document.rootVisualElement.Q("score-points");
             scorePointsLabel.text = newScore.ToString();
-        }
-
-        VisualElement Create(VisualElement addTo = null, params string[] classes)
-        {
-            return Create<VisualElement>(addTo, classes);
-        }
-
-        T Create<T>(VisualElement addTo = null, params string[] classes)
-            where T : VisualElement, new()
-        {
-            var ele = new T();
-            addTo?.Add(ele);
-            foreach (var className in classes)
-            {
-                ele.AddToClassList(className);
-            }
-            return ele;
         }
     }
 }
