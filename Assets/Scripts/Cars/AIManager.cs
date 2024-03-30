@@ -481,18 +481,20 @@ public class AIManager : MonoBehaviour
             int randomIndex = Random.Range(0, spawns.Count);
             Road spawn = spawns[randomIndex];
 
-            List<Vector3> waypoints = findRandomWay(spawn);
+            if (spawn.checkSpawn())
+            {
+                List<Vector3> waypoints = findRandomWay(spawn);
 
-            Car c = Instantiate(car, spawn.getSpawnPoint(), spawn.getSpawnRotation()); // TODO preskumat instantiate s parametrami
-            c.SendMessage("setWay", waypoints); // sendmessage lebo inak by sa volala pred startom - neupdatla by sa cesta (z predoslej instancie asi?)
-            cars++;
+                Car c = Instantiate(car, spawn.getSpawnPoint(), spawn.getSpawnRotation()); // TODO preskumat instantiate s parametrami
+                c.SendMessage("setWay", waypoints); // sendmessage lebo inak by sa volala pred startom - neupdatla by sa cesta (z predoslej instancie asi?)
+                cars++;
+            }
         }
     }
 
     public void despawnCar()
     {
         cars--;
-        spawnCar();
     }
 
     private List<Vector3> findRandomWay(Road spawn)

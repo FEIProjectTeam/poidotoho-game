@@ -149,6 +149,19 @@ public class Road : MonoBehaviour
         return spawn != null;
     }
 
+    public bool checkSpawn()
+    {
+        if (spawn != null)
+        {
+            SpawnCollider collider = GetComponentInChildren<SpawnCollider>();
+            if (collider != null)
+                return collider.checkSpawn();
+            else
+                return false;
+        }
+        return false;
+    }
+
     public Vector3 getDespawnPoint()
     {
         if (isSpawn && despawn != null)

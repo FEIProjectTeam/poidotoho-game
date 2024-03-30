@@ -1702,6 +1702,10 @@ PrefabInstance:
       propertyPath: isSpawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8109840806613422447, guid: 4388f5db9097bcf418b255b617aa69e3, type: 3}
+      propertyPath: m_Center.x
+      value: -2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9046974436008326002, guid: 4388f5db9097bcf418b255b617aa69e3, type: 3}
       propertyPath: m_Name
       value: Road 1
@@ -8928,8 +8932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 4326233682810984502, guid: 4e0168c949c945d44861154cb29f0634, type: 3}
   roadsTilemap: {fileID: 1972153112}
-  maxCars: 5
-  spawnPeriod: 1
+  maxCars: 20
+  spawnPeriod: 0.1
 --- !u!4 &2036594999
 Transform:
   m_ObjectHideFlags: 0
