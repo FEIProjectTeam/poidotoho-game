@@ -2,38 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 
-[Serializable]
 public class QNAData
 {
-    public string question;
-    public List<string> correctAnswers;
-    public List<string> wrongAnswers;
+    public QNAData(string question, List<string> correctAnswers, List<string> wrongAnswers)
+    {
+        Question = question;
+        CorrectAnswers = correctAnswers;
+        WrongAnswers = wrongAnswers;
+    }
+
+    public string Question { get; }
+    public List<string> CorrectAnswers { get; }
+    public List<string> WrongAnswers { get; }
 
     public List<string> GetShuffledAnswers()
     {
-        List<string> answers = correctAnswers.Concat(wrongAnswers).ToList();
-        var rnd = new Random();
-        answers = answers.OrderBy(_ => rnd.Next()).ToList();
-        return answers;
+        List<string> answers = CorrectAnswers.Concat(WrongAnswers).ToList();
+        List<string> shuffledAnswers = answers.OrderBy(_ => Guid.NewGuid()).ToList();
+        return shuffledAnswers;
     }
 
     public bool AreAnswersCorrect(List<string> answers)
     {
-        return answers.All(correctAnswers.Contains) && answers.Count == correctAnswers.Count;
+        return answers.All(CorrectAnswers.Contains) && answers.Count == CorrectAnswers.Count;
     }
-
-}
-
-[Serializable]
-public class IncidentData
-{
-    public string name;
-    public List<QNAData> qnas;
-
-}
-
-[Serializable]
-public class QuizData
-{
-    public List<IncidentData> incidents;
 }

@@ -106,7 +106,7 @@
 
 .quiz-question-box Label {
     white-space: normal;
-    margin: 8px;
+    margin: 20px;
     -unity-font-style: bold;
     -unity-text-align: middle-center;
 }

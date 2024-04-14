@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Incidents
 {
-    public class IncidentBrokenFridge : IncidentBase
+    public class IncidentHospital : IncidentBase
     {
         protected override List<QNAData> QNAs { get; set; }
 
@@ -13,27 +13,27 @@ namespace Incidents
             QNAs = new List<QNAData>
             {
                 new(
-                    question: "Pokazil sa elektromotor na chladničke, za čo kúpim novú?",
+                    question: "Aké tri zdravotné poisťovne máme na Slovensku?",
                     correctAnswers: new List<string>
                     {
-                        "Našťastie som poistený a dostanem peniaze od poisťovne."
+                        "Union, Všeobecná zdravotná poisťovňa, Dôvera."
                     },
                     wrongAnswers: new List<string>
                     {
-                        "Musím si našetriť peniaze na novú.",
-                        "Je zima takže chladničku nepotrebujem.",
+                        "Dôvera, Sociálna poisťovňa, Komerčná poisťovňa.",
+                        "Životná poisťovňa, Domáca poisťovňa, Union.",
                     }
                 ),
                 new(
-                    question: "Susedom som rozbil chladničku, dostanem peniaze od poisťovne?",
+                    question: "Ktoré tvrdenie o komerčných poisťovniach je správne?",
                     correctAnswers: new List<string>
                     {
-                        "Áno, mám pripoistenie zodpovednosti za škodu."
+                        "Komerčné poistenie je dobrovoľné a ponúkajú ho súkromné poisťovne."
                     },
                     wrongAnswers: new List<string>
                     {
-                        "Nie, lebo nemám pripoistenie zodpovednosti za škodu.",
-                        "Áno, mám poistenie chladničky.",
+                        "Komerčné poistenie je povinné a musíme ho mať všetci.",
+                        "Komerčné poistenie je vymyslené, žiadne také neexistuje.",
                     }
                 )
             };

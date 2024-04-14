@@ -82,13 +82,13 @@ namespace UI
             // Question
             var questionBox = Utils.Create(addTo: containerBox, "quiz-question-box");
             var questionLabel = Utils.Create<Label>(addTo: questionBox);
-            questionLabel.text = incident.qna.question;
+            questionLabel.text = incident.ActiveQNA.Question;
 
             // Answers
             var answerBox = Utils.Create(addTo: containerBox, "quiz-answer-box");
             _answerBtns = new List<Button>();
             _selectedAnswerBtns = new List<Button>();
-            foreach (string answerText in incident.qna.GetShuffledAnswers())
+            foreach (string answerText in incident.ActiveQNA.GetShuffledAnswers())
             {
                 var answerBtn = Utils.Create<Button>(addTo: answerBox, "quiz-answer-btn", "active");
                 answerBtn.text = answerText;
@@ -122,7 +122,7 @@ namespace UI
                 {
                     answerBtn.clickable = null;
                     answerBtn.RemoveFromClassList("active");
-                    bool isCorrect = incident.qna.correctAnswers.Contains(answerBtn.text);
+                    bool isCorrect = incident.ActiveQNA.CorrectAnswers.Contains(answerBtn.text);
                     bool isSelected = _selectedAnswerBtns.Contains(answerBtn);
 
                     if (isCorrect && isSelected)
@@ -140,7 +140,7 @@ namespace UI
                         correctCount--;
                     }
                 }
-                if (correctCount == incident.qna.correctAnswers.Count)
+                if (correctCount == incident.ActiveQNA.CorrectAnswers.Count)
                     OnQuizAnsweredCorrectly?.Invoke();
 
                 incident.SetQuizAnswered();
