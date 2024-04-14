@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,10 @@ namespace Managers
         public static GameManager Instance { get; private set; }
         public static event Action<GameState> OnGameStateChanged;
         public GameState State { get; private set; }
-        public int TotalScore { get; set; }
+        public int Score { get; private set; }
+        public float RemainingTime { get; private set; }
+
+        private readonly List<int> _levelBuildIndexes = new() { 1, 2 };
 
         private void Awake()
         {
@@ -26,7 +30,9 @@ namespace Managers
 
         private void Start()
         {
-            UpdateGameState(GameState.RoamingMap);
+            // TODO: keep only during development
+            if (_levelBuildIndexes.Contains(SceneManager.GetActiveScene().buildIndex))
+                UpdateGameState(GameState.RoamingMap);
         }
 
         public enum GameState
@@ -35,6 +41,7 @@ namespace Managers
             StartPlaying,
             RoamingMap,
             DoingQuiz,
+            LevelFinished
         }
 
         public void UpdateGameState(GameState newState)
@@ -45,24 +52,49 @@ namespace Managers
                 case GameState.MainMenu:
                     break;
                 case GameState.StartPlaying:
-                    LoadFirstLevel();
+                    Score = 0;
+                    RemainingTime = 180;
+                    LoadNextLevel();
                     break;
                 case GameState.RoamingMap:
                     break;
                 case GameState.DoingQuiz:
                     break;
+                case GameState.LevelFinished:
+                    GetCurrentScoreAndTime();
+                    LoadNextLevel();
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
             }
-
+            Debug.Log(newState);
             OnGameStateChanged?.Invoke(newState);
         }
 
-        private void LoadFirstLevel()
+        private void GetCurrentScoreAndTime()
         {
-            var scene = SceneManager.LoadSceneAsync("DemoScene");
-            scene.allowSceneActivation = true;
-            TotalScore = 0;
+            var scoreTimeManager = FindObjectOfType<ScoreTimeManager>();
+            Score = scoreTimeManager.Score;
+            RemainingTime = scoreTimeManager.RemainingTime;
+        }
+
+        private void LoadNextLevel()
+        {
+            var nextLevelIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            if (_levelBuildIndexes.Contains(nextLevelIndex) && RemainingTime > 0)
+            {
+                var scene = SceneManager.LoadSceneAsync(nextLevelIndex);
+                scene.allowSceneActivation = true;
+
+                UpdateGameState(GameState.RoamingMap);
+            }
+            else
+            {
+                var scene = SceneManager.LoadSceneAsync("Main Menu");
+                scene.allowSceneActivation = true;
+
+                UpdateGameState(GameState.MainMenu);
+            }
         }
     }
 }

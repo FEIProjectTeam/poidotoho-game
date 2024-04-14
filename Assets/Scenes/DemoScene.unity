@@ -7195,7 +7195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelUIDocument: {fileID: 1845399755}
-  _remainingTime: 180
 --- !u!1001 &528560406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7889,6 +7888,10 @@ PrefabInstance:
     - target: {fileID: 8577812532067678297, guid: c9964cd067b82044fad05afe4dd18262, type: 3}
       propertyPath: m_Name
       value: Broken Fridge Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8577812532067678297, guid: c9964cd067b82044fad05afe4dd18262, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

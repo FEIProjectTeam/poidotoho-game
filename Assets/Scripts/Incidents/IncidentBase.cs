@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Incidents
@@ -10,6 +9,7 @@ namespace Incidents
     public abstract class IncidentBase : MonoBehaviour
     {
         public static event Action<IncidentBase> OnIncidentFound;
+        public static event Action OnQuizAnswered;
         public QNAData ActiveQNA { get; private set; }
 
         protected virtual List<QNAData> QNAs { get; set; }
@@ -74,6 +74,7 @@ namespace Incidents
         public void SetQuizAnswered()
         {
             _isQuizAnswered = true;
+            OnQuizAnswered?.Invoke();
         }
     }
 }

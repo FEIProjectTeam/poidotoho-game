@@ -49,14 +49,14 @@ namespace UI
         {
             IncidentBase.OnIncidentFound += OpenQuiz;
             ScoreTimeManager.OnScoreUpdated += UpdateScore;
-            SpawnManager.OnIncidentsSpawned += CreateIncidentSymbols;
+            IncidentManager.OnIncidentsSpawned += CreateIncidentSymbols;
         }
 
         private void OnDisable()
         {
             IncidentBase.OnIncidentFound -= OpenQuiz;
             ScoreTimeManager.OnScoreUpdated -= UpdateScore;
-            SpawnManager.OnIncidentsSpawned -= CreateIncidentSymbols;
+            IncidentManager.OnIncidentsSpawned -= CreateIncidentSymbols;
         }
 
         private void OpenQuiz(IncidentBase incident)
