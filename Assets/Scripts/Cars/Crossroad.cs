@@ -86,6 +86,7 @@ public class Crossroad : MonoBehaviour
             }
         }
     }
+
     public void onCarExit(CrossroadCollider collider, Car car)
     {
         if (!colliders.Contains(collider))
@@ -129,4 +130,3 @@ public class Crossroad : MonoBehaviour
         }
     }
 }
-

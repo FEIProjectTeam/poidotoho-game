@@ -4,12 +4,8 @@ using Random = UnityEngine.Random;
 
 public class Car : MonoBehaviour
 {
-    Rigidbody rb;
-
     [SerializeField]
     public float speed = 5f;
-    /*[SerializeField]
-    public float rotationSpeed = 5f;*/
 
     private int currentWaypointIndex = 0;
 
@@ -35,10 +31,6 @@ public class Car : MonoBehaviour
     {
         var randomIndex = Random.Range(0, carPrefabs.Length);
         return carPrefabs[randomIndex];
-    }
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
     }
     void Start()
     {
@@ -102,12 +94,9 @@ public class Car : MonoBehaviour
                 }
                 else
                 {
-
-                    if ((waypoints[currentWaypointIndex].x - targetWaypoint.x > 0.01f || waypoints[currentWaypointIndex].x - targetWaypoint.x < -0.01f)     // unity to pocita nepresne, musi to byt takto
+                    if ((waypoints[currentWaypointIndex].x - targetWaypoint.x > 0.01f || waypoints[currentWaypointIndex].x - targetWaypoint.x < -0.01f)
                     && (waypoints[currentWaypointIndex].z - targetWaypoint.z > 0.01f || waypoints[currentWaypointIndex].z - targetWaypoint.z < -0.01f))
                     {
-                        //Debug.Log("Zatacame");
-
                         if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex]) > 5)
                         {
                             Vector3 start = waypoints[currentWaypointIndex - 1];
@@ -121,12 +110,9 @@ public class Car : MonoBehaviour
                             curve.Add(center + (newDirection * 1.175f));
 
                             this.waypoints.InsertRange(currentWaypointIndex, curve);
-                            //rotate += 2;
                         }
                         else
                         {
-                            //Debug.Log("else");
-
                             Vector3 start = waypoints[currentWaypointIndex - 1];
                             Vector3 end = waypoints[currentWaypointIndex];
                             Vector3 center = (start + (moveDirection * 1.175f));
@@ -134,14 +120,6 @@ public class Car : MonoBehaviour
 
                             endRotation = Quaternion.LookRotation(-1 * newDirection);
                             rotate = false;
-
-                            /*Debug.Log(start);
-                            Debug.Log(end);
-                            Debug.Log(center);
-                            Debug.Log(newDirection);
-                            Debug.Log(startRotation.eulerAngles);
-                            Debug.Log(endRotation.eulerAngles);*/
-
                         }
                     }
 
@@ -150,13 +128,11 @@ public class Car : MonoBehaviour
                         if ((waypoints[currentWaypointIndex].x - targetWaypoint.x < 0.01f || waypoints[currentWaypointIndex].x - targetWaypoint.x > -0.01f)
                             && (waypoints[currentWaypointIndex].z - targetWaypoint.z < 0.01f || waypoints[currentWaypointIndex].z - targetWaypoint.z > -0.01f))
                         {
-
                             Vector3 start = waypoints[currentWaypointIndex - 1];
                             Vector3 end = waypoints[currentWaypointIndex];
                             Vector3 newDirection = (end - start).normalized;
 
                             endRotation = Quaternion.LookRotation(-1 * newDirection);
-                            //Debug.Log("Totok");
                         }
                     }
 
@@ -175,44 +151,4 @@ public class Car : MonoBehaviour
     {
         return waypoints[currentWaypointIndex + 2];
     }
-
-    // odpad
-
-    //Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-    //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-
-    /*if (currentWaypointIndex < waypoints.Count - 1)
-    {
-        //Vector3 nextWaypoint = waypoints[currentWaypointIndex + 1];
-        //Vector3 moveDirection = (transform.position - nextWaypoint).normalized;
-        //Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-        //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-    }*/
-
-
-    /*
-    private void MoveToWaypoint()
-    {
-        if (currentWaypointIndex >= waypoints.Count)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Vector3 targetWaypoint = waypoints[currentWaypointIndex];
-
-        transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, Time.deltaTime * speed);
-
-        if (currentWaypointIndex < waypoints.Count - 1)
-        {
-            Vector3 moveDirection = (transform.position - targetWaypoint).normalized;
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-        }
-
-        if (Vector3.Distance(transform.position, targetWaypoint) < 0.1f)
-        {
-            currentWaypointIndex++;
-        }
-    }*/
 }

@@ -70,14 +70,11 @@ public class AIManager : MonoBehaviour
     private void connectRoads()
     {
         List<Transform> roadTransforms = findChildsOfType<Road>(roadsTilemap.transform);
-
-        Debug.Log("ии");
-
         List<Road> roads = new List<Road>();
         Road road;
         roads.AddRange(spawns);
 
-        Transform neighbourTransform; // TODO set all spawns and all roads algoritm
+        Transform neighbourTransform;
         Road neighbour;
         while (roads.Count > 0)
         {
@@ -90,7 +87,6 @@ public class AIManager : MonoBehaviour
                 if (neighbourTransform != null && neighbourTransform.gameObject.GetComponent<Road>() != null)
                 {
                     neighbour = neighbourTransform.gameObject.GetComponent<Road>();
-
                     if (road.neighbourX == null)
                     {
                         init = true;
@@ -150,17 +146,6 @@ public class AIManager : MonoBehaviour
 
             roads.Remove(road);
         }
-
-
-        //Vector3 bb = new Vector3(0, 0, 0);
-
-        /*Debug.Log(child.gameObject.GetInstanceID());
-        Debug.Log(child.position);
-        Debug.Log(child.rotation.eulerAngles.y);*/
-
-        //GameObject road = tile.gameObject;
-        //Debug.Log(road.transform.rotation.y);
-
     }
 
     private Transform checkX(Transform transform, Tilemap map, List<Transform> transforms)
@@ -485,8 +470,8 @@ public class AIManager : MonoBehaviour
             {
                 List<Vector3> waypoints = findRandomWay(spawn);
 
-                Car c = Instantiate(car, spawn.getSpawnPoint(), spawn.getSpawnRotation()); // TODO preskumat instantiate s parametrami
-                c.SendMessage("setWay", waypoints); // sendmessage lebo inak by sa volala pred startom - neupdatla by sa cesta (z predoslej instancie asi?)
+                Car c = Instantiate(car, spawn.getSpawnPoint(), spawn.getSpawnRotation());
+                c.SendMessage("setWay", waypoints);
                 cars++;
             }
         }
@@ -522,63 +507,6 @@ public class AIManager : MonoBehaviour
             next = path.getNeighbour();
         }
 
-        //Debug.Log("found path with "+ waypoints.Count +" points");
         return waypoints;
     }
 }
-
-// Trash:
-
-/*check = tilePos + (Vector3Int.up * 2);
-check = check + (Vector3Int.right);
-check = check + (Vector3Int.up);
-check = check + (Vector3Int.left);
-Debug.Log(check);*/
-
-
-/*
-int[][] X0 = {[ 2, 0, 0 ], [2, 1, 0], [3, 1, 0], [3, 0, 0] };
-int[][] Z0 = { { 0, 2, 0 }, { 1, 2, 0 }, { 1, 3, 0 }, { 0, 3, 0 } };
-int[,] NX0 = { { 0, -1, 0 }, { 1, -1, 0 }, { 1, -2, 0 }, { 0, -2, 0 } };
-int[,] NZ0 = { { -1, 0, 0 }, { -1, 1, 0 }, { -2, 1, 0 }, { -2, 0, 0 } };
-
-int[,] a = new int[,](X0)
-
-int[,] X180 = { { -2, 0, 0 }, { -2, -1, 0 }, { -3, -1, 0 }, { -3, 0, 0 } };
-int[,] Z180 = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
-int[,] NX180 = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
-int[,] NZ180 = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
-*/
-/*
-          |    0  |   90  |  180  |  270  |
-        X:|  x  y |  x  y |  x  y |  x  y |
-        1 | +2 +0 | +0 -2 | -2 -0 | -0 +2 |
-        2 | +2 +0 | +0 -2 | -2 -0 | -0 +2 |
-        3 | +3 +1 | +1 -3 | -3 -1 | -1 +3 |
-        4 | +3 +1 | +1 -3 | -3 -1 | -1 +3 |
-
-          |    0  |   90  |  180  |  270  |
-        Z:|  x  y |  x  y |  x  y |  x  y |
-        1 | +0 +2 | +2 -0 | -0 -2 | -2 +0 |
-        2 | +1 +2 | +2 -0 | -0 -2 | -2 +0 |
-        3 | +1 +3 | +3 -1 | -1 -3 | -3 +1 |
-        4 | +0 +3 | +3 -1 | -1 -3 | -3 +1 |
-
-
-
-
-        
-           |    0  |   90  |  180  |  270  |
-        NX:|  x  y |  x  y |  x  y |  x  y |
-        1  | -1 +0 | -1 -0 | -0 -1 | +1 +0 |
-        2  | -1 +1 | -1 -0 | -0 -1 | +1 +0 |
-        3  | -2 +1 | -2 -1 | -1 -2 | +2 +1 |
-        4  | -2 +0 | -2 -1 | -1 -2 | +2 +1 |
-
-           |    0  |   90  |  180  |  270  |
-        NZ:|  x  y |  x  y |  x  y |  x  y |
-        1  | +0 -1 | -1 -0 | -0 -1 | +1 +0 |
-        2  | +0 -1 | -1 -0 | -0 -1 | +1 +0 |
-        3  | +1 -2 | -2 -1 | -1 -2 | +2 +1 |
-        4  | +1 -2 | -2 -1 | -1 -2 | +2 +1 |
-        */

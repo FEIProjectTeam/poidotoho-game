@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CrossroadCollider : MonoBehaviour
@@ -13,7 +11,7 @@ public class CrossroadCollider : MonoBehaviour
     private Vector3 outPointPosition;
     private int number = -1;
     private Crossroad crossroad;
-    // Start is called before the first frame update
+
     void Start()
     {
         if (this.inPoint != null && this.outPoint != null)

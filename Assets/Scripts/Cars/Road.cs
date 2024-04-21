@@ -92,11 +92,6 @@ public class Road : MonoBehaviour
 
     private List<Path> paths;
 
-    void Start()
-    {
-    
-    }
-
     public void init()
     {
         paths = new List<Path>();
@@ -112,10 +107,8 @@ public class Road : MonoBehaviour
                 if (neighbours[i] != null && neighbours[j] != null)
                 {
                     if (inVectors[i] != null && outVectors[j] != null)
-                    {
-                        paths.Add(new Path(new List<Vector3> { inVectors[i].transform.position, outVectors[j].transform.position }, neighbours[j])); ;
+                        paths.Add(new Path(new List<Vector3> { inVectors[i].transform.position, outVectors[j].transform.position }, neighbours[j]));
 
-                    }
                     if (inVectors[j] != null && outVectors[i] != null)
                         paths.Add(new Path(new List<Vector3> { inVectors[j].transform.position, outVectors[i].transform.position }, neighbours[i]));
                 }
@@ -140,8 +133,6 @@ public class Road : MonoBehaviour
                 }
             }
         }
-
-        //Debug.Log(this.GetInstanceID() + " má " + this.paths.Count + " pathov");
     }
 
     public bool hasSpawn()
@@ -165,9 +156,8 @@ public class Road : MonoBehaviour
     public Vector3 getDespawnPoint()
     {
         if (isSpawn && despawn != null)
-        {
             return despawn.transform.position;
-        }
+
         else
         {
             Debug.LogError("Someone wants despawn point on nondespawnable road ID: " + this.GetInstanceID());
@@ -177,9 +167,8 @@ public class Road : MonoBehaviour
     public Vector3 getSpawnPoint()
     {
         if (isSpawn && spawn != null)
-        {
             return spawn.transform.position;
-        }
+
         else
         {
             Debug.LogError("Someone wants spawn point on nonspawnable road ID: " + this.GetInstanceID());
@@ -224,41 +213,7 @@ public class Road : MonoBehaviour
 
         if (!paths.Any())
             Debug.LogError("Couldn't find any path at road: " + JsonUtility.ToJson(this, true));
+
         return paths;
     }
-    /*
-    public Vector3[] getInPoints()
-    {
-        return inPoints;
-    }
-    public Vector3[] getOutPoints()
-    {
-        return outPoints;
-    }
-
-    public void addNeighbour(Road road)
-    {
-        neighbours.Add(road);
-        //neighbours[index] = road;
-    }
-
-    public Road getNeighbour(int index)
-    {
-        return neighbours[index];
-    }
-    public List<Road> getNeighbours()
-    {
-        return neighbours;
-    }
-    public int getNeighboursCount()
-    {
-        //return neighbours.Count(n => n != null);
-        return neighbours.Count;
-    }*/
-
-    void Update()
-    {
-        //Debug.Log(this.GetInstanceID() + " ma susedov: " + this.getNeighboursCount());
-    }
-
 }
