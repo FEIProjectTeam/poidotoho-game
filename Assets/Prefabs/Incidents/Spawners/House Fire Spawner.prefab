@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2999821288366138042}
-  - component: {fileID: 2708308600249937726}
   - component: {fileID: -7710455693815638958}
   - component: {fileID: 6937967763131454858}
+  - component: {fileID: 2708308600249937726}
   m_Layer: 0
   m_Name: House Fire Spawner
   m_TagString: Untagged
@@ -34,23 +34,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2708308600249937726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8577812532067678297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f4df42f085bac4dab811f97e51238b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  incidents: []
-  incidentReplacements:
-  - {fileID: 6172255567073049538, guid: 804ecb5ef6d5e104d9759fc35e88a16a, type: 3}
-  - {fileID: 4629718244889656398, guid: 4e308227661f1284ebd854c08781f61c, type: 3}
-  isSpawner: 1
 --- !u!33 &-7710455693815638958
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -101,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2708308600249937726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8577812532067678297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f4df42f085bac4dab811f97e51238b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incidents: []
+  incidentReplacements:
+  - {fileID: 6172255567073049538, guid: 804ecb5ef6d5e104d9759fc35e88a16a, type: 3}
+  - {fileID: 4629718244889656398, guid: 4e308227661f1284ebd854c08781f61c, type: 3}
+  isSpawner: 1
+  qna:
+    question: 
+    correctAnswers: []
+    wrongAnswers: []

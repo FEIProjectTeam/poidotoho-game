@@ -7,20 +7,36 @@ namespace Incidents
 {
     public class IncidentCarCrash : IncidentBase
     {
-        private void Start()
+        protected override List<QNAData> QNAs { get; set; }
+
+        protected override void Awake()
         {
-            addQuestionAndAnswer(
-                new List<QuestionAndAnswers> {
-                    new QuestionAndAnswers("Aké poistenie ti pomôže ak nabúraš svoje auto?",
-                        new string[] { 
-                            "Žiadne poistenie nemám",
-                            "Poistenie automobilu", 
-                            "Sociálne poistenie" },
-                        new int[] { 1 }),
-                });
+            base.Awake();
+
+            QNAs = new List<QNAData>
+            {
+                new(
+                    question: "Aké poistenie vám pomôže ak raz nabúrate svoje auto?",
+                    correctAnswers: new List<string> { "Poistenie automobilu." },
+                    wrongAnswers: new List<string>
+                    {
+                        "Žiadne poistenie nepomôže.",
+                        "Sociálne poistenie."
+                    }
+                ),
+                new(
+                    question: "Kam zavolám ak potrebujem odtiahnuť auto?",
+                    correctAnswers: new List<string>
+                    {
+                        "Na číslo asistenčnej služby, som poistený."
+                    },
+                    wrongAnswers: new List<string>
+                    {
+                        "Kamarátom.",
+                        "Na prvé číslo, ktoré nájdem na internete."
+                    }
+                )
+            };
         }
-        
     }
 }
-
-
