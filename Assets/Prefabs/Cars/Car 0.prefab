@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479d9a89099a8ef4c8036121b7446c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allwaysSpawn: 0
+  randomRotation: 1
   carPrefabs:
   - {fileID: 2383221529882335822, guid: 665c762ebb58ff74f9d01ece1d8e9f64, type: 3}
   - {fileID: 1081766837501123411, guid: fc26a2b872b51494a9251c604993a2a4, type: 3}
