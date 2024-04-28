@@ -13,7 +13,7 @@ namespace Managers
         public int Score { get; private set; }
         public float RemainingTime { get; private set; }
 
-        private readonly List<int> _levelBuildIndexes = new() { 1, 2 };
+        private readonly List<int> _levelBuildIndexes = new() { 1, 2, 3 };
 
         private void Awake()
         {

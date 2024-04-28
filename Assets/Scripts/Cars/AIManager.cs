@@ -469,6 +469,8 @@ public class AIManager : MonoBehaviour
             if (spawn.checkSpawn())
             {
                 List<Vector3> waypoints = findRandomWay(spawn);
+                if (waypoints == null)
+                    return;
 
                 Car c = Instantiate(car, spawn.getSpawnPoint(), spawn.getSpawnRotation());
                 c.SendMessage("setWay", waypoints);
@@ -499,7 +501,14 @@ public class AIManager : MonoBehaviour
             List<Path> nextPaths = next.getPathsFrom(endPoint);
 
             int randomIndex = Random.Range(0, nextPaths.Count);
-            path = nextPaths[randomIndex];
+            try
+            {
+                path = nextPaths[randomIndex];
+            }
+            catch
+            {
+                return null;
+            }
 
             if (path.isDespawn())
                 waypoints.Add(next.getDespawnPoint());

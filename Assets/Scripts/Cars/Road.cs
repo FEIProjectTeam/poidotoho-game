@@ -137,6 +137,12 @@ public class Road : MonoBehaviour
 
     public void removeOutPoint(GameObject point)
     {
+        if (point == spawn || point == despawn)
+        {
+            spawn = null;
+            despawn = null;
+            isSpawn = false;
+        }
         if (point == outX || point == inX)
         {
             inX = null;
