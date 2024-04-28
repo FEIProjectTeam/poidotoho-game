@@ -21,7 +21,7 @@ namespace Managers
             IncidentBase.OnQuizAnswered -= HandleQuizAnswered;
         }
 
-        private void Start()
+        private void Awake()
         {
             _incidentCount = SpawnRandomIncidents();
             if (_incidentCount == 0)

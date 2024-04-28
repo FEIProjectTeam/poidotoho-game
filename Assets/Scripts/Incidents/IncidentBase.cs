@@ -21,6 +21,9 @@ namespace Incidents
         private GameObject[] _incidentReplacements;
 
         [SerializeField]
+        private GameObject[] _removeOnSpawn;
+
+        [SerializeField]
         private bool _isSpawner;
 
         private bool _isQuizAnswered;
@@ -44,6 +47,18 @@ namespace Incidents
                 transform.parent
             );
             incident.AddComponent(GetType());
+            foreach (GameObject obj in _removeOnSpawn)
+            {
+                Road road = obj.transform.parent.GetComponent<Road>();
+                if (road != null)
+                    road.removeOutPoint(obj);
+
+                Crossroad crossroad = obj.transform.parent.GetComponent<Crossroad>();
+                if (crossroad != null)
+                    Destroy(crossroad);
+
+                Destroy(obj);
+            }
             Destroy(gameObject);
         }
 
