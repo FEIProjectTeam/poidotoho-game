@@ -96,13 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f086d94b994422aa534affc6f87054b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qna:
-    question: 
-    correctAnswers: []
-    wrongAnswers: []
   _incidents:
   - {fileID: 3523345102258385620, guid: dab5c02cdfe7d7a4298e4994567b2426, type: 3}
-  - {fileID: 3523345102258385620, guid: cfaa0e1132f31be45b6350b54b89db6c, type: 3}
+  - {fileID: 3523345102258385620, guid: 1f8585ccaf45628468e1c810c34498be, type: 3}
+  - {fileID: 3523345102258385620, guid: eff93c0950fb30c489707cada0a62f85, type: 3}
+  - {fileID: 3523345102258385620, guid: d3a588c751b2d0945b678260a4f1f629, type: 3}
+  - {fileID: 3523345102258385620, guid: 32676f17bd875db469814c830d9749ba, type: 3}
   _incidentReplacements:
   - {fileID: 5182456745956613823, guid: e5d8691e8c25d4d43bd3b2ab5babba14, type: 3}
+  _removeOnSpawn: []
   _isSpawner: 1
