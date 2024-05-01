@@ -141,10 +141,15 @@ namespace UI
                     }
                 }
                 if (correctCount == incident.ActiveQNA.CorrectAnswers.Count)
+                {
                     OnQuizAnsweredCorrectly?.Invoke();
-
+                    UpdateIncidentSymbols(true);
+                }
+                else
+                {
+                    UpdateIncidentSymbols(false);
+                }
                 incident.SetQuizAnswered();
-                UpdateIncidentSymbols();
             };
         }
 
@@ -159,14 +164,17 @@ namespace UI
             }
         }
 
-        private void UpdateIncidentSymbols()
+        private void UpdateIncidentSymbols(bool isCorrect)
         {
             int incidentsCount = _incidentSymbols.Count;
             if (incidentsCount > 0)
             {
                 Image incidentSymbol = _incidentSymbols[incidentsCount - 1];
                 _incidentSymbols.RemoveAt(incidentsCount - 1);
-                incidentSymbol.SetEnabled(false);
+                if (isCorrect)
+                    incidentSymbol.AddToClassList("incident-symbol-correct");
+                else
+                    incidentSymbol.AddToClassList("incident-symbol-wrong");
             }
         }
 

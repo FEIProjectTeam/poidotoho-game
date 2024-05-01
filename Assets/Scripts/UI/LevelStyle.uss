@@ -45,8 +45,12 @@
     margin: 3px;
 }
 
-.incident-found {
-    
+.incident-symbol.incident-symbol-correct {
+    --unity-image: resource("Images/incident-ui-symbol-correct");
+}
+
+.incident-symbol.incident-symbol-wrong {
+    --unity-image: resource("Images/incident-ui-symbol-wrong");
 }
 
 .timer-container {
