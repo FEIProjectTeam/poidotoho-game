@@ -8,39 +8,45 @@ namespace Managers
 {
     public class IncidentManager : MonoBehaviour
     {
+        public static IncidentManager Instance { get; private set; }
         public static event Action<int> OnIncidentsSpawned;
         private int _incidentCount;
 
         private void OnEnable()
         {
+            GameManager.OnGameStateChanged += SpawnIncidents;
             IncidentBase.OnQuizAnswered += HandleQuizAnswered;
         }
 
         private void OnDisable()
         {
+            GameManager.OnGameStateChanged -= SpawnIncidents;
             IncidentBase.OnQuizAnswered -= HandleQuizAnswered;
         }
 
         private void Awake()
         {
-            _incidentCount = SpawnRandomIncidents();
-            if (_incidentCount == 0)
+            if (Instance != null && Instance != this)
             {
-                Debug.LogError("Error: No incidents were spawned.");
-                return;
+                Destroy(gameObject);
             }
-
-            OnIncidentsSpawned?.Invoke(_incidentCount);
+            else
+            {
+                Instance = this;
+                DontDestroyOnLoad(this);
+            }
         }
 
-        private int SpawnRandomIncidents()
+        private void SpawnIncidents(GameManager.GameState gameState)
         {
+            if (gameState != GameManager.GameState.LevelLoaded)
+                return;
             IncidentBase[] allIncidents = FindObjectsByType<IncidentBase>(FindObjectsSortMode.None);
             var groupedIncidents = allIncidents.GroupBy(incident => incident.GetType());
-            int incidentCount = 0;
+            _incidentCount = 0;
             foreach (var group in groupedIncidents)
             {
-                incidentCount++;
+                _incidentCount++;
                 IncidentBase rndIncident = group.ElementAt(Random.Range(0, group.Count()));
                 rndIncident.SpawnIncident();
                 foreach (IncidentBase incident in group.Where(i => i != rndIncident))
@@ -49,7 +55,11 @@ namespace Managers
                 }
             }
 
-            return incidentCount;
+            if (_incidentCount == 0)
+                Debug.LogError("Error: No incidents were spawned.");
+
+            OnIncidentsSpawned?.Invoke(_incidentCount);
+            GameManager.Instance.UpdateGameState(GameManager.GameState.RoamingMap);
         }
 
         private void HandleQuizAnswered()
