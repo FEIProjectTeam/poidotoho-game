@@ -10,9 +10,9 @@ namespace Managers
         public static ScoreTimeManager Instance { get; private set; }
         public static event Action<int> OnScoreUpdated;
         public int Score { get; private set; }
-        public float RemainingTime { get; private set; } = StartingTime;
+        public float RemainingTime { get; private set; }
 
-        private const float StartingTime = 30;
+        private const float StartingTime = 300;
 
         private bool _isLevelStarted;
         private UIDocument _levelUIDocument;
@@ -20,14 +20,12 @@ namespace Managers
 
         private void OnEnable()
         {
-            GameManager.OnGameStateChanged += ResetScoreAndTime;
             GameManager.OnGameStateChanged += InitScoreAndTimer;
             LevelUI.OnQuizAnsweredCorrectly += AddPoint;
         }
 
         private void OnDisable()
         {
-            GameManager.OnGameStateChanged -= ResetScoreAndTime;
             GameManager.OnGameStateChanged -= InitScoreAndTimer;
             LevelUI.OnQuizAnsweredCorrectly -= AddPoint;
         }
@@ -45,14 +43,10 @@ namespace Managers
             }
         }
 
-        private void ResetScoreAndTime(GameManager.GameState gameState)
+        public void ResetScoreAndTime()
         {
-            if (gameState != GameManager.GameState.StartPlaying)
-                return;
-
             Score = 0;
             RemainingTime = StartingTime;
-            print("ResetScoreAndTime");
         }
 
         private void InitScoreAndTimer(GameManager.GameState gameState)

@@ -40,6 +40,7 @@ namespace Managers
                 case GameState.MainMenu:
                     break;
                 case GameState.StartPlaying:
+                    ScoreTimeManager.Instance.ResetScoreAndTime();
                     break;
                 case GameState.LevelLoaded:
                     break;

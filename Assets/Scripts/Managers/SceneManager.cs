@@ -8,7 +8,7 @@ namespace Managers
     {
         public static SceneManager Instance { get; private set; }
 
-        private readonly List<int> _levelBuildIndexes = new() { 1, 2, 3 };
+        private readonly List<int> _levelBuildIndexes = new() { 1, 2 };
 
         private void OnEnable()
         {
@@ -41,7 +41,7 @@ namespace Managers
                     UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
                 )
             )
-                GameManager.Instance.UpdateGameState(GameManager.GameState.RoamingMap);
+                GameManager.Instance.UpdateGameState(GameManager.GameState.LevelLoaded);
         }
 
         private void LoadNextLevel(GameManager.GameState gameState)
