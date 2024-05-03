@@ -12,12 +12,12 @@ namespace Managers
 
         private void OnEnable()
         {
-            GameManager.OnGameStateChanged += LoadNextLevel;
+            GameManager.OnGameStateChanged += LoadNextScene;
         }
 
         private void OnDisable()
         {
-            GameManager.OnGameStateChanged -= LoadNextLevel;
+            GameManager.OnGameStateChanged -= LoadNextScene;
         }
 
         private void Awake()
@@ -41,45 +41,61 @@ namespace Managers
                     UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
                 )
             )
-                GameManager.Instance.UpdateGameState(GameManager.GameState.LevelLoaded);
-        }
-
-        private void LoadNextLevel(GameManager.GameState gameState)
-        {
-            print("LoadNextLevel");
-            if (
-                gameState
-                is GameManager.GameState.StartPlaying
-                    or GameManager.GameState.LevelFinished
-            )
-                StartCoroutine(LoadNextLevel());
-        }
-
-        private IEnumerator LoadNextLevel()
-        {
-            var nextLevelIndex =
-                UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
-            if (
-                _levelBuildIndexes.Contains(nextLevelIndex)
-                && ScoreTimeManager.Instance.RemainingTime > 0
-            )
             {
-                AsyncOperation asyncLoadLevel =
-                    UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(nextLevelIndex);
-                while (!asyncLoadLevel.isDone)
-                {
-                    print("Loading...");
-                    yield return null;
-                }
+                ScoreTimeManager.Instance.ResetScoreTime();
                 GameManager.Instance.UpdateGameState(GameManager.GameState.LevelLoaded);
             }
-            else
-            {
-                var scene = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Main Menu");
-                scene.allowSceneActivation = true;
+        }
 
-                GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
+        private void LoadNextScene(GameManager.GameState gameState)
+        {
+            var nextSceneIdx = 0;
+            switch (gameState)
+            {
+                case GameManager.GameState.MainMenu:
+                    nextSceneIdx = 0;
+                    break;
+                case GameManager.GameState.StartPlaying:
+                    nextSceneIdx = 1;
+                    break;
+                case GameManager.GameState.NextLevel:
+                    nextSceneIdx =
+                        UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
+                    if (
+                        !_levelBuildIndexes.Contains(nextSceneIdx)
+                        || ScoreTimeManager.Instance.RemainingTime == 0
+                    )
+                        nextSceneIdx = 0;
+                    break;
             }
+
+            switch (gameState)
+            {
+                case GameManager.GameState.MainMenu:
+                case GameManager.GameState.StartPlaying:
+                case GameManager.GameState.NextLevel:
+                    StartCoroutine(LoadNextScene(nextSceneIdx));
+                    break;
+            }
+        }
+
+        private IEnumerator LoadNextScene(int sceneIdx)
+        {
+            AsyncOperation asyncLoadLevel = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(
+                sceneIdx
+            );
+            // asyncLoadLevel.allowSceneActivation = false;
+            while (!asyncLoadLevel.isDone)
+            {
+                print($"Loading progress: {asyncLoadLevel.progress * 100}%");
+                // if (asyncLoadLevel.progress >= 0.9f && ActivateLoadedScene)
+                // {
+                //     asyncLoadLevel.allowSceneActivation = true;
+                // }
+                yield return null;
+            }
+            if (sceneIdx != 0)
+                GameManager.Instance.UpdateGameState(GameManager.GameState.LevelLoaded);
         }
     }
 }
