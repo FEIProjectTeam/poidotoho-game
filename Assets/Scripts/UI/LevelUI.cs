@@ -21,6 +21,8 @@ namespace UI
         private List<Button> _selectedAnswerBtns;
         private List<Image> _incidentSymbols;
         private Button _submitBtn;
+        private VisualElement _incidentsContainer;
+        private VisualElement _quizContainer;
 
         private void Awake()
         {
@@ -34,7 +36,8 @@ namespace UI
             scorePointsLabel.name = "score-points";
             scorePointsLabel.text = "0";
 
-            Utils.Create(addTo: root, "incidents-container").name = "incidents-container";
+            _incidentsContainer = Utils.Create(addTo: root, "incidents-container");
+            _incidentsContainer.name = "incidents-container";
 
             var timerContainer = Utils.Create(addTo: root, "timer-container");
             Utils.Create<Label>(addTo: timerContainer, "timer-text").text = "čas:";
@@ -42,7 +45,8 @@ namespace UI
             timerValueLabel.name = "timer-value";
             timerValueLabel.text = "∞";
 
-            Utils.Create(addTo: root, "quiz-container").name = "quiz-container";
+            _quizContainer = Utils.Create(addTo: root, "quiz-container");
+            _quizContainer.name = "quiz-container";
         }
 
         private void OnEnable()
@@ -50,6 +54,7 @@ namespace UI
             IncidentBase.OnIncidentFound += OpenQuiz;
             ScoreTimeManager.OnScoreUpdated += UpdateScore;
             IncidentManager.OnIncidentsSpawned += CreateIncidentSymbols;
+            GameManager.OnGameStateChanged += OpenLevelSummary;
         }
 
         private void OnDisable()
@@ -57,6 +62,7 @@ namespace UI
             IncidentBase.OnIncidentFound -= OpenQuiz;
             ScoreTimeManager.OnScoreUpdated -= UpdateScore;
             IncidentManager.OnIncidentsSpawned -= CreateIncidentSymbols;
+            GameManager.OnGameStateChanged -= OpenLevelSummary;
         }
 
         private void OpenQuiz(IncidentBase incident)
@@ -65,17 +71,16 @@ namespace UI
                 return;
             GameManager.Instance.UpdateGameState(GameManager.GameState.DoingQuiz);
 
-            var container = _document.rootVisualElement.Q("quiz-container");
-            container.Clear();
+            _quizContainer.Clear();
 
-            var containerBox = Utils.Create(addTo: container, "quiz-container-box");
+            var containerBox = Utils.Create(addTo: _quizContainer, "quiz-container-box");
 
             // Close button
             var closeBtn = Utils.Create<Button>(addTo: containerBox, "quiz-close-btn");
             closeBtn.text = "X";
             closeBtn.clicked += () =>
             {
-                container.Clear();
+                _quizContainer.Clear();
                 GameManager.Instance.UpdateGameState(GameManager.GameState.RoamingMap);
             };
 
@@ -155,12 +160,13 @@ namespace UI
 
         private void CreateIncidentSymbols(int incidentCount)
         {
-            var container = _document.rootVisualElement.Q("incidents-container");
-            container.Clear();
+            _incidentsContainer.Clear();
             _incidentSymbols = new List<Image>();
             for (int i = 0; i < incidentCount; i++)
             {
-                _incidentSymbols.Add(Utils.Create<Image>(addTo: container, "incident-symbol"));
+                _incidentSymbols.Add(
+                    Utils.Create<Image>(addTo: _incidentsContainer, "incident-symbol")
+                );
             }
         }
 
@@ -182,6 +188,55 @@ namespace UI
         {
             var scorePointsLabel = (Label)_document.rootVisualElement.Q("score-points");
             scorePointsLabel.text = newScore.ToString();
+        }
+
+        private void OpenLevelSummary(GameManager.GameState gameState)
+        {
+            if (gameState != GameManager.GameState.LevelFinished)
+                return;
+
+            var root = _document.rootVisualElement;
+            root.Clear();
+
+            var summaryContainer = Utils.Create(addTo: root, "summary-container");
+            var containerBox = Utils.Create(addTo: summaryContainer, "summary-container-box");
+
+            var remainingTime = ScoreTimeManager.Instance.RemainingTime;
+            var timeBox = Utils.Create(addTo: containerBox, "summary-box");
+            if (remainingTime > 0)
+            {
+                Utils.Create<Label>(addTo: timeBox, "summary-text").text = "Zostávajúci čas:";
+                Utils.Create<Label>(addTo: timeBox, "summary-value").text =
+                    $"{ScoreTimeManager.FormatTime(ScoreTimeManager.Instance.RemainingTime)}";
+            }
+            else
+            {
+                Utils.Create<Label>(addTo: timeBox, "w-full").text =
+                    "Koniec hry, uplynul ti čas...";
+            }
+            var scoreBox = Utils.Create(addTo: containerBox, "summary-box");
+            Utils.Create<Label>(addTo: scoreBox, "summary-text").text = "Získané body:";
+            Utils.Create<Label>(addTo: scoreBox, "summary-value").text =
+                $"{ScoreTimeManager.Instance.Score}";
+
+            var btnBox = Utils.Create(addTo: containerBox, "summary-box");
+
+            var menuBtn = Utils.Create<Button>(addTo: btnBox);
+            menuBtn.text = "Ukončiť hru";
+            menuBtn.clicked += () =>
+            {
+                GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
+            };
+
+            if (remainingTime == 0)
+                return;
+
+            var continueBtn = Utils.Create<Button>(addTo: btnBox);
+            continueBtn.text = "Pokračovať";
+            continueBtn.clicked += () =>
+            {
+                GameManager.Instance.UpdateGameState(GameManager.GameState.NextLevel);
+            };
         }
     }
 }
