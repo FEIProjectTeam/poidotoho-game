@@ -18,15 +18,24 @@ namespace Managers
         private UIDocument _levelUIDocument;
         private Label _timerValueLabel;
 
+        public static string FormatTime(float time)
+        {
+            int minutes = Mathf.FloorToInt(time / 60);
+            int seconds = Mathf.FloorToInt(time % 60);
+            return $"{minutes:0}:{seconds:00}";
+        }
+
         private void OnEnable()
         {
             GameManager.OnGameStateChanged += InitScoreAndTimer;
+            GameManager.OnGameStateChanged += StopTime;
             LevelUI.OnQuizAnsweredCorrectly += AddPoint;
         }
 
         private void OnDisable()
         {
             GameManager.OnGameStateChanged -= InitScoreAndTimer;
+            GameManager.OnGameStateChanged -= StopTime;
             LevelUI.OnQuizAnsweredCorrectly -= AddPoint;
         }
 
@@ -43,10 +52,11 @@ namespace Managers
             }
         }
 
-        public void ResetScoreAndTime()
+        public void ResetScoreTime()
         {
             Score = 0;
             RemainingTime = StartingTime;
+            _isLevelStarted = false;
         }
 
         private void InitScoreAndTimer(GameManager.GameState gameState)
@@ -58,6 +68,14 @@ namespace Managers
             OnScoreUpdated?.Invoke(Score);
             _timerValueLabel = (Label)
                 FindObjectOfType<UIDocument>().rootVisualElement.Q("timer-value");
+        }
+
+        private void StopTime(GameManager.GameState gameState)
+        {
+            if (gameState != GameManager.GameState.LevelFinished)
+                return;
+
+            _isLevelStarted = false;
         }
 
         private void Update()
@@ -72,10 +90,7 @@ namespace Managers
                 RemainingTime = 0;
                 GameManager.Instance.UpdateGameState(GameManager.GameState.LevelFinished);
             }
-
-            int minutes = Mathf.FloorToInt(RemainingTime / 60);
-            int seconds = Mathf.FloorToInt(RemainingTime % 60);
-            _timerValueLabel.text = $"{minutes:0}:{seconds:00}";
+            _timerValueLabel.text = FormatTime(RemainingTime);
         }
 
         private void AddPoint()
