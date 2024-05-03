@@ -29,7 +29,8 @@ namespace Managers
             LevelLoaded,
             RoamingMap,
             DoingQuiz,
-            LevelFinished
+            LevelFinished,
+            NextLevel,
         }
 
         public void UpdateGameState(GameState newState)
@@ -40,7 +41,7 @@ namespace Managers
                 case GameState.MainMenu:
                     break;
                 case GameState.StartPlaying:
-                    ScoreTimeManager.Instance.ResetScoreAndTime();
+                    ScoreTimeManager.Instance.ResetScoreTime();
                     break;
                 case GameState.LevelLoaded:
                     break;
@@ -49,6 +50,8 @@ namespace Managers
                 case GameState.DoingQuiz:
                     break;
                 case GameState.LevelFinished:
+                    break;
+                case GameState.NextLevel:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
