@@ -195,28 +195,40 @@ namespace UI
             if (gameState != GameManager.GameState.LevelFinished)
                 return;
 
+            var remainingTime = ScoreTimeManager.Instance.RemainingTime;
+            var isInLastLevel = SceneManager.Instance.IsInLastLevel();
             var root = _document.rootVisualElement;
             root.Clear();
 
             var summaryContainer = Utils.Create(addTo: root, "summary-container");
             var containerBox = Utils.Create(addTo: summaryContainer, "summary-container-box");
 
-            var remainingTime = ScoreTimeManager.Instance.RemainingTime;
-            var timeBox = Utils.Create(addTo: containerBox, "summary-box");
+            var topBox = Utils.Create(addTo: containerBox, "summary-box");
+            var topBoxLabel = Utils.Create<Label>(
+                addTo: topBox,
+                "w-full",
+                "text-middle-center",
+                "whitespace-normal"
+            );
             if (remainingTime > 0)
             {
-                Utils.Create<Label>(addTo: timeBox, "summary-text").text = "Zostávajúci čas:";
-                Utils.Create<Label>(addTo: timeBox, "summary-value").text =
+                topBoxLabel.text = isInLastLevel
+                    ? "Dostal si sa na koniec hry a našiel si všetky poistné udalosti, si super!"
+                    : "V tomto leveli sa ti podarilo nájsť všetky poistné udalosti, len tak ďalej!";
+
+                var middleBox = Utils.Create(addTo: containerBox, "summary-box");
+                Utils.Create<Label>(addTo: middleBox, "summary-text").text = "Zostávajúci čas:";
+                Utils.Create<Label>(addTo: middleBox, "summary-value").text =
                     $"{ScoreTimeManager.FormatTime(ScoreTimeManager.Instance.RemainingTime)}";
             }
             else
             {
-                Utils.Create<Label>(addTo: timeBox, "w-full").text =
-                    "Koniec hry, uplynul ti čas...";
+                topBoxLabel.text = "Koniec hry, uplynul ti čas...";
             }
-            var scoreBox = Utils.Create(addTo: containerBox, "summary-box");
-            Utils.Create<Label>(addTo: scoreBox, "summary-text").text = "Získané body:";
-            Utils.Create<Label>(addTo: scoreBox, "summary-value").text =
+
+            var bottomBox = Utils.Create(addTo: containerBox, "summary-box");
+            Utils.Create<Label>(addTo: bottomBox, "summary-text").text = "Získané body:";
+            Utils.Create<Label>(addTo: bottomBox, "summary-value").text =
                 $"{ScoreTimeManager.Instance.Score}";
 
             var btnBox = Utils.Create(addTo: containerBox, "summary-box");
@@ -228,7 +240,7 @@ namespace UI
                 GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
             };
 
-            if (remainingTime == 0)
+            if (remainingTime == 0 || isInLastLevel)
                 return;
 
             var continueBtn = Utils.Create<Button>(addTo: btnBox);

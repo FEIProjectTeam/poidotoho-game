@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Managers
@@ -8,7 +9,14 @@ namespace Managers
     {
         public static SceneManager Instance { get; private set; }
 
-        private readonly List<int> _levelBuildIndexes = new() { 1, 2 };
+        private readonly List<int> _levelBuildIndexes = new() { 1 };
+
+        public bool IsInLastLevel()
+        {
+            var currIdx = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+            var lastLevelIdx = _levelBuildIndexes.Last();
+            return currIdx == lastLevelIdx;
+        }
 
         private void OnEnable()
         {
