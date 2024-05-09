@@ -282,11 +282,29 @@ namespace UI
 
             var submitBtn = Utils.Create<Button>(addTo: btnBox);
             submitBtn.text = "Zapojiť sa";
+            submitBtn.SetEnabled(false);
             submitBtn.clicked += () =>
             {
-                // GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
-                print(nicknameTextField.value);
+                if (string.IsNullOrEmpty(nicknameTextField.value))
+                    return;
+
+                StartCoroutine(
+                    NetworkManager.SubmitGameSessionData(
+                        nicknameTextField.value,
+                        ScoreTimeManager.Instance.Score,
+                        (int)ScoreTimeManager.Instance.RemainingTime
+                    )
+                );
+                GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
             };
+
+            nicknameTextField.RegisterValueChangedCallback(evnt =>
+            {
+                if (string.IsNullOrEmpty(evnt.newValue))
+                    submitBtn.SetEnabled(false);
+                else
+                    submitBtn.SetEnabled(true);
+            });
         }
     }
 }

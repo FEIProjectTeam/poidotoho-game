@@ -9,7 +9,7 @@ namespace Managers
     {
         public static SceneManager Instance { get; private set; }
 
-        private readonly List<int> _levelBuildIndexes = new() { 1 };
+        private readonly List<int> _levelBuildIndexes = new() { 1, 2 };
 
         public bool IsInLastLevel()
         {
@@ -92,14 +92,8 @@ namespace Managers
             AsyncOperation asyncLoadLevel = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(
                 sceneIdx
             );
-            // asyncLoadLevel.allowSceneActivation = false;
             while (!asyncLoadLevel.isDone)
             {
-                print($"Loading progress: {asyncLoadLevel.progress * 100}%");
-                // if (asyncLoadLevel.progress >= 0.9f && ActivateLoadedScene)
-                // {
-                //     asyncLoadLevel.allowSceneActivation = true;
-                // }
                 yield return null;
             }
             if (sceneIdx != 0)
