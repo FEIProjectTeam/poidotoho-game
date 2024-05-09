@@ -223,7 +223,8 @@ namespace UI
             }
             else
             {
-                topBoxLabel.text = "Koniec hry, uplynul ti čas...";
+                topBoxLabel.text =
+                    "Kým si hľadal poistné udalosti tak ti uplynul všetok čas... Nevadí, skús to znovu!";
             }
 
             var bottomBox = Utils.Create(addTo: containerBox, "summary-box");
@@ -295,7 +296,6 @@ namespace UI
                         (int)ScoreTimeManager.Instance.RemainingTime
                     )
                 );
-                GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
             };
 
             nicknameTextField.RegisterValueChangedCallback(evnt =>

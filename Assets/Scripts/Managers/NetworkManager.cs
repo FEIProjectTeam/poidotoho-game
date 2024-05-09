@@ -23,13 +23,9 @@ namespace Managers
             );
             yield return postRequest.SendWebRequest();
             if (postRequest.result != UnityWebRequest.Result.Success)
-            {
                 Debug.LogError(postRequest.error);
-            }
             else
-            {
-                Debug.Log("Form upload complete!");
-            }
+                GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
         }
 
         private static UnityWebRequest CreateRequest(

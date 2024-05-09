@@ -232,7 +232,6 @@ Button:enabled:hover {
 
 .summary-box {
     width: 100%;
-    height: 33%;
     flex-direction: row;
 }
 
@@ -263,7 +262,6 @@ Button:enabled:hover {
 
 .submit-box {
     width: 95%;
-    height: 33%;
     flex-direction: column;
 }
 
