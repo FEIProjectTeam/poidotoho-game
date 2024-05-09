@@ -260,3 +260,27 @@ Button:enabled:hover {
     margin: auto;
     color: var(--color-secondary);
 }
+
+.submit-box {
+    width: 95%;
+    height: 33%;
+    flex-direction: column;
+}
+
+TextInput {
+    background-color: white;
+    border-width: 0;
+    -unity-text-align: middle-center;
+}
+
+.submit-text-field {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    color: var(--color-secondary);
+    background-color: white;
+    border-radius: 50px;
+    border-color: var(--color-primary);
+    border-width: 6px;
+    -unity-text-align: middle-center;
+}

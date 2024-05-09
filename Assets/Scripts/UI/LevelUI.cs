@@ -233,12 +233,9 @@ namespace UI
 
             var btnBox = Utils.Create(addTo: containerBox, "summary-box");
 
-            var menuBtn = Utils.Create<Button>(addTo: btnBox);
-            menuBtn.text = "Ukončiť hru";
-            menuBtn.clicked += () =>
-            {
-                GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
-            };
+            var quitBtn = Utils.Create<Button>(addTo: btnBox);
+            quitBtn.text = "Ukončiť hru";
+            quitBtn.clicked += OpenSubmitDataForm;
 
             if (remainingTime == 0 || isInLastLevel)
                 return;
@@ -248,6 +245,47 @@ namespace UI
             continueBtn.clicked += () =>
             {
                 GameManager.Instance.UpdateGameState(GameManager.GameState.NextLevel);
+            };
+        }
+
+        private void OpenSubmitDataForm()
+        {
+            var root = _document.rootVisualElement;
+            root.Clear();
+
+            var summaryContainer = Utils.Create(addTo: root, "summary-container");
+            var containerBox = Utils.Create(addTo: summaryContainer, "summary-container-box");
+
+            var topBox = Utils.Create(addTo: containerBox, "summary-box");
+            var topBoxLabel = Utils.Create<Label>(
+                addTo: topBox,
+                "w-full",
+                "text-middle-center",
+                "whitespace-normal"
+            );
+            topBoxLabel.text = "Zapoj sa do súťaže a ukáž všetkým aký si dobrý!";
+
+            var middleBox = Utils.Create(addTo: containerBox, "submit-box");
+            var nicknameLabel = Utils.Create<Label>(addTo: middleBox);
+            nicknameLabel.text = "Tvoja prezývka:";
+            var nicknameTextField = Utils.Create<TextField>(addTo: middleBox, "submit-text-field");
+            nicknameTextField.maxLength = 32;
+
+            var btnBox = Utils.Create(addTo: containerBox, "summary-box");
+
+            var quitBtn = Utils.Create<Button>(addTo: btnBox);
+            quitBtn.text = "Preskočiť";
+            quitBtn.clicked += () =>
+            {
+                GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
+            };
+
+            var submitBtn = Utils.Create<Button>(addTo: btnBox);
+            submitBtn.text = "Zapojiť sa";
+            submitBtn.clicked += () =>
+            {
+                // GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
+                print(nicknameTextField.value);
             };
         }
     }
