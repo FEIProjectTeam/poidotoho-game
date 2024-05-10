@@ -60,6 +60,7 @@ namespace Managers
 
             OnIncidentsSpawned?.Invoke(_incidentCount);
             GameManager.Instance.UpdateGameState(GameManager.GameState.RoamingMap);
+            AIManager.Instance.startSpawning();
         }
 
         private void HandleQuizAnswered()
