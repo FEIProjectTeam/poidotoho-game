@@ -9,7 +9,7 @@ namespace Managers
     {
         public static SceneManager Instance { get; private set; }
 
-        private readonly List<int> _levelBuildIndexes = new() { 1, 2, 3, 4 };
+        private readonly List<int> _levelBuildIndexes = new() { 1, 2, 3, 4, 5 };
 
         public bool IsInLastLevel()
         {
