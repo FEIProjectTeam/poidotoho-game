@@ -12,6 +12,14 @@ Button:enabled:hover {
     width: 100%;
 }
 
+.whitespace-normal {
+    white-space: normal;
+}
+
+.text-middle-center {
+    -unity-text-align: middle-center;
+}
+
 .score-container {
     flex-direction: row;
     position: absolute;
@@ -198,8 +206,8 @@ Button:enabled:hover {
 }
 
 .summary-container {
-    width: 50%;
-    height: 50%;
+    width: 70%;
+    height: 60%;
     margin: auto;
     font-size: 30px;
     color: rgb(44, 63, 70);
@@ -219,12 +227,11 @@ Button:enabled:hover {
     padding: 20px;
     color: var(--color-primary);
     -unity-font-style: bold;
-    -unity-text-align: middle-center;
+    -unity-text-align: middle-left;
 }
 
 .summary-box {
     width: 100%;
-    height: 33%;
     flex-direction: row;
 }
 
@@ -240,12 +247,38 @@ Button:enabled:hover {
 }
 
 .summary-text {
-    width: 70%;
+    width: 50%;
+    padding-right: 50px;
     margin: auto;
+    -unity-text-align: middle-right;
 }
 
 .summary-value {
-    width: 30%;
+    width: 50%;
+    padding-left: 50px;
     margin: auto;
     color: var(--color-secondary);
+}
+
+.submit-box {
+    width: 95%;
+    flex-direction: column;
+}
+
+TextInput {
+    background-color: white;
+    border-width: 0;
+    -unity-text-align: middle-center;
+}
+
+.submit-text-field {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    color: var(--color-secondary);
+    background-color: white;
+    border-radius: 50px;
+    border-color: var(--color-primary);
+    border-width: 6px;
+    -unity-text-align: middle-center;
 }
