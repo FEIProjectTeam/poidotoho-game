@@ -8,11 +8,17 @@ namespace Managers
 {
     public static class NetworkManager
     {
-        public static IEnumerator SubmitGameSessionData(string nickname, int score, int timeLeft)
+        public static IEnumerator SubmitGameSessionData(
+            string nickname,
+            int grade,
+            int score,
+            int timeLeft
+        )
         {
             var postData = new GameSessionData
             {
                 nickname = nickname,
+                grade = grade,
                 score = score,
                 time_left = timeLeft
             };
@@ -65,6 +71,7 @@ namespace Managers
     public class GameSessionData
     {
         public string nickname;
+        public int grade;
         public int score;
         public int time_left;
     }

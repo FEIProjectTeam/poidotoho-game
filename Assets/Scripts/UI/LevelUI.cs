@@ -234,14 +234,14 @@ namespace UI
 
             var btnBox = Utils.Create(addTo: containerBox, "summary-box");
 
-            var quitBtn = Utils.Create<Button>(addTo: btnBox);
+            var quitBtn = Utils.Create<Button>(addTo: btnBox, "submit-btn");
             quitBtn.text = "Ukončiť hru";
             quitBtn.clicked += OpenSubmitDataForm;
 
             if (remainingTime == 0 || isInLastLevel)
                 return;
 
-            var continueBtn = Utils.Create<Button>(addTo: btnBox);
+            var continueBtn = Utils.Create<Button>(addTo: btnBox, "submit-btn");
             continueBtn.text = "Pokračovať";
             continueBtn.clicked += () =>
             {
@@ -254,10 +254,10 @@ namespace UI
             var root = _document.rootVisualElement;
             root.Clear();
 
-            var summaryContainer = Utils.Create(addTo: root, "summary-container");
-            var containerBox = Utils.Create(addTo: summaryContainer, "summary-container-box");
+            var submitContainer = Utils.Create(addTo: root, "submit-container");
+            var containerBox = Utils.Create(addTo: submitContainer, "summary-container-box");
 
-            var topBox = Utils.Create(addTo: containerBox, "summary-box");
+            var topBox = Utils.Create(addTo: containerBox, "w-full", "flex-row");
             var topBoxLabel = Utils.Create<Label>(
                 addTo: topBox,
                 "w-full",
@@ -266,22 +266,41 @@ namespace UI
             );
             topBoxLabel.text = "Zapoj sa do súťaže a ukáž všetkým aký si dobrý!";
 
-            var middleBox = Utils.Create(addTo: containerBox, "submit-box");
-            var nicknameLabel = Utils.Create<Label>(addTo: middleBox);
+            var middleBox = Utils.Create(
+                addTo: containerBox,
+                "flex-row",
+                "w-full",
+                "justify-around"
+            );
+
+            var middleLeftBox = Utils.Create(addTo: middleBox, "flex-col", "w-80pe");
+            var nicknameLabel = Utils.Create<Label>(addTo: middleLeftBox);
             nicknameLabel.text = "Tvoja prezývka:";
-            var nicknameTextField = Utils.Create<TextField>(addTo: middleBox, "submit-text-field");
+            var nicknameTextField = Utils.Create<TextField>(
+                addTo: middleLeftBox,
+                "submit-input-field"
+            );
             nicknameTextField.maxLength = 32;
 
-            var btnBox = Utils.Create(addTo: containerBox, "summary-box");
+            var middleRightBox = Utils.Create(addTo: middleBox, "flex-col", "w-20pe");
+            var gradeLabel = Utils.Create<Label>(addTo: middleRightBox);
+            gradeLabel.text = "Trieda:";
+            var gradeIntField = Utils.Create<UnsignedIntegerField>(
+                addTo: middleRightBox,
+                "submit-input-field"
+            );
+            gradeIntField.maxLength = 1;
 
-            var quitBtn = Utils.Create<Button>(addTo: btnBox);
+            var btnBox = Utils.Create(addTo: containerBox, "w-full", "flex-row");
+
+            var quitBtn = Utils.Create<Button>(addTo: btnBox, "submit-btn");
             quitBtn.text = "Preskočiť";
             quitBtn.clicked += () =>
             {
                 GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
             };
 
-            var submitBtn = Utils.Create<Button>(addTo: btnBox);
+            var submitBtn = Utils.Create<Button>(addTo: btnBox, "submit-btn");
             submitBtn.text = "Zapojiť sa";
             submitBtn.SetEnabled(false);
             submitBtn.clicked += () =>
@@ -292,19 +311,27 @@ namespace UI
                 StartCoroutine(
                     NetworkManager.SubmitGameSessionData(
                         nicknameTextField.value,
+                        (int)gradeIntField.value,
                         ScoreTimeManager.Instance.Score,
                         (int)ScoreTimeManager.Instance.RemainingTime
                     )
                 );
             };
 
-            nicknameTextField.RegisterValueChangedCallback(evnt =>
+            nicknameTextField.RegisterValueChangedCallback(_ => ValidateInputFields());
+            gradeIntField.RegisterValueChangedCallback(_ => ValidateInputFields());
+            return;
+
+            void ValidateInputFields()
             {
-                if (string.IsNullOrEmpty(evnt.newValue))
+                if (
+                    string.IsNullOrEmpty(nicknameTextField.value)
+                    || gradeIntField.value is < 1 or > 9
+                )
                     submitBtn.SetEnabled(false);
                 else
                     submitBtn.SetEnabled(true);
-            });
+            }
         }
     }
 }
