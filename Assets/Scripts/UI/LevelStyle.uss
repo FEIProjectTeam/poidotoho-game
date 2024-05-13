@@ -1,3 +1,25 @@
+:root {
+    --color-primary: rgb(0, 171, 219);
+    --color-secondary: rgb(1, 63, 88);
+    --bg-color-primary: rgb(191, 233, 247);
+}
+
+Button:enabled:hover {
+    --bg-color-primary: rgb(153, 207, 230);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.whitespace-normal {
+    white-space: normal;
+}
+
+.text-middle-center {
+    -unity-text-align: middle-center;
+}
+
 .score-container {
     flex-direction: row;
     position: absolute;
@@ -7,9 +29,9 @@
     height: 100px;
     border-radius: 50px;
     border-width: 5px;
-    border-color: rgb(0, 171, 219);
+    border-color: var(--color-primary);
     background-color: white;
-    color: rgb(0, 171, 219);
+    color: var(--color-primary);
     font-size: 60px;
     -unity-font-style: bold;
     -unity-text-align: middle-center;
@@ -24,7 +46,7 @@
 .score-points {
     width: 40%;
     margin: auto;
-    color: rgb(1, 63, 88);
+    color: var(--color-secondary);
 }
 
 .incidents-container {
@@ -45,8 +67,12 @@
     margin: 3px;
 }
 
-.incident-found {
-    
+.incident-symbol.incident-symbol-correct {
+    --unity-image: resource("Images/incident-ui-symbol-correct");
+}
+
+.incident-symbol.incident-symbol-wrong {
+    --unity-image: resource("Images/incident-ui-symbol-wrong");
 }
 
 .timer-container {
@@ -58,9 +84,9 @@
     height: 100px;
     border-radius: 50px;
     border-width: 5px;
-    border-color: rgb(0, 171, 219);
+    border-color: var(--color-primary);
     background-color: white;
-    color: rgb(0, 171, 219);
+    color: var(--color-primary);
     font-size: 60px;
     -unity-font-style: bold;
     -unity-text-align: middle-center;
@@ -75,7 +101,7 @@
 .timer-value {
     width: 50%;
     margin: auto;
-    color: rgb(1, 63, 88);
+    color: var(--color-secondary);
 }
 
 .quiz-container {
@@ -106,7 +132,7 @@
 
 .quiz-question-box Label {
     white-space: normal;
-    margin: 8px;
+    margin: 20px;
     -unity-font-style: bold;
     -unity-text-align: middle-center;
 }
@@ -161,7 +187,7 @@
     width: 70%;
     height: 75px;
     border-radius: 20px;
-    background-color: rgb(196, 233, 246);
+    background-color: var(--bg-color-primary);
     border-color: rgb(134, 138, 139);
     -unity-font-style: bold;
 }
@@ -179,3 +205,80 @@
     border-width:0;
 }
 
+.summary-container {
+    width: 70%;
+    height: 60%;
+    margin: auto;
+    font-size: 30px;
+    color: rgb(44, 63, 70);
+}
+
+.summary-container-box {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border-color: var(--color-primary);
+    border-radius: 30px;
+    border-width: 10px;
+    font-size: 55px;
+    padding: 20px;
+    color: var(--color-primary);
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+}
+
+.summary-box {
+    width: 100%;
+    flex-direction: row;
+}
+
+.summary-box Button {
+    width: 45%;
+    height: 100px;
+    margin: auto;
+    color: var(--color-secondary);
+    border-radius: 50px;
+    background-color: var(--bg-color-primary);
+    border-color: var(--color-secondary);
+    border-width: 2px;
+}
+
+.summary-text {
+    width: 50%;
+    padding-right: 50px;
+    margin: auto;
+    -unity-text-align: middle-right;
+}
+
+.summary-value {
+    width: 50%;
+    padding-left: 50px;
+    margin: auto;
+    color: var(--color-secondary);
+}
+
+.submit-box {
+    width: 95%;
+    flex-direction: column;
+}
+
+TextInput {
+    background-color: white;
+    border-width: 0;
+    -unity-text-align: middle-center;
+}
+
+.submit-text-field {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    color: var(--color-secondary);
+    background-color: white;
+    border-radius: 50px;
+    border-color: var(--color-primary);
+    border-width: 6px;
+    -unity-text-align: middle-center;
+}

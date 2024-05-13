@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Incidents
@@ -10,7 +9,10 @@ namespace Incidents
     public abstract class IncidentBase : MonoBehaviour
     {
         public static event Action<IncidentBase> OnIncidentFound;
-        public QNAData qna;
+        public static event Action OnQuizAnswered;
+        public QNAData ActiveQNA { get; private set; }
+
+        protected virtual List<QNAData> QNAs { get; set; }
 
         [SerializeField]
         private GameObject[] _incidents;
@@ -19,32 +21,21 @@ namespace Incidents
         private GameObject[] _incidentReplacements;
 
         [SerializeField]
+        private GameObject[] _removeOnSpawn;
+
+        [SerializeField]
         private bool _isSpawner;
 
         private bool _isQuizAnswered;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             if (_isSpawner)
             {
                 GetComponent<MeshRenderer>().enabled = false;
             }
-            // tmp for testing
-            qna = new QNAData
-            {
-                question =
-                    "Aká je pravdepodobnosť, že poistenie kryje náklady na škodu spôsobené zrážkou s lampou?",
-                correctAnswers = new List<string>()
-                {
-                    "100%, poistenie vody kryje škodu spôsobenú zrážkou s lampou.1"
-                },
-                wrongAnswers = new List<string>()
-                {
-                    "100%, poistenie v�dy kryje �kodu sp�soben� zr�kou s lampou.2",
-                    "100%, poistenie v�dy kryje �kodu sp�soben� zr�kou s lampou. Dlha odpove�, mo�no aj na viac riadkov.3",
-                    "100%, poistenie v�dy kryje �kodu sp�soben� zr�kou s lampou.4"
-                }
-            };
+
+            ActiveQNA = null;
         }
 
         public void SpawnIncident()
@@ -56,6 +47,18 @@ namespace Incidents
                 transform.parent
             );
             incident.AddComponent(GetType());
+            foreach (GameObject obj in _removeOnSpawn)
+            {
+                Road road = obj.transform.parent.GetComponent<Road>();
+                if (road != null)
+                    road.removeOutPoint(obj);
+
+                Crossroad crossroad = obj.transform.parent.GetComponent<Crossroad>();
+                if (crossroad != null)
+                    Destroy(crossroad);
+
+                Destroy(obj);
+            }
             Destroy(gameObject);
         }
 
@@ -74,12 +77,19 @@ namespace Incidents
         {
             if (_isQuizAnswered || GameManager.Instance.State != GameManager.GameState.RoamingMap)
                 return;
+            if (ActiveQNA == null)
+            {
+                var rndIdx = Random.Range(0, QNAs.Count);
+                ActiveQNA = QNAs[rndIdx];
+            }
+
             OnIncidentFound?.Invoke(this);
         }
 
         public void SetQuizAnswered()
         {
             _isQuizAnswered = true;
+            OnQuizAnswered?.Invoke();
         }
     }
 }

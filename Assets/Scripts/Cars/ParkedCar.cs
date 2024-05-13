@@ -5,6 +5,10 @@ using UnityEngine;
 public class ParkedCar : MonoBehaviour
 {
     [SerializeField]
+    public bool allwaysSpawn;
+    [SerializeField]
+    public bool randomRotation;
+    [SerializeField]
     public GameObject[] carPrefabs;
 
     private GameObject SelectACarPrefab()
@@ -18,11 +22,11 @@ public class ParkedCar : MonoBehaviour
         Destroy(this.transform.GetChild(0).gameObject);
 
         var randomIndex = Random.Range(0, 2);
-        if (randomIndex > 0)
+        if (randomIndex > 0 || allwaysSpawn)
         {
             var car = Instantiate(SelectACarPrefab(), transform);
             randomIndex = Random.Range(0, 2);
-            if (randomIndex > 0)
+            if (randomIndex > 0 && randomRotation)
             {
                 Vector3 currentRotation = car.transform.GetChild(0).localRotation.eulerAngles;
                 car.transform.GetChild(0).localRotation = Quaternion.Euler(currentRotation.x, currentRotation.y + 180f, currentRotation.z);

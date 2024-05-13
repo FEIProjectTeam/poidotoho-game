@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Managers
 {
@@ -9,7 +8,6 @@ namespace Managers
         public static GameManager Instance { get; private set; }
         public static event Action<GameState> OnGameStateChanged;
         public GameState State { get; private set; }
-        public int TotalScore { get; set; }
 
         private void Awake()
         {
@@ -24,17 +22,15 @@ namespace Managers
             }
         }
 
-        private void Start()
-        {
-            UpdateGameState(GameState.RoamingMap);
-        }
-
         public enum GameState
         {
             MainMenu,
             StartPlaying,
+            LevelLoaded,
             RoamingMap,
             DoingQuiz,
+            LevelFinished,
+            NextLevel,
         }
 
         public void UpdateGameState(GameState newState)
@@ -45,24 +41,23 @@ namespace Managers
                 case GameState.MainMenu:
                     break;
                 case GameState.StartPlaying:
-                    LoadFirstLevel();
+                    ScoreTimeManager.Instance.ResetScoreTime();
+                    break;
+                case GameState.LevelLoaded:
                     break;
                 case GameState.RoamingMap:
                     break;
                 case GameState.DoingQuiz:
                     break;
+                case GameState.LevelFinished:
+                    break;
+                case GameState.NextLevel:
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
             }
-
             OnGameStateChanged?.Invoke(newState);
-        }
-
-        private void LoadFirstLevel()
-        {
-            var scene = SceneManager.LoadSceneAsync("DemoScene");
-            scene.allowSceneActivation = true;
-            TotalScore = 0;
+            print(newState);
         }
     }
 }
