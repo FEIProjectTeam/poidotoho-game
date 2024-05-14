@@ -11,6 +11,7 @@ namespace Managers
         public static IEnumerator SubmitGameSessionData(
             string nickname,
             int grade,
+            int school_id,
             int score,
             int timeLeft
         )
@@ -19,6 +20,7 @@ namespace Managers
             {
                 nickname = nickname,
                 grade = grade,
+                school_id = school_id,
                 score = score,
                 time_left = timeLeft
             };
@@ -88,6 +90,7 @@ namespace Managers
     {
         public string nickname;
         public int grade;
+        public int school_id;
         public int score;
         public int time_left;
     }
@@ -95,6 +98,7 @@ namespace Managers
     [Serializable]
     public class School
     {
+        public int id;
         public string name;
     }
 }

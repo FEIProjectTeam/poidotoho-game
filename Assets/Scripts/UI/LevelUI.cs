@@ -24,6 +24,7 @@ namespace UI
         private Button _submitBtn;
         private VisualElement _incidentsContainer;
         private VisualElement _quizContainer;
+        private List<School> _schools;
         private DropdownField _schoolDropdownField;
 
         private void Awake()
@@ -314,13 +315,14 @@ namespace UI
             submitBtn.SetEnabled(false);
             submitBtn.clicked += () =>
             {
-                if (string.IsNullOrEmpty(nicknameTextField.value))
+                var schoolId = GetSchoolId(schoolDropdownField.value);
+                if (schoolId == -1)
                     return;
-
                 StartCoroutine(
                     NetworkManager.SubmitGameSessionData(
                         nicknameTextField.value,
                         (int)gradeIntField.value,
+                        schoolId,
                         ScoreTimeManager.Instance.Score,
                         (int)ScoreTimeManager.Instance.RemainingTime
                     )
@@ -349,8 +351,17 @@ namespace UI
                     submitBtn.SetEnabled(true);
             }
 
+            int GetSchoolId(string schoolName)
+            {
+                var school = _schools.FirstOrDefault(s => s.name == schoolName);
+                if (school == null)
+                    return -1;
+                return school.id;
+            }
+
             void UpdateSchoolDropdown(School[] schools)
             {
+                _schools = schools.ToList();
                 schoolDropdownField.choices = schools.Select(s => s.name).ToList();
             }
 
