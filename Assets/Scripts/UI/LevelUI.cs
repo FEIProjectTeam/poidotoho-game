@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Incidents;
 using Managers;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace UI
         private Button _submitBtn;
         private VisualElement _incidentsContainer;
         private VisualElement _quizContainer;
+        private DropdownField _schoolDropdownField;
 
         private void Awake()
         {
@@ -275,7 +277,7 @@ namespace UI
 
             var middleLeftBox = Utils.Create(addTo: middleBox, "flex-col", "w-80pe");
             var nicknameLabel = Utils.Create<Label>(addTo: middleLeftBox);
-            nicknameLabel.text = "Tvoja prezývka:";
+            nicknameLabel.text = "Prezývka:";
             var nicknameTextField = Utils.Create<TextField>(
                 addTo: middleLeftBox,
                 "submit-input-field"
@@ -290,6 +292,13 @@ namespace UI
                 "submit-input-field"
             );
             gradeIntField.maxLength = 1;
+
+            var schoolBox = Utils.Create(addTo: containerBox, "flex-col", "w-full");
+            var schoolLabel = Utils.Create<Label>(addTo: schoolBox);
+            schoolLabel.text = "Škola:";
+            var schoolSearchField = Utils.Create<TextField>(addTo: schoolBox, "submit-input-field");
+            schoolSearchField.maxLength = 40;
+            var schoolDropdownField = Utils.Create<DropdownField>(addTo: schoolBox);
 
             var btnBox = Utils.Create(addTo: containerBox, "w-full", "flex-row");
 
@@ -320,6 +329,12 @@ namespace UI
 
             nicknameTextField.RegisterValueChangedCallback(_ => ValidateInputFields());
             gradeIntField.RegisterValueChangedCallback(_ => ValidateInputFields());
+            schoolSearchField.RegisterValueChangedCallback(SearchForSchools);
+            schoolDropdownField.RegisterValueChangedCallback(evt =>
+            {
+                schoolSearchField.value = evt.newValue;
+                ValidateInputFields();
+            });
             return;
 
             void ValidateInputFields()
@@ -327,10 +342,25 @@ namespace UI
                 if (
                     string.IsNullOrEmpty(nicknameTextField.value)
                     || gradeIntField.value is < 1 or > 9
+                    || string.IsNullOrEmpty(schoolDropdownField.value)
                 )
                     submitBtn.SetEnabled(false);
                 else
                     submitBtn.SetEnabled(true);
+            }
+
+            void UpdateSchoolDropdown(School[] schools)
+            {
+                schoolDropdownField.choices = schools.Select(s => s.name).ToList();
+            }
+
+            void SearchForSchools(ChangeEvent<string> evt)
+            {
+                Debug.Log("Searching...");
+                if (string.IsNullOrEmpty(evt.newValue))
+                    return;
+
+                StartCoroutine(NetworkManager.FilterSchools(evt.newValue, UpdateSchoolDropdown));
             }
         }
     }

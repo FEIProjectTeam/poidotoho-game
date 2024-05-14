@@ -34,6 +34,22 @@ namespace Managers
                 GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
         }
 
+        public static IEnumerator FilterSchools(string name, Action<School[]> onSuccess)
+        {
+            var getRequest = CreateRequest($"localhost:8000/api/schools?name={name}");
+            yield return getRequest.SendWebRequest();
+
+            if (getRequest.result != UnityWebRequest.Result.Success)
+                Debug.LogError(getRequest.error);
+            else
+            {
+                var schools = JsonHelper.FromJson<School>(
+                    JsonHelper.FixJson(getRequest.downloadHandler.text)
+                );
+                onSuccess?.Invoke(schools);
+            }
+        }
+
         private static UnityWebRequest CreateRequest(
             string path,
             RequestType type = RequestType.GET,
@@ -74,5 +90,11 @@ namespace Managers
         public int grade;
         public int score;
         public int time_left;
+    }
+
+    [Serializable]
+    public class School
+    {
+        public string name;
     }
 }
