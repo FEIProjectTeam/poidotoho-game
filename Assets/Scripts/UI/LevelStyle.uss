@@ -319,3 +319,56 @@ UnsignedIntegerInput {
     border-width: 6px;
     -unity-text-align: middle-center;
 }
+
+.school-search-field {
+    height: 100px;
+    color: var(--color-secondary);
+    background-color: white;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-color: var(--color-primary);
+    border-width: 6px;
+    -unity-text-align: middle-center;
+}
+
+.school-search-btn {
+    height: 100px;
+    color: var(--color-secondary);
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: var(--bg-color-primary);
+    border-color: var(--color-secondary);
+    border-width: 2px;
+}
+
+.unity-base-field__input {
+    background-color: white;
+    border-width: 0;
+}
+
+.unity-base-dropdown__container-inner {
+    background-color: white;
+}
+
+.unity-base-dropdown {
+    background-color: white;
+}
+
+.unity-base-dropdown__container-inner {
+    background-color: white;
+}
+
+ScrollView {
+    background-color: white;
+}
+
+
+.school-dropdown {
+    height: 100px;
+    color: var(--color-secondary);
+    background-color: white;
+    border-radius: 50px;
+    border-color: var(--color-primary);
+    border-width: 6px;
+    padding-left: 3px;
+}

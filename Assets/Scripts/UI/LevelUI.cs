@@ -296,10 +296,33 @@ namespace UI
 
             var schoolBox = Utils.Create(addTo: containerBox, "flex-col", "w-full");
             var schoolLabel = Utils.Create<Label>(addTo: schoolBox);
-            schoolLabel.text = "Škola:";
-            var schoolSearchField = Utils.Create<TextField>(addTo: schoolBox, "submit-input-field");
+            schoolLabel.text = "Nájdi svoju školu:";
+
+            var schoolSearchBox = Utils.Create(
+                addTo: schoolBox,
+                "flex-row",
+                "w-full",
+                "justify-around"
+            );
+            var schoolSearchField = Utils.Create<TextField>(
+                addTo: schoolSearchBox,
+                "school-search-field",
+                "w-80pe"
+            );
             schoolSearchField.maxLength = 40;
-            var schoolDropdownField = Utils.Create<DropdownField>(addTo: schoolBox);
+            var schoolSearchBtn = Utils.Create<Button>(
+                addTo: schoolSearchBox,
+                "school-search-btn",
+                "w-20pe"
+            );
+            schoolSearchBtn.text = "Hľadať";
+
+            var schoolDropdownField = Utils.Create<DropdownField>(
+                addTo: schoolBox,
+                "w-full",
+                "school-dropdown"
+            );
+            schoolSearchBtn.clicked += () => SearchForSchools(schoolSearchField.value);
 
             var btnBox = Utils.Create(addTo: containerBox, "w-full", "flex-row");
 
@@ -331,12 +354,7 @@ namespace UI
 
             nicknameTextField.RegisterValueChangedCallback(_ => ValidateInputFields());
             gradeIntField.RegisterValueChangedCallback(_ => ValidateInputFields());
-            schoolSearchField.RegisterValueChangedCallback(SearchForSchools);
-            schoolDropdownField.RegisterValueChangedCallback(evt =>
-            {
-                schoolSearchField.value = evt.newValue;
-                ValidateInputFields();
-            });
+            schoolDropdownField.RegisterValueChangedCallback(_ => ValidateInputFields());
             return;
 
             void ValidateInputFields()
@@ -365,13 +383,12 @@ namespace UI
                 schoolDropdownField.choices = schools.Select(s => s.name).ToList();
             }
 
-            void SearchForSchools(ChangeEvent<string> evt)
+            void SearchForSchools(string schoolName)
             {
-                Debug.Log("Searching...");
-                if (string.IsNullOrEmpty(evt.newValue))
+                if (string.IsNullOrEmpty(schoolName))
                     return;
 
-                StartCoroutine(NetworkManager.FilterSchools(evt.newValue, UpdateSchoolDropdown));
+                StartCoroutine(NetworkManager.FilterSchools(schoolName, UpdateSchoolDropdown));
             }
         }
     }
