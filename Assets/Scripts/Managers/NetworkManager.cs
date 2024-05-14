@@ -8,11 +8,19 @@ namespace Managers
 {
     public static class NetworkManager
     {
-        public static IEnumerator SubmitGameSessionData(string nickname, int score, int timeLeft)
+        public static IEnumerator SubmitGameSessionData(
+            string nickname,
+            int grade,
+            int school_id,
+            int score,
+            int timeLeft
+        )
         {
             var postData = new GameSessionData
             {
                 nickname = nickname,
+                grade = grade,
+                school_id = school_id,
                 score = score,
                 time_left = timeLeft
             };
@@ -26,6 +34,22 @@ namespace Managers
                 Debug.LogError(postRequest.error);
             else
                 GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
+        }
+
+        public static IEnumerator FilterSchools(string name, Action<School[]> onSuccess)
+        {
+            var getRequest = CreateRequest($"localhost:8000/api/schools?name={name}");
+            yield return getRequest.SendWebRequest();
+
+            if (getRequest.result != UnityWebRequest.Result.Success)
+                Debug.LogError(getRequest.error);
+            else
+            {
+                var schools = JsonHelper.FromJson<School>(
+                    JsonHelper.FixJson(getRequest.downloadHandler.text)
+                );
+                onSuccess?.Invoke(schools);
+            }
         }
 
         private static UnityWebRequest CreateRequest(
@@ -65,7 +89,16 @@ namespace Managers
     public class GameSessionData
     {
         public string nickname;
+        public int grade;
+        public int school_id;
         public int score;
         public int time_left;
+    }
+
+    [Serializable]
+    public class School
+    {
+        public int id;
+        public string name;
     }
 }

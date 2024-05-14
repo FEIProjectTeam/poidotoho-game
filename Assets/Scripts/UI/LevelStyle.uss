@@ -12,12 +12,40 @@ Button:enabled:hover {
     width: 100%;
 }
 
+.w-95pe {
+    width: 95%;
+}
+
+.w-80pe {
+    width: 80%;
+}
+
+.w-20pe {
+    width: 20%;
+}
+
 .whitespace-normal {
     white-space: normal;
 }
 
 .text-middle-center {
     -unity-text-align: middle-center;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.justify-around {
+    justify-content: space-around;
 }
 
 .score-container {
@@ -235,7 +263,7 @@ Button:enabled:hover {
     flex-direction: row;
 }
 
-.summary-box Button {
+.submit-btn {
     width: 45%;
     height: 100px;
     margin: auto;
@@ -260,18 +288,27 @@ Button:enabled:hover {
     color: var(--color-secondary);
 }
 
-.submit-box {
-    width: 95%;
-    flex-direction: column;
-}
-
 TextInput {
     background-color: white;
     border-width: 0;
     -unity-text-align: middle-center;
 }
 
-.submit-text-field {
+UnsignedIntegerInput {
+    background-color: white;
+    border-width: 0;
+    -unity-text-align: middle-center;
+}
+
+.submit-container {
+    width: 80%;
+    height: 70%;
+    margin: auto;
+    font-size: 30px;
+    color: rgb(44, 63, 70);
+}
+
+.submit-input-field {
     width: 100%;
     height: 100px;
     margin: auto;
