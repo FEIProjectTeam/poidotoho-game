@@ -1,51 +1,5 @@
-:root {
-    --color-primary: rgb(0, 171, 219);
-    --color-secondary: rgb(1, 63, 88);
-    --bg-color-primary: rgb(191, 233, 247);
-}
-
 Button:enabled:hover {
     --bg-color-primary: rgb(153, 207, 230);
-}
-
-.w-full {
-    width: 100%;
-}
-
-.w-95pe {
-    width: 95%;
-}
-
-.w-80pe {
-    width: 80%;
-}
-
-.w-20pe {
-    width: 20%;
-}
-
-.whitespace-normal {
-    white-space: normal;
-}
-
-.text-middle-center {
-    -unity-text-align: middle-center;
-}
-
-.flex-col {
-    flex-direction: column;
-}
-
-.flex-row {
-    flex-direction: row;
-}
-
-.m-auto {
-    margin: auto;
-}
-
-.justify-around {
-    justify-content: space-around;
 }
 
 .score-container {
@@ -288,21 +242,9 @@ Button:enabled:hover {
     color: var(--color-secondary);
 }
 
-TextInput {
-    background-color: white;
-    border-width: 0;
-    -unity-text-align: middle-center;
-}
-
-UnsignedIntegerInput {
-    background-color: white;
-    border-width: 0;
-    -unity-text-align: middle-center;
-}
-
 .submit-container {
     width: 80%;
-    height: 70%;
+    height: 80%;
     margin: auto;
     font-size: 30px;
     color: rgb(44, 63, 70);
@@ -317,6 +259,19 @@ UnsignedIntegerInput {
     border-radius: 50px;
     border-color: var(--color-primary);
     border-width: 6px;
+    -unity-text-align: middle-center;
+}
+
+.submit-input-field TextInput,
+.school-search-field TextInput {
+    background-color: white;
+    border-width: 0;
+    -unity-text-align: middle-center;
+}
+
+.submit-input-field UnsignedIntegerInput {
+    background-color: white;
+    border-width: 0;
     -unity-text-align: middle-center;
 }
 
@@ -341,28 +296,6 @@ UnsignedIntegerInput {
     border-width: 2px;
 }
 
-.unity-base-field__input {
-    background-color: white;
-    border-width: 0;
-}
-
-.unity-base-dropdown__container-inner {
-    background-color: white;
-}
-
-.unity-base-dropdown {
-    background-color: white;
-}
-
-.unity-base-dropdown__container-inner {
-    background-color: white;
-}
-
-ScrollView {
-    background-color: white;
-}
-
-
 .school-dropdown {
     height: 100px;
     color: var(--color-secondary);
@@ -370,5 +303,10 @@ ScrollView {
     border-radius: 50px;
     border-color: var(--color-primary);
     border-width: 6px;
-    padding-left: 3px;
+    margin-top: 10px;
+    padding-left: 15px;
+}
+
+.school-dropdown:hover {
+    background-color: white;
 }

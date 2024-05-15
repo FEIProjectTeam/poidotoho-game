@@ -1,0 +1,64 @@
+:root {
+    --color-primary: rgb(0, 171, 219);
+    --color-secondary: rgb(1, 63, 88);
+    --bg-color-primary: rgb(191, 233, 247);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.w-95pe {
+    width: 95%;
+}
+
+.w-80pe {
+    width: 80%;
+}
+
+.w-20pe {
+    width: 20%;
+}
+
+.whitespace-normal {
+    white-space: normal;
+}
+
+.text-middle-center {
+    -unity-text-align: middle-center;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.unity-base-field__input {
+    background-color: white;
+    border-width: 0;
+}
+
+.unity-base-field:hover > .unity-base-popup-field__input {
+    background-color: white;
+    border-width: 0;
+}
+
+.unity-base-field:active > .unity-base-popup-field__input {
+    background-color: white;
+    border-width: 0;
+}
+
+.unity-base-dropdown .unity-scroll-view {
+    background-color: white;
+}
