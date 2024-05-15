@@ -16,8 +16,37 @@
     width: 80%;
 }
 
+.w-50pe {
+    width: 50%;
+}
+
+.w-30pe {
+    width: 30%;
+}
+
 .w-20pe {
     width: 20%;
+}
+
+.w-10pe {
+    width: 10%;
+}
+
+.h-70pe {
+    height: 70%;
+}
+
+.h-15pe {
+    height: 15%;
+}
+
+.px-40px {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.border-r-2	{
+    border-right-width: 2px;
 }
 
 .whitespace-normal {
@@ -40,8 +69,17 @@
     margin: auto;
 }
 
+.my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .justify-around {
     justify-content: space-around;
+}
+
+.justify-between {
+    justify-content: space-between;
 }
 
 .unity-base-field__input {

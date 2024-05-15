@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -52,6 +53,27 @@ namespace Managers
             }
         }
 
+        public static IEnumerator GetLeaderboardList(
+            uint offset,
+            Action<LeaderboardPaginated> onSuccess
+        )
+        {
+            var getRequest = CreateRequest(
+                $"localhost:8000/api/leaderboard?limit=10&offset={offset}"
+            );
+            yield return getRequest.SendWebRequest();
+
+            if (getRequest.result != UnityWebRequest.Result.Success)
+                Debug.LogError(getRequest.error);
+            else
+            {
+                var leaderboardPaginated = JsonUtility.FromJson<LeaderboardPaginated>(
+                    getRequest.downloadHandler.text
+                );
+                onSuccess?.Invoke(leaderboardPaginated);
+            }
+        }
+
         private static UnityWebRequest CreateRequest(
             string path,
             RequestType type = RequestType.GET,
@@ -100,5 +122,20 @@ namespace Managers
     {
         public int id;
         public string name;
+    }
+
+    [Serializable]
+    public class LeaderboardPaginated
+    {
+        public List<Leaderboard> items;
+        public int count;
+    }
+
+    [Serializable]
+    public class Leaderboard
+    {
+        public string nickname;
+        public int score;
+        public int time_left;
     }
 }
