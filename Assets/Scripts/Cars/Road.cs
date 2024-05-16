@@ -190,7 +190,6 @@ public class Road : MonoBehaviour
 
         else
         {
-            Debug.LogError("Someone wants despawn point on nondespawnable road ID: " + this.GetInstanceID());
             return position;
         }
     }
@@ -201,7 +200,6 @@ public class Road : MonoBehaviour
 
         else
         {
-            Debug.LogError("Someone wants spawn point on nonspawnable road ID: " + this.GetInstanceID());
             return position;
         }
     }
@@ -212,7 +210,6 @@ public class Road : MonoBehaviour
             if (p.isSpawn())
                 return Quaternion.LookRotation(this.getSpawnPoint() - p.getEnd());
         }
-        Debug.LogError("Spawn point on road ID: " + this.GetInstanceID() + " could not find quaternion");
         return Quaternion.LookRotation(this.getSpawnPoint(), position);
     }
 
@@ -223,7 +220,6 @@ public class Road : MonoBehaviour
             if (p.isSpawn())
                 return p;
         }
-        Debug.LogError("Couldn't find spawn path at road: " + JsonUtility.ToJson(this, true));
         return null;
     }
     public List<Path> getPathsFrom(Vector3 startPoint)
@@ -231,7 +227,6 @@ public class Road : MonoBehaviour
         List<Path> paths = new List<Path>();
         if (this.paths == null)
         {
-            Debug.LogError("Couldn't find any path at road: " + JsonUtility.ToJson(this, true));
             return null;
         }
 
@@ -240,9 +235,6 @@ public class Road : MonoBehaviour
             if (p.getStart() == startPoint)
                 paths.Add(p);
         }
-
-        if (!paths.Any())
-            Debug.LogError("Couldn't find any path at road: " + JsonUtility.ToJson(this, true));
 
         return paths;
     }

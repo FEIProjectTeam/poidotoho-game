@@ -78,7 +78,6 @@ public class Car : MonoBehaviour
         {
             Vector3 targetWaypoint = waypoints[currentWaypointIndex];
             Vector3 moveDirection = (targetWaypoint - transform.position).normalized;
-            Debug.DrawRay(transform.position, moveDirection * 5, Color.red);
 
             transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, Time.deltaTime * speed);
 

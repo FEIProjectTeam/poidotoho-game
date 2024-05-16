@@ -36,7 +36,6 @@ namespace Managers
             spawns = new List<Road>();
             var roads = FindObjectsOfType<Road>();
 
-            Debug.Log(roads.Count());
             foreach (Road road in roads)
             {
                 if (road.isSpawn)
@@ -177,7 +176,6 @@ namespace Managers
             }
             else
             {
-                Debug.LogError("Invalid rotation of road ID: " + transform.gameObject.GetInstanceID() + " at position " + transform.position.ToString());
                 return null;
             }
         }
@@ -221,7 +219,6 @@ namespace Managers
             }
             else
             {
-                Debug.LogError("Invalid rotation of road ID: " + transform.gameObject.GetInstanceID() + " at position " + transform.position.ToString());
                 return null;
             }
         }
@@ -253,7 +250,6 @@ namespace Managers
             }
             else
             {
-                Debug.LogError("Invalid rotation of road ID: " + transform.gameObject.GetInstanceID() + " at position " + transform.position.ToString());
                 return null;
             }
         }
@@ -285,7 +281,6 @@ namespace Managers
             }
             else
             {
-                Debug.LogError("Invalid rotation of road ID: " + transform.gameObject.GetInstanceID() + " at position " + transform.position.ToString());
                 return null;
             }
         }
@@ -412,7 +407,6 @@ namespace Managers
                 return transforms[0];
             else if (transforms.Count > 1)
             {
-                Debug.LogError("More than one neighbour found at position: " + CellToWorldToRoad(map, upperLeft));
                 return null;
             }
             else
@@ -454,7 +448,6 @@ namespace Managers
                 return transforms[0];
             else if (transforms.Count > 1)
             {
-                Debug.LogError("More than one object found at position: " + position);
                 return null;
             }
             else
