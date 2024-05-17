@@ -8,6 +8,15 @@
     -unity-background-scale-mode: scale-and-crop;
 }
 
+.title {
+    font-size: 200px;
+    color: var(--color-secondary);
+    -unity-font-style: bold;
+    -unity-text-outline-width: 5px;
+    -unity-text-outline-color: var(--bg-color-primary);
+    margin-bottom: 5%;
+}
+
 Button {
     color: var(--color-secondary);
     -unity-font-style: bold;

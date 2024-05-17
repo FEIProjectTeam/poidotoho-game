@@ -258,14 +258,16 @@ namespace UI
             root.Clear();
 
             var submitContainer = Utils.Create(addTo: root, "submit-container");
-            var containerBox = Utils.Create(addTo: submitContainer, "summary-container-box");
+            var containerBox = Utils.Create(addTo: submitContainer, "submit-container-box");
 
             var topBox = Utils.Create(addTo: containerBox, "w-full", "flex-row");
             var topBoxLabel = Utils.Create<Label>(
                 addTo: topBox,
                 "w-full",
                 "text-middle-center",
-                "whitespace-normal"
+                "whitespace-normal",
+                "m-0",
+                "p-0"
             );
             topBoxLabel.text = "Zapoj sa do súťaže a ukáž všetkým aký si dobrý!";
 

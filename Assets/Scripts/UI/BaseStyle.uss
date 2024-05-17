@@ -69,9 +69,17 @@
     margin: auto;
 }
 
+.m-0 {
+    margin: 0;
+}
+
 .my-auto {
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.p-0 {
+    padding: 0;
 }
 
 .justify-around {

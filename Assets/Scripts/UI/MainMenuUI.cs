@@ -26,15 +26,17 @@ namespace UI
             root.styleSheets.Add(_styleSheet);
 
             var container = Utils.Create(addTo: root, "container");
+            Utils.Create<Label>(addTo: container, "title").text = "POI do toho!";
+            var btnContainer = Utils.Create(addTo: container);
 
-            var startButton = Utils.Create<Button>(addTo: container, "menu-btn");
+            var startButton = Utils.Create<Button>(addTo: btnContainer, "menu-btn");
             startButton.text = "SPUSTIŤ HRU";
             startButton.clicked += () =>
             {
                 GameManager.Instance.UpdateGameState(GameManager.GameState.StartPlaying);
             };
 
-            var leaderboardBtn = Utils.Create<Button>(addTo: container, "menu-btn");
+            var leaderboardBtn = Utils.Create<Button>(addTo: btnContainer, "menu-btn");
             leaderboardBtn.text = "REBRÍČEK";
             leaderboardBtn.clicked += OpenLeaderboard;
         }
