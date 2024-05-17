@@ -39,7 +39,7 @@ public class Car : MonoBehaviour
         endRotation = transform.rotation;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (waypoints.Count > 0)
         {
