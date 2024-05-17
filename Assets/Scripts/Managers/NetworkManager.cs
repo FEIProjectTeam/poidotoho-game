@@ -31,9 +31,7 @@ namespace Managers
                 postData
             );
             yield return postRequest.SendWebRequest();
-            if (postRequest.result != UnityWebRequest.Result.Success)
-                Debug.LogError(postRequest.error);
-            else
+            if (postRequest.result == UnityWebRequest.Result.Success)
                 GameManager.Instance.UpdateGameState(GameManager.GameState.MainMenu);
         }
 
@@ -42,9 +40,7 @@ namespace Managers
             var getRequest = CreateRequest($"localhost:8000/api/schools?name={name}");
             yield return getRequest.SendWebRequest();
 
-            if (getRequest.result != UnityWebRequest.Result.Success)
-                Debug.LogError(getRequest.error);
-            else
+            if (getRequest.result == UnityWebRequest.Result.Success)
             {
                 var schools = JsonHelper.FromJson<School>(
                     JsonHelper.FixJson(getRequest.downloadHandler.text)
@@ -63,9 +59,7 @@ namespace Managers
             );
             yield return getRequest.SendWebRequest();
 
-            if (getRequest.result != UnityWebRequest.Result.Success)
-                Debug.LogError(getRequest.error);
-            else
+            if (getRequest.result == UnityWebRequest.Result.Success)
             {
                 var leaderboardPaginated = JsonUtility.FromJson<LeaderboardPaginated>(
                     getRequest.downloadHandler.text

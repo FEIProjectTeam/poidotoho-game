@@ -20,6 +20,15 @@ namespace Incidents
                         "Zo žiadneho poistenia, auto nemám poistené.",
                         "Z cestovného poistenia.",
                     }
+                ),
+                new(
+                    question: "Na auto ti spadol strom, kto ti zaplatí opravu?",
+                    correctAnswers: new List<string> { "Poisťovňa, na to ich mám." },
+                    wrongAnswers: new List<string>
+                    {
+                        "Nerieším opravu, mám kabriolet.",
+                        "Rodičia predsa.",
+                    }
                 )
             };
         }

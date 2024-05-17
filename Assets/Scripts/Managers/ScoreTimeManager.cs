@@ -12,7 +12,7 @@ namespace Managers
         public int Score { get; private set; }
         public float RemainingTime { get; private set; }
 
-        private const float StartingTime = 1200;
+        private const float StartingTime = 1500;
 
         private bool _isLevelStarted;
         private UIDocument _levelUIDocument;

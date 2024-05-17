@@ -57,7 +57,6 @@ namespace Managers
                     throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
             }
             OnGameStateChanged?.Invoke(newState);
-            print(newState);
         }
     }
 }

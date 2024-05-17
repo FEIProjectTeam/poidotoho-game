@@ -55,9 +55,6 @@ namespace Managers
                 }
             }
 
-            if (_incidentCount == 0)
-                Debug.LogError("Error: No incidents were spawned.");
-
             OnIncidentsSpawned?.Invoke(_incidentCount);
             GameManager.Instance.UpdateGameState(GameManager.GameState.RoamingMap);
             AIManager.Instance.startSpawning();
