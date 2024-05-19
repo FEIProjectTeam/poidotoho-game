@@ -1,7 +1,13 @@
 # poidotoho-game
+## Running the Game Locally
+To run the game locally, execute the following command:
+```sh
+docker-compose up
+```
+> **_NOTE:_**  For Windows users, Docker Desktop must be installed.
 
 ## git fetch
-### Run this for better updates
+### Run this command for better updates
 `git config --global alias.pullall '!git pull && git submodule update --init --recursive'`
 
 ### With SSH
