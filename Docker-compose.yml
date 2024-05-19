@@ -1,7 +1,33 @@
 version: '3.8'
 
 services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest 
+    environment:
+      - MSSQL_SA_PASSWORD=myStrongP@ass123
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+
+  web:
+    build: 
+      context: ./poidotoho-server/
+      dockerfile: Dockerfile
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=master
+      - DB_USER=sa
+      - DB_PASS=myStrongP@ass123
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: always
+
   webgl:
     build: .
     ports:
       - "8080:8443"
+    depends_on:
+      - web
