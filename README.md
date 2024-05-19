@@ -1,5 +1,5 @@
 # poidotoho-game
-## Running the Game Locally with docker
+## Running the Game Locally with docker build
 To run the game locally, execute the following commands:
 ```sh
 git clone https://github.com/FEIProjectTeam/poidotoho-game.git
