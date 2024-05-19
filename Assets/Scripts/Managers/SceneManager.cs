@@ -41,9 +41,9 @@ namespace Managers
             }
         }
 
+#if UNITY_EDITOR
         private void Start()
         {
-            // TODO: keep only during development
             if (
                 _levelBuildIndexes.Contains(
                     UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
@@ -54,6 +54,7 @@ namespace Managers
                 GameManager.Instance.UpdateGameState(GameManager.GameState.LevelLoaded);
             }
         }
+#endif
 
         private void LoadNextScene(GameManager.GameState gameState)
         {
