@@ -29,13 +29,15 @@ git clone --recurse-submodules https://github.com/FEIProjectTeam/poidotoho-serve
 
 ## Docker build commands
 ```sh
-docker build -t feipt/poidotoho-game:latest .
+docker build -t feipt/poidotoho-game-local:latest .
+docker push feipt/poidotoho-game-local:latest  
+
+cd poidotoho-server
+
+docker build -t feipt/poidotoho-server:latest .
+docker push feipt/poidotoho-server:latest 
 ```
 
 ```sh
 docker run -p 8080:8443 feipt/poidotoho-game
-```
-
-```sh
-docker push feipt/poidotoho-game:latest  
 ```
