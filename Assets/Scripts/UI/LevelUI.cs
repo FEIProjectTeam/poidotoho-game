@@ -157,6 +157,7 @@ namespace UI
                 {
                     UpdateIncidentSymbols(false);
                 }
+                OnQuizAnsweredCorrectly?.Invoke();
                 incident.SetQuizAnswered();
             };
         }
