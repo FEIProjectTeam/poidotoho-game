@@ -1,6 +1,9 @@
 # poidotoho-game
 
 ## git fetch
+### Run this for better updates
+`git config --global alias.pullall '!git pull && git submodule update --init --recursive'`
+
 ### With SSH
 ```sh
 git clone git@github.com:FEIProjectTeam/poidotoho-game.git 
