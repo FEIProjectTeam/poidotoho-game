@@ -10,9 +10,7 @@ services:
       - "1433:1433"
 
   web:
-    build: 
-      context: ./poidotoho-server/
-      dockerfile: Dockerfile
+    image: feipt/poidotoho-server
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
@@ -26,7 +24,7 @@ services:
     restart: always
 
   webgl:
-    build: .
+    image: feipt/poidotoho-game-local
     ports:
       - "8080:8443"
     depends_on:
