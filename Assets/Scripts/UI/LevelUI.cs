@@ -204,7 +204,6 @@ namespace UI
 
         private void UpdateControls()
         {
-            print("UpdateControls");
             var soundControl = (Image)_document.rootVisualElement.Q("sound-control");
             soundControl.ClearClassList();
             soundControl.AddToClassList(
@@ -309,11 +308,11 @@ namespace UI
             var middleRightBox = Utils.Create(addTo: middleBox, "flex-col", "w-20pe");
             var gradeLabel = Utils.Create<Label>(addTo: middleRightBox);
             gradeLabel.text = "Trieda:";
-            var gradeIntField = Utils.Create<UnsignedIntegerField>(
+            var gradeTextField = Utils.Create<TextField>(
                 addTo: middleRightBox,
                 "submit-input-field"
             );
-            gradeIntField.maxLength = 1;
+            gradeTextField.maxLength = 6;
 
             var schoolBox = Utils.Create(addTo: containerBox, "flex-col", "w-full");
             var schoolLabel = Utils.Create<Label>(addTo: schoolBox);
@@ -365,7 +364,7 @@ namespace UI
                 StartCoroutine(
                     NetworkManager.SubmitGameSessionData(
                         nicknameTextField.value,
-                        (int)gradeIntField.value,
+                        gradeTextField.value,
                         schoolId,
                         ScoreTimeManager.Instance.Score,
                         (int)ScoreTimeManager.Instance.RemainingTime
@@ -374,7 +373,7 @@ namespace UI
             };
 
             nicknameTextField.RegisterValueChangedCallback(_ => ValidateInputFields());
-            gradeIntField.RegisterValueChangedCallback(_ => ValidateInputFields());
+            gradeTextField.RegisterValueChangedCallback(_ => ValidateInputFields());
             schoolDropdownField.RegisterValueChangedCallback(_ => ValidateInputFields());
             return;
 
@@ -382,7 +381,7 @@ namespace UI
             {
                 if (
                     string.IsNullOrEmpty(nicknameTextField.value)
-                    || gradeIntField.value is < 1 or > 9
+                    || string.IsNullOrEmpty(gradeTextField.value)
                     || string.IsNullOrEmpty(schoolDropdownField.value)
                 )
                     submitBtn.SetEnabled(false);
