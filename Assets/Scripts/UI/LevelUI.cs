@@ -48,6 +48,12 @@ namespace UI
             timerValueLabel.name = "timer-value";
             timerValueLabel.text = "∞";
 
+            var controlsContainer = Utils.Create(addTo: root, "controls-container");
+            var soundControl = Utils.Create<Image>(addTo: controlsContainer);
+            soundControl.name = "sound-control";
+            soundControl.AddManipulator(new Clickable(evt => AudioManager.Instance.ToggleMute()));
+            UpdateControls();
+
             _quizContainer = Utils.Create(addTo: root, "quiz-container");
             _quizContainer.name = "quiz-container";
         }
@@ -58,6 +64,7 @@ namespace UI
             ScoreTimeManager.OnScoreUpdated += UpdateScore;
             IncidentManager.OnIncidentsSpawned += CreateIncidentSymbols;
             GameManager.OnGameStateChanged += OpenLevelSummary;
+            AudioManager.OnAudioToggleMute += UpdateControls;
         }
 
         private void OnDisable()
@@ -66,6 +73,7 @@ namespace UI
             ScoreTimeManager.OnScoreUpdated -= UpdateScore;
             IncidentManager.OnIncidentsSpawned -= CreateIncidentSymbols;
             GameManager.OnGameStateChanged -= OpenLevelSummary;
+            AudioManager.OnAudioToggleMute -= UpdateControls;
         }
 
         private void OpenQuiz(IncidentBase incident)
@@ -192,6 +200,16 @@ namespace UI
         {
             var scorePointsLabel = (Label)_document.rootVisualElement.Q("score-points");
             scorePointsLabel.text = newScore.ToString();
+        }
+
+        private void UpdateControls()
+        {
+            print("UpdateControls");
+            var soundControl = (Image)_document.rootVisualElement.Q("sound-control");
+            soundControl.ClearClassList();
+            soundControl.AddToClassList(
+                AudioManager.Instance.IsAudioMuted() ? "sound-control-off" : "sound-control-on"
+            );
         }
 
         private void OpenLevelSummary(GameManager.GameState gameState)

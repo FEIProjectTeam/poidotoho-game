@@ -86,6 +86,28 @@ Button:enabled:hover {
     color: var(--color-secondary);
 }
 
+.controls-container {
+    flex-direction: row-reverse;
+    position: absolute;
+    top: 160px;
+    right: 40px;
+    width: 400px;
+    height: 100px;
+}
+
+#sound-control {
+    width: 100px;
+    height: 100px;
+}
+
+#sound-control.sound-control-on {
+    --unity-image: resource("Images/sound-control-on");
+}
+
+#sound-control.sound-control-off {
+    --unity-image: resource("Images/sound-control-off");
+}
+
 .quiz-container {
     width: 50%;
     height: 90%;

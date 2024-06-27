@@ -6,6 +6,8 @@ namespace Managers
 {
     public class AudioManager : MonoBehaviour
     {
+        public static event Action OnAudioToggleMute;
+
         public static AudioManager Instance { get; private set; }
 
         [SerializeField]
@@ -19,6 +21,17 @@ namespace Managers
                 return;
             _musicSource.clip = s.clip;
             _musicSource.Play();
+        }
+
+        public void ToggleMute()
+        {
+            _musicSource.mute = !_musicSource.mute;
+            OnAudioToggleMute?.Invoke();
+        }
+
+        public bool IsAudioMuted()
+        {
+            return _musicSource.mute;
         }
 
         private void Start()
