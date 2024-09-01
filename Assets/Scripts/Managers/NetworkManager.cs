@@ -29,7 +29,7 @@ namespace Managers
                 time_left = timeLeft
             };
             var postRequest = CreateRequest(
-                $"{APIAddress}gaming-sessions/create",
+                $"{APIAddress}gaming-sessions/create/",
                 RequestType.POST,
                 postData
             );
@@ -40,7 +40,7 @@ namespace Managers
 
         public static IEnumerator FilterSchools(string name, Action<School[]> onSuccess)
         {
-            var getRequest = CreateRequest($"{APIAddress}schools?name={name}");
+            var getRequest = CreateRequest($"{APIAddress}schools/?name={name}");
             yield return getRequest.SendWebRequest();
 
             if (getRequest.result == UnityWebRequest.Result.Success)
@@ -57,7 +57,7 @@ namespace Managers
             Action<LeaderboardPaginated> onSuccess
         )
         {
-            var getRequest = CreateRequest($"{APIAddress}leaderboard?limit=10&offset={offset}");
+            var getRequest = CreateRequest($"{APIAddress}leaderboard/?limit=10&offset={offset}");
             yield return getRequest.SendWebRequest();
 
             if (getRequest.result == UnityWebRequest.Result.Success)
