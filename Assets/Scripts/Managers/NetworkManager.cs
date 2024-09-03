@@ -9,8 +9,7 @@ namespace Managers
 {
     public static class NetworkManager
     {
-        private const string APIAddress =
-            "https://b2bgate.csobpoistovna.sk/poidotoho/api/poidotoho-server/api/";
+        private const string APIAddress = "https://b2bgate.csobpoistovna.sk/poidotoho-server/api/";
 
         public static IEnumerator SubmitGameSessionData(
             string nickname,
