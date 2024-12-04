@@ -1,0 +1,3 @@
+[submodule "poidotoho-server"]
+	path = poidotoho-server
+	url = .\\poidotoho-server\\
